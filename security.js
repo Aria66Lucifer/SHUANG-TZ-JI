@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Security Module for Multi-User Local Data Encryption using AES-GCM via Web Crypto API.
  */
 

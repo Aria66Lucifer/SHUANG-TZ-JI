@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Core Application Controller for ?祈?撣?& 憭??賢?撣?App.
  * Implements states, rendering engines, business logic, and security workflows.
  */
@@ -947,8 +947,8 @@ function updatePetThemeUI() {
     // Set CSS properties on body
     const emoji = getThemeEmoji(theme);
     const watermark = getThemeWatermark(theme);
-    document.body.style.setProperty('--pet-emoji', `"${emoji}"`);
-    document.body.style.setProperty('--pet-watermark', `"${watermark}"`);
+    document.body.style.setProperty('--pet-emoji', "");
+    document.body.style.setProperty('--pet-watermark', "");
   } else {
     document.body.style.setProperty('--pet-emoji', '""');
     document.body.style.setProperty('--pet-watermark', '""');
@@ -968,44 +968,18 @@ function updatePetThemeUI() {
 // --- Data Storage Layers ---
 function createDefaultDatabase() {
   AppState = {
-    accounts: [
-      { id: 'acc_cash_1', name: '???Ｗ? (?暸?)', type: 'cash', balance: 2000, initialBalance: 2000, budget: 10000 },
-      { id: 'acc_bank_1', name: '?陸銝?銵?, type: 'bank', balance: 85000, initialBalance: 85000 },
-      { id: 'acc_credit_1', name: '?唳 FlyGo ??, type: 'credit', balance: 0, initialBalance: 0, billingDay: 10, dueDay: 25, creditLimit: 100000, warningThreshold: 5000 },
-      { id: 'acc_sec_1', name: '撖霅??, type: 'securities', balance: 15000, initialBalance: 15000, securitiesInvested: 120000 }
-    ],
-    transactions: [
-      { id: 'tx_init_1', type: 'income', amount: 35000, accountId: 'acc_bank_1', category: '?芣偌', date: new Date().toISOString().split('T')[0], notes: '?祆??箏??芾??臬' }
-    ],
+    accounts: [],
+    transactions: [],
     categories: {
-      expense: ['憌脤?', '?ˇ', '雿?', '鈭日?, '?脣?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '??', '靽', '摮貊?', '??', '?亦??, '颲血', '摮扛鞎?, '?嗡?'],
-      income: ['?芣偌', '??', '銝剔?', '??', '?暑鞎?, '?嗡?']
+      expense: ['憌脤?', '?ˇ', '撅?', '鈭日?, '?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '靽', '摮貊?', '??', '靽∠?狡', '颲血', '摮扛鞎?, '?嗡?'],
+      income: ['?芣偌', '??', '銝剔?', '??', '?舀平?嗅', '?嗡?']
     },
     recurring: [],
     splitPlans: [],
     inventory: [],
-    carrierBarcode: '/TW12345',
-    carrierPin: '123456',
-    carrierInvoices: [
-      {
-        id: 'inv_mock_1',
-        store: '蝯曹?頞? (7-11)',
-        amount: 85,
-        date: new Date().toISOString().split('T')[0],
-        items: [{ name: '憭扳??, price: 55 }, { name: '?嗉???, price: 30 }],
-        suggestedAccount: 'acc_cash_1',
-        paymentConfirmed: false
-      },
-      {
-        id: 'inv_mock_2',
-        store: '?毀????,
-        amount: 165,
-        date: new Date().toISOString().split('T')[0],
-        items: [{ name: '撌批???舐????唳?', price: 165 }],
-        suggestedAccount: 'acc_credit_1',
-        paymentConfirmed: false
-      }
-    ],
+    carrierBarcode: '',
+    carrierPin: '',
+    carrierInvoices: [],
     lastRecurringCheckDate: new Date().toISOString().split('T')[0],
     
     // Default preferences
@@ -1013,7 +987,7 @@ function createDefaultDatabase() {
     fontStyle: 'modern',
     chartType: 'pie',
     themeMode: 'auto',
-    appName: '??閮?,
+    appName: '?征閮董',
     globalMonthlyBudget: 20000
   };
 }
