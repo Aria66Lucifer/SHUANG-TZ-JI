@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1F2C" />
+      <stop offset="100%" stop-color="#0E1118" />
+    </linearGradient>
+    <linearGradient id="primaryGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="100%" stop-color="#4FACFE" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#39EF74" />
+      <stop offset="100%" stop-color="#06BC46" />
+    </linearGradient>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF5B94" />
+      <stop offset="100%" stop-color="#FF0055" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="512" height="512" rx="128" fill="url(#bgGrad)" />
+  
+  <!-- Outer glowing rings -->
+  <circle cx="256" cy="256" r="210" stroke="url(#primaryGrad)" stroke-width="6" fill="none" opacity="0.15" />
+  <circle cx="256" cy="256" r="180" stroke="url(#primaryGrad)" stroke-width="2" stroke-dasharray="10 15" fill="none" opacity="0.3" />
+
+  <!-- Overlapping Coins/Cards representation (Accounting & Splitting) -->
+  <!-- Left Coin (Expense/Income) -->
+  <g transform="translate(180, 260)" filter="url(#glow)">
+    <circle cx="0" cy="0" r="70" fill="url(#greenGrad)" />
+    <!-- TWD '$' Symbol -->
+    <text x="0" y="22" font-family="Outfit, Inter, sans-serif" font-size="64" font-weight="900" fill="#FFFFFF" text-anchor="middle">$</text>
+  </g>
+
+  <!-- Right Coin (Split bill) -->
+  <g transform="translate(320, 220)" filter="url(#glow)">
+    <circle cx="0" cy="0" r="70" fill="url(#primaryGrad)" />
+    <!-- Users sharing icon / link -->
+    <path d="M-25,10 C-25,-15 25,-15 25,10 Z" fill="#FFFFFF" opacity="0.8"/>
+    <circle cx="0" cy="-15" r="18" fill="#FFFFFF"/>
+    <path d="M-40,18 C-40,0 -10,0 -10,18 Z" fill="#FFFFFF" opacity="0.5"/>
+    <circle cx="-25" cy="-2" r="12" fill="#FFFFFF" opacity="0.5"/>
+  </g>
+</svg>

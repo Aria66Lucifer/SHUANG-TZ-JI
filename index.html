@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>雙子記 - 記帳與分帳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Varela+Round&family=JetBrains+Mono:wght@400;600;800&family=Noto+Sans+TC:wght@400;600;700;800&family=Noto+Serif+TC:wght@400;700&family=Nunito:wght@400;600;800&family=Quicksand:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#1A2232">
+  <link rel="icon" type="image/svg+xml" href="./icon.svg">
+  <script>
+    (function() {
+      // Immediate theme apply
+      const savedTheme = localStorage.getItem('app_global_theme') || 'auto';
+      if (savedTheme === 'light' || (savedTheme === 'auto' && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+        document.documentElement.classList.add('theme-light');
+      }
+      // Immediate app name apply
+      const savedName = localStorage.getItem('app_global_name') || '雙子記';
+      // Immediate sidebar collapsed apply
+      const sidebarPref = localStorage.getItem('sidebar_collapsed_pref');
+      
+      window.addEventListener('DOMContentLoaded', () => {
+        const sidebarBrand = document.querySelector('.brand-name');
+        if (sidebarBrand) sidebarBrand.innerText = savedName;
+        const lockTitle = document.querySelector('.lock-title');
+        if (lockTitle) lockTitle.innerText = savedName + ' App';
+        document.title = savedName + ' - 記帳與分帳';
+        
+        if (sidebarPref === 'true') {
+          const appContainer = document.getElementById('app-container');
+          if (appContainer) appContainer.classList.add('sidebar-collapsed');
+        }
+      });
+    })();
+  </script>
+</head>
+<body class="locked-body">
+
+  <!-- --- Security Login/Register Screen --- -->
+  <div id="lock-screen">
+    <div class="lock-box" style="max-width: 380px;">
+      <!-- Logo Container -->
+      <div class="lock-logo-wrapper" style="position: relative; width: 80px; height: 80px; margin: 0 auto 1rem; z-index: 1;">
+        <!-- Pet decorations scaled up, positioned at the TOP edge -->
+        <div class="logo-decor-ear cat left" style="left: 10px; top: -16px; width: 28px; height: 24px; background: #FFE0B2; border: 2px solid #FF9800; border-radius: 8px 20px 0 0; z-index: -1; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+        <div class="logo-decor-ear cat right" style="right: 10px; top: -16px; width: 28px; height: 24px; background: #FFE0B2; border: 2px solid #FF9800; border-radius: 20px 8px 0 0; z-index: -1; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+        
+        <div class="logo-decor-ear dog left" style="left: 0px; top: -20px; width: 24px; height: 35px; background: #8D6E63; border-radius: 20px 20px 0 0; z-index: -1; transform: rotate(-15deg);"></div>
+        <div class="logo-decor-ear dog right" style="right: 0px; top: -20px; width: 24px; height: 35px; background: #8D6E63; border-radius: 20px 20px 0 0; z-index: -1; transform: rotate(15deg);"></div>
+        
+        <div class="logo-decor-ear rabbit left" style="left: 15px; top: -35px; width: 16px; height: 45px; background: #ECEFF1; border: 2px solid #CFD8DC; border-radius: 16px 16px 0 0; z-index: -1; transform: rotate(-10deg); transform-origin: bottom center;">
+          <div style="width: 8px; height: 30px; background: #FF8A80; border-radius: 8px; margin: 4px auto 0;"></div>
+        </div>
+        <div class="logo-decor-ear rabbit right" style="right: 15px; top: -35px; width: 16px; height: 45px; background: #ECEFF1; border: 2px solid #CFD8DC; border-radius: 16px 16px 0 0; z-index: -1; transform: rotate(10deg); transform-origin: bottom center;">
+          <div style="width: 8px; height: 30px; background: #FF8A80; border-radius: 8px; margin: 4px auto 0;"></div>
+        </div>
+        
+        <div class="logo-decor-ear horns left" style="left: 0px; top: -15px; width: 20px; height: 26px; background: #ECEFF1; border: 2px solid #90A4AE; border-radius: 12px 0 0 24px; z-index: -1; transform: rotate(-20deg);"></div>
+        <div class="logo-decor-ear horns right" style="right: 0px; top: -15px; width: 20px; height: 26px; background: #ECEFF1; border: 2px solid #90A4AE; border-radius: 0 12px 24px 0; z-index: -1; transform: rotate(20deg);"></div>
+        
+        <div class="logo-decor-ear halo" style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; pointer-events: none; z-index: -1;"></div>
+        
+        <div class="lock-logo" style="width: 100%; height: 100%; border-radius: 20px; overflow: hidden; background: var(--bg-card-solid); box-shadow: none; margin: 0; position: relative; z-index: 2;">
+          <img src="./logo.png" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+      <div class="lock-title" style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; margin-bottom: 0.25rem;">雙子記 - 記帳與分帳</div>
+      <div class="lock-subtitle" id="lock-subtitle" style="margin-bottom: 1.5rem; font-size: 0.8125rem;">請輸入帳號與密碼以解鎖您的加密帳本</div>
+
+      <!-- Auth Tabs -->
+      <div class="button-selector" style="display: flex; margin-bottom: 1.5rem; justify-content: center; gap: 0.5rem;">
+        <button type="button" class="btn-select-option active" id="auth-tab-login" onclick="switchAuthTab('login')" style="flex: 1;">使用者登入</button>
+        <button type="button" class="btn-select-option" id="auth-tab-register" onclick="switchAuthTab('register')" style="flex: 1;">註冊新帳號</button>
+      </div>
+
+      <!-- Login / Register Form -->
+      <form id="auth-form" onsubmit="handleAuthSubmit(event)" style="text-align: left; display: flex; flex-direction: column; gap: 1rem;">
+        <input type="hidden" id="auth-mode" value="login">
+        
+        <div class="form-group" style="margin: 0;">
+          <label>使用者帳號 (Username)</label>
+          <input type="text" id="auth-username" placeholder="例如：myaccount" required style="padding: 0.65rem 1rem;">
+        </div>
+
+        <div class="form-group" style="margin: 0;">
+          <label>密碼 (Password)</label>
+          <input type="password" id="auth-password" placeholder="請輸入密碼" required style="padding: 0.65rem 1rem;">
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+          <label class="checkbox-label">
+            <input type="checkbox" id="auth-remember">
+            <span>記住我的帳號</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn-submit" id="auth-submit-btn" style="margin-top: 0.5rem; padding: 0.75rem;">登入安全帳本</button>
+      </form>
+
+      <!-- Emergency Recovery Link (shown after failed login) -->
+      <div id="auth-recovery-hint" style="display:none; margin-top: 1rem; text-align: center;">
+        <div style="font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 0.4rem;">確定密碼正確但仍無法登入？(可能是瀏覽器快取異常)</div>
+        <button type="button" onclick="handleAccountRecovery()" style="background: none; border: 1px solid rgba(255,100,100,0.4); color: var(--color-red, #ff6b6b); padding: 0.35rem 0.85rem; border-radius: 8px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s;">
+          🔑 重新綁定憑證 (保留舊資料)
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- --- MODAL: Global Budget Setting --- -->
+  <div class="modal-overlay" id="modal-global-budget">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">設定本月總預算</h2>
+        <button class="btn-close" onclick="closeModal('modal-global-budget')">×</button>
+      </div>
+      <form id="form-global-budget" onsubmit="handleGlobalBudgetSubmit(event)">
+        <div class="form-group">
+          <label>本月預算總額 (NT$)</label>
+          <input type="number" id="global-budget-amount" min="1" step="1" required placeholder="例如：20000">
+          <small style="color: var(--text-secondary); margin-top: 0.5rem; display: block;">此預算將顯示於首頁的「預算超支進度條」中，幫助您控管每月整體花費。</small>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">儲存設定</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- MODAL: Add/Edit Inventory Item --- -->
+  <div class="modal-overlay" id="modal-inventory">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-inventory-title">新增存貨</h2>
+        <button class="btn-close" onclick="closeModal('modal-inventory')">×</button>
+      </div>
+      <form id="form-inventory" onsubmit="handleInventorySubmit(event)">
+        <input type="hidden" id="inventory-edit-id">
+        
+        <div class="form-group">
+          <label>專屬圖標 (可選)</label>
+          <div class="button-selector" id="inventory-icon-selector" style="display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+            <!-- Icons will be rendered here dynamically -->
+          </div>
+          <input type="hidden" id="inventory-icon" value="📦">
+        </div>
+
+        <div class="form-group" style="position: relative;">
+          <label>快速搜尋細項</label>
+          <input type="text" id="inventory-search" placeholder="🔍 搜尋細項 (如: 衛生紙)..." oninput="handleInventorySearch(event)">
+          <div id="inventory-search-results" class="dropdown-menu" style="display: none; position: absolute; width: 100%; top: 100%; left: 0; z-index: 10;"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label>使用者區</label>
+            <select id="inventory-user-area" onchange="handleUserAreaChange()" required>
+              <option value="">請選擇</option>
+              <option value="人類專區">人類專區</option>
+              <option value="愛寵專區">愛寵專區</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>大類</label>
+            <select id="inventory-main-category" onchange="handleMainCategoryChange()" required>
+              <option value="">請先選擇使用者區</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>細項</label>
+            <select id="inventory-sub-category" onchange="handleSubCategoryChange()" required>
+              <option value="">請先選擇大類</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label>店家 (可選)</label>
+            <input type="text" id="inventory-store" placeholder="例如：好市多、全聯">
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>商品名稱 (或自訂名稱)</label>
+            <input type="text" id="inventory-name" required placeholder="例如：舒潔三層抽取式衛生紙">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label>入倉日期</label>
+            <input type="date" id="inventory-in-date" required>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>入倉位置</label>
+            <input type="text" id="inventory-location" required placeholder="例如：客廳櫃子、床底">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label>當前數量</label>
+            <div style="display: flex; gap: 0.5rem;">
+              <input type="number" id="inventory-quantity" required min="0" step="1" value="1" style="flex: 2;">
+              <input type="text" id="inventory-unit" required placeholder="單位(包/瓶)" style="flex: 1;">
+            </div>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>最低警戒數量</label>
+            <input type="number" id="inventory-threshold" min="0" step="1" value="1" placeholder="低於此數量加入待買">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>本批物資到期日 (可選)</label>
+          <input type="date" id="inventory-expiry-date">
+        </div>
+
+        <div class="form-row" style="align-items: flex-end;">
+          <div class="form-group" style="flex: 2;">
+            <label>到期日前通知設定 (可選)</label>
+            <select id="inventory-notify-type" onchange="handleNotifyTypeChange()">
+              <option value="">不通知</option>
+              <option value="days">幾天前 (1-6天)</option>
+              <option value="weeks">幾週前 (1-4週)</option>
+              <option value="months">幾個月前 (1-12個月)</option>
+              <option value="years">幾年前 (自行輸入)</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex: 1; display: none;" id="notify-value-group">
+            <input type="number" id="inventory-notify-value" min="1" step="1" placeholder="數值">
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">儲存存貨</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- --- MODAL: Shopping List & Split Bill --- -->
+  <div class="modal-overlay" id="modal-shopping-list">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">共用待買清單</h2>
+        <button class="btn-close" onclick="closeModal('modal-shopping-list')">×</button>
+      </div>
+      <div id="shopping-list-container" style="max-height: 40vh; overflow-y: auto; padding-right: 0.5rem;">
+        <!-- Dynamically rendered list of low stock items -->
+      </div>
+      
+      <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <h3 style="font-size: 0.9rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--text-secondary);">一鍵轉入分帳</h3>
+        <p style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 1rem;">採買完畢後，輸入總金額並選定分帳計畫，即可快速平攤費用。</p>
+        <div class="form-group">
+          <label>本次採買總額</label>
+          <input type="number" id="shopping-total-amount" min="1" step="1" placeholder="請輸入結帳金額">
+        </div>
+        <div class="form-group">
+          <label>轉入的分帳計畫</label>
+          <select id="shopping-split-plan" class="form-control">
+            <option value="">-- 選擇分帳計畫 --</option>
+          </select>
+        </div>
+        <button class="btn-primary" style="width: 100%;" onclick="executeShoppingSplit()">確認轉入並自動補足庫存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- --- MODAL: Hashtag Search Results --- -->
+  <div class="modal-overlay" id="modal-hashtag-search">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="hashtag-search-title">標籤搜尋結果</h2>
+        <button class="btn-close" onclick="closeModal('modal-hashtag-search')">×</button>
+      </div>
+      <div id="hashtag-search-results" style="max-height: 50vh; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; padding-right: 0.5rem;">
+        <!-- Dynamically rendered hashtag matching transactions -->
+      </div>
+    </div>
+  </div>
+
+
+  <!-- --- App Core Layout --- -->
+  <div id="app-container">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="sidebar">
+      <div class="brand">
+        <div class="logo-wrapper" style="position: relative; width: 40px; height: 40px; border-radius: 10px; z-index: 1;">
+          <!-- Pet decorations, positioned at the TOP edge -->
+          <div class="logo-decor-ear cat left" style="left: 4px; top: -8px; width: 14px; height: 12px; background: #FFE0B2; border: 1.5px solid #FF9800; border-radius: 4px 10px 0 0; z-index: -1; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+          <div class="logo-decor-ear cat right" style="right: 4px; top: -8px; width: 14px; height: 12px; background: #FFE0B2; border: 1.5px solid #FF9800; border-radius: 10px 4px 0 0; z-index: -1; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+          
+          <div class="logo-decor-ear dog left" style="left: -2px; top: -10px; width: 12px; height: 18px; background: #8D6E63; border-radius: 10px 10px 0 0; z-index: -1; transform: rotate(-15deg);"></div>
+          <div class="logo-decor-ear dog right" style="right: -2px; top: -10px; width: 12px; height: 18px; background: #8D6E63; border-radius: 10px 10px 0 0; z-index: -1; transform: rotate(15deg);"></div>
+          
+          <div class="logo-decor-ear rabbit left" style="left: 6px; top: -18px; width: 8px; height: 24px; background: #ECEFF1; border: 1px solid #CFD8DC; border-radius: 8px 8px 0 0; z-index: -1; transform: rotate(-10deg); transform-origin: bottom center;">
+            <div style="width: 4px; height: 16px; background: #FF8A80; border-radius: 4px; margin: 2px auto 0;"></div>
+          </div>
+          <div class="logo-decor-ear rabbit right" style="right: 6px; top: -18px; width: 8px; height: 24px; background: #ECEFF1; border: 1px solid #CFD8DC; border-radius: 8px 8px 0 0; z-index: -1; transform: rotate(10deg); transform-origin: bottom center;">
+            <div style="width: 4px; height: 16px; background: #FF8A80; border-radius: 4px; margin: 2px auto 0;"></div>
+          </div>
+          
+          <div class="logo-decor-ear horns left" style="left: -2px; top: -8px; width: 10px; height: 13px; background: #ECEFF1; border: 1px solid #90A4AE; border-radius: 6px 0 0 12px; z-index: -1; transform: rotate(-20deg);"></div>
+          <div class="logo-decor-ear horns right" style="right: -2px; top: -8px; width: 10px; height: 13px; background: #ECEFF1; border: 1px solid #90A4AE; border-radius: 0 6px 12px 0; z-index: -1; transform: rotate(20deg);"></div>
+          
+          <div class="logo-decor-ear halo" style="position: absolute; top: -20px; left: 50%; transform: translateX(-50%); display: flex; justify-content: center; pointer-events: none; z-index: -1;"></div>
+
+          <div class="logo-img-container" style="width: 100%; height: 100%; border-radius: 10px; overflow: hidden; background: var(--bg-card-solid); position: relative; z-index: 2;">
+            <img src="./logo.png" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+        </div>
+        <span class="brand-name">雙子記</span>
+      </div>
+      
+      <nav style="flex: 1;">
+        <ul class="nav-menu">
+          <li class="nav-item active" data-tab="tab-calendar">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7v-5z"/></svg>
+              <span>記帳日曆</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-accounts">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+              <span>帳戶預算</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-recurring">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              <span>訂閱與固定收支</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-split">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 1.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V20h6v-3.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+              <span>分帳計畫</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-dream">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span>夢想清單</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-carrier">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M3 5h2V3H3v2zm0 4h2V7H3v2zm0 4h2v-2H3v2zm0 4h2v-2H3v2zm4-12h2V3H7v2zm0 4h2V7H7v2zm0 4h2v-2H7v2zm0 4h2v-2H7v2zm4-12h2V3h-2v2zm0 4h2V7h-2v2zm0 4h2v-2h-2v2zm0 4h2v-2h-2v2zm4-12h2V3h-2v2zm0 4h2V7h-2v2zm0 4h2v-2h-2v2zm0 4h2v-2h-2v2zm4-12h2V3h-2v2zm0 4h2V7h-2v2zm0 4h2v-2h-2v2zm0 4h2v-2h-2v2z"/></svg>
+              <span>載具發票</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-inventory">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6zm0 4h8v2H6zm10 0h2v2h-2zm-6-4h8v2h-8z"/></svg>
+              <span>物資管理</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-categories">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M21.41 11.58l-9-9C12.05 2.22 11.55 2 11 2H4c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zM5.5 8c-.83 0-1.5-.67-1.5-1.5S4.67 5 5.5 5 7 5.67 7 6.5 6.33 8 5.5 8z"/></svg>
+              <span>收支類別</span>
+            </a>
+          </li>
+          <li class="nav-item" data-tab="tab-settings">
+            <a href="javascript:void(0)">
+              <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+              <span>設定</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="nav-footer">
+        <button class="btn-lock-app" onclick="lockApp()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+          鎖定 App
+        </button>
+      </div>
+    </aside>
+
+    <!-- Center Workspace -->
+    <main id="main-workspace">
+      
+      <!-- --- Tab 1: Calendar Ledger --- -->
+      <section id="tab-calendar" class="tab-view active">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">記帳日曆</h1>
+          </div>
+          <button class="btn-primary" onclick="openAddTransactionModal()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            記一筆
+          </button>
+        </div>
+
+        <div class="calendar-ledger-grid">
+          <!-- Upper: Calendar Grid -->
+          <div class="glass-card calendar-container">
+            <div class="calendar-header">
+              <button class="calendar-nav-btn" onclick="prevMonth()">◄</button>
+              <div class="calendar-month-year" id="calendar-current-month-year">May 2026</div>
+              <button class="calendar-nav-btn" onclick="nextMonth()">►</button>
+            </div>
+            <div class="calendar-grid" id="calendar-grid-days">
+              <!-- Dynamically Rendered Days -->
+            </div>
+          </div>
+
+          <!-- Lower: Daily Transactions -->
+          <div class="glass-card ledger-container">
+            <div class="ledger-header" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; flex: 1;">
+                <span id="selected-date-label">當日交易紀錄</span>
+                <span id="selected-date-net-label" style="font-family: var(--font-title); font-weight: 700;">(NT$ 0)</span>
+                <span style="margin-left: auto; margin-right: 0.5rem; font-weight: 700; color: var(--text-secondary); font-size: 0.95rem;">交易紀錄</span>
+              </div>
+              <div id="ledger-header-mascot" style="height: 32px; width: 32px; display: flex; align-items: center; justify-content: center; overflow: visible;"></div>
+            </div>
+            <div class="ledger-list" id="daily-ledger-list">
+              <!-- Dynamically Rendered Transactions -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- Tab 2: Accounts & Budget --- -->
+      <section id="tab-accounts" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">帳戶與預算管理</h1>
+          </div>
+        </div>
+
+        <!-- Accounts Grid -->
+        <div class="accounts-grid" id="accounts-cards-container">
+          <!-- Dynamically Rendered Accounts -->
+        </div>
+
+        <!-- Global Budget Tracker -->
+        <div class="glass-card" style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; cursor: pointer;" id="global-budget-tracker-container" onclick="openBudgetSettingModal()">
+          <!-- Dynamically Rendered Budget Tracker -->
+        </div>
+
+        <!-- Monthly Budget & Spending Statistics Charts -->
+        <div class="glass-card" style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem;" id="accounts-charts-section">
+          <!-- Left: Cashflow summary chart -->
+          <div style="display: flex; flex-direction: column; gap: 1rem;">
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+              本月收支概況
+            </h3>
+            <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 1.5rem;" id="cashflow-bars-container">
+              <!-- Rendered Income/Expense Comparison Bars -->
+            </div>
+          </div>
+          <!-- Right: Expense breakdown by categories -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+              <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; color: var(--text-secondary); margin: 0;">
+                本月支出排行
+              </h3>
+              <div class="button-selector" style="margin: 0; display: flex; gap: 0.25rem;">
+                <button type="button" class="btn-select-option active" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 6px; margin: 0;" id="chart-type-pie" onclick="toggleChartType('pie')">圓餅圖</button>
+                <button type="button" class="btn-select-option" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 6px; margin: 0;" id="chart-type-bar" onclick="toggleChartType('bar')">長條圖</button>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;" id="category-breakdown-container">
+              <!-- Rendered Category Ranking Progress Bars or Pie/Bar SVG -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- Tab 3: Recurring Transactions --- -->
+      <section id="tab-recurring" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">訂閱與固定收支管理</h1>
+          </div>
+          <button class="btn-primary" onclick="openAddRecurringModal()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            新增訂閱或收支
+          </button>
+        </div>
+
+        <div class="glass-card" style="padding: 0;">
+          <table style="width: 100%; border-collapse: collapse; text-align: left;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.875rem;">
+                <th style="padding: 1.25rem;">收支名稱</th>
+                <th style="padding: 1.25rem;">類型</th>
+                <th style="padding: 1.25rem;">金額</th>
+                <th style="padding: 1.25rem;">付款/轉出</th>
+                <th style="padding: 1.25rem;">收款/轉入</th>
+                <th style="padding: 1.25rem;">頻率</th>
+                <th style="padding: 1.25rem; text-align: right;">操作</th>
+              </tr>
+            </thead>
+            <tbody id="recurring-tbody">
+              <!-- Dynamically Rendered -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- --- Tab X: Dream List --- -->
+      <section id="tab-dream" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">夢想清單</h1>
+          </div>
+          <button class="btn-primary" onclick="openAddDreamModal()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            新增夢想
+          </button>
+        </div>
+
+        <div class="split-plans-list" id="dream-list-container">
+          <!-- Dynamically Rendered Dream List -->
+        </div>
+      </section>
+
+      <!-- --- Tab 5: Mobile Carrier Invoice --- -->
+      <section id="tab-split" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">分帳計畫</h1>
+          </div>
+          <button class="btn-primary" onclick="openAddSplitPlanModal()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            新建分帳計畫
+          </button>
+        </div>
+
+        <div class="split-plans-list" id="split-plans-container">
+          <!-- Dynamically Rendered Split Plans -->
+        </div>
+      </section>
+
+      <!-- --- Tab 5: Mobile Carrier Invoice --- -->
+      <section id="tab-carrier" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">載具發票</h1>
+          </div>
+        </div>
+
+        <!-- Carrier Settings Banner -->
+        <div class="carrier-banner">
+          <div>
+            <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">我的手機載具條碼</div>
+            <div class="carrier-barcode-text" id="display-carrier-barcode">尚未設定載具</div>
+          </div>
+          <div>
+            <button class="btn-primary" onclick="openSetupCarrierModal()" id="btn-setup-carrier-text">
+              設定載具
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulator Tools -->
+        <div class="glass-card" id="carrier-simulator-section" style="display: none; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <span style="font-weight: 600; font-size: 0.95rem;">模擬工具：</span>
+          <button class="btn-select-option active" style="margin: 0;" onclick="triggerMockInvoiceDownload()">
+            模擬下載最新發票
+          </button>
+          <button class="btn-select-option" style="margin: 0;" onclick="openQrScanner()">
+            📷 掃描發票 QR Code
+          </button>
+          <input type="file" id="invoice-csv-file" accept=".csv" style="display: none;" onchange="handleInvoiceCsvUpload(event)">
+          <button class="btn-select-option" style="margin: 0;" onclick="document.getElementById('invoice-csv-file').click()">
+            匯入發票 CSV
+          </button>
+        </div>
+
+        <!-- Invoice Sync Review List -->
+        <div class="glass-card" style="display: flex; flex-direction: column; gap: 1rem;">
+          <h2 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700;">待確認載具明細 (需人工確認再匯入記帳)</h2>
+          <div class="carrier-invoices-list" id="carrier-invoices-review-list">
+            <!-- Dynamically Rendered Invoices -->
+          </div>
+        </div>
+      </section>
+
+      <!-- --- Tab 6: Inventory Management --- -->
+      <section id="tab-inventory" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">物資與存貨管理</h1>
+          </div>
+          <button class="btn-primary" onclick="openAddInventoryModal()">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            新增物資
+          </button>
+        </div>
+        
+        <div class="glass-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--color-indigo);">
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem;">共用採買清單</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin: 0;">自動列出低於警戒線的物品，採買後可一鍵轉入分帳</p>
+          </div>
+          <button class="btn-outline" onclick="generateShoppingList()">檢視待買清單</button>
+        </div>
+
+        <div class="accounts-grid" id="inventory-grid-container">
+          <!-- Dynamically rendered inventory items -->
+        </div>
+      </section>
+
+      <!-- --- Tab 7: Categories Management --- -->
+      <section id="tab-categories" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">收支類別管理</h1>
+          </div>
+        </div>
+        
+        <div class="categories-editor-container">
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--color-red);">支出類別 (Expense)</h2>
+            <input type="text" id="search-expense-cat" placeholder="🔍 搜尋支出類別..." style="margin-bottom: 0.5rem; padding: 0.5rem 0.75rem; font-size: 0.875rem; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px;" oninput="filterCategories('expense')">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-expense-cat-input" placeholder="新支出類別名稱">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addCategory('expense')">新增</button>
+            </div>
+            <div class="category-tags-flex" id="expense-categories-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+          
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--color-green);">收入類別 (Income)</h2>
+            <input type="text" id="search-income-cat" placeholder="🔍 搜尋收入類別..." style="margin-bottom: 0.5rem; padding: 0.5rem 0.75rem; font-size: 0.875rem; background: var(--bg-input); border: 1px solid var(--border-color); border-radius: 8px;" oninput="filterCategories('income')">
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-income-cat-input" placeholder="新收入類別名稱">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addCategory('income')">新增</button>
+            </div>
+            <div class="category-tags-flex" id="income-categories-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+            
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--color-purple);">存貨圖標管理</h2>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-inventory-icon-input" placeholder="貼上 emoji (如: 🍎)">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addIcon('inventory')">新增</button>
+            </div>
+            <div class="category-tags-flex" id="inventory-icons-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--color-blue);">固定收支圖標管理</h2>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-recurring-icon-input" placeholder="貼上 emoji (如: 🎬)">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addIcon('recurring')">新增</button>
+            </div>
+            <div class="category-tags-flex" id="recurring-icons-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- Tab 7: Settings --- -->
+      <section id="tab-settings" class="tab-view">
+        <div class="section-header">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+            </button>
+            <h1 class="section-title">系統設定</h1>
+          </div>
+        </div>
+
+        <div class="glass-card" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">安全保護設定</h3>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn-select-option" onclick="changePinCode()">修改帳號密碼</button>
+              <button class="btn-select-option" style="color: var(--color-red); border-color: rgba(239, 68, 68, 0.2);" onclick="resetAllApp()">清除所有資料</button>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">主題風格設定</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">選擇您喜愛的主題模式（深色、淺色，或隨系統自動切換）：</p>
+            <div class="button-selector" id="theme-selector" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-select-option" onclick="changeThemeMode('dark')" id="btn-theme-dark">深色模式</button>
+              <button type="button" class="btn-select-option" onclick="changeThemeMode('light')" id="btn-theme-light">淺色模式</button>
+              <button type="button" class="btn-select-option active" onclick="changeThemeMode('auto')" id="btn-theme-auto">跟隨系統</button>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">按鈕漸層色彩主題</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">選擇您偏好的按鈕漸層色彩樣式：</p>
+            <div class="button-selector" id="btn-theme-selector" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-select-option active" onclick="changeButtonTheme('ocean')" id="btn-color-ocean">海洋之藍</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('emerald')" id="btn-color-emerald">極光翡翠</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('purple')" id="btn-color-purple">皇家靛紫</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('sunset')" id="btn-color-sunset">夕陽珊瑚</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('obsidian')" id="btn-color-obsidian">曜石暗灰</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('sakura')" id="btn-color-sakura">櫻花粉紅</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('forest')" id="btn-color-forest">森林之綠</button>
+              <button type="button" class="btn-select-option" onclick="changeButtonTheme('cyberpunk')" id="btn-color-cyberpunk">賽博霓虹</button>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">字型風格選擇</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">切換不同的字型樣式以適應您的視覺習慣：</p>
+            <div class="button-selector" id="font-selector" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-select-option active" onclick="changeFontStyle('modern')" id="btn-font-modern">現代科技</button>
+              <button type="button" class="btn-select-option" onclick="changeFontStyle('rounded')" id="btn-font-rounded">溫馨圓潤</button>
+              <button type="button" class="btn-select-option" onclick="changeFontStyle('elegant')" id="btn-font-elegant">優雅人文</button>
+              <button type="button" class="btn-select-option" onclick="changeFontStyle('geek')" id="btn-font-geek">硬朗極客</button>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">資料備份與復原 (高度加密)</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">將您的資料庫以目前設定的 PIN 碼高強度加密後匯出，或從備份檔復原。</p>
+            <div style="display: flex; gap: 1rem;">
+              <button class="btn-select-option" onclick="exportEncryptedBackup()">匯出備份 (JSON)</button>
+              <input type="file" id="backup-file-input" style="display: none;" onchange="importEncryptedBackup(event)">
+              <button class="btn-select-option" onclick="document.getElementById('backup-file-input').click()">匯入備份 (JSON)</button>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">資料分析匯出</h3>
+            <button class="btn-select-option" onclick="exportLedgerToCsv()">匯出交易明細至 Excel (CSV)</button>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">開發測試設定</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">開啟或關閉管理者測試工具（包含發票與通知模擬工具）：</p>
+            <div class="button-selector" id="dev-mode-selector" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button type="button" class="btn-select-option" onclick="changeDevMode(true)" id="btn-dev-on">開啟測試模式</button>
+              <button type="button" class="btn-select-option active" onclick="changeDevMode(false)" id="btn-dev-off">關閉測試模式</button>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">吉祥物與開運裝飾風格</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">選擇您喜愛的吉祥開運裝飾主題，會為 App Logo、按鈕、背景浮水印及日曆空狀態添加可愛特徵：</p>
+            
+            <div style="display: flex; gap: 1rem; align-items: flex-start;">
+              <div class="form-group" style="flex: 1; margin-bottom: 0;">
+                <label>吉祥物主題</label>
+                <select id="mascot-type-selector" onchange="handleMascotTypeChange()" style="padding: 0.5rem; font-size: 0.875rem; background: var(--bg-input);">
+                  <option value="none">無裝飾</option>
+                  <option value="pet">可愛萌寵系列</option>
+                  <option value="zodiac">開運12生肖系列</option>
+                  <option value="constellation">星象12星座系列</option>
+                </select>
+              </div>
+
+              <div style="flex: 1;">
+                <div class="form-group" id="mascot-sub-pet" style="display: none; margin-bottom: 0;">
+                  <label>選擇萌寵角色</label>
+                  <select id="mascot-select-pet" onchange="handleMascotSelectionChange()" style="padding: 0.5rem; font-size: 0.875rem; background: var(--bg-input);">
+                    <option value="cat">🐱 招財貓咪</option>
+                    <option value="dog">🐶 招財狗狗</option>
+                    <option value="rabbit">🐰 招財兔子</option>
+                  </select>
+                </div>
+
+                <div class="form-group" id="mascot-sub-zodiac" style="display: none; margin-bottom: 0;">
+                  <label>選擇生肖角色</label>
+                  <select id="mascot-select-zodiac" onchange="handleMascotSelectionChange()" style="padding: 0.5rem; font-size: 0.875rem; background: var(--bg-input);">
+                    <option value="zodiac-rat">🐭 鼠 (Rat)</option>
+                    <option value="zodiac-ox">🐮 牛 (Ox)</option>
+                    <option value="zodiac-tiger">🐯 虎 (Tiger)</option>
+                    <option value="zodiac-rabbit">🐰 兔 (Rabbit)</option>
+                    <option value="zodiac-dragon">🐲 龍 (Dragon)</option>
+                    <option value="zodiac-snake">🐍 蛇 (Snake)</option>
+                    <option value="zodiac-horse">🐴 馬 (Horse)</option>
+                    <option value="zodiac-goat">🐑 羊 (Goat)</option>
+                    <option value="zodiac-monkey">🐵 猴 (Monkey)</option>
+                    <option value="zodiac-rooster">🐔 雞 (Rooster)</option>
+                    <option value="zodiac-dog">🐶 狗 (Dog)</option>
+                    <option value="zodiac-pig">🐷 豬 (Pig)</option>
+                  </select>
+                </div>
+
+                <div class="form-group" id="mascot-sub-constellation" style="display: none; margin-bottom: 0;">
+                  <label>選擇星座角色</label>
+                  <select id="mascot-select-constellation" onchange="handleMascotSelectionChange()" style="padding: 0.5rem; font-size: 0.875rem; background: var(--bg-input);">
+                    <option value="const-aries">♈ 牡羊座 (Aries)</option>
+                    <option value="const-taurus">♉ 金牛座 (Taurus)</option>
+                    <option value="const-gemini">♊ 雙子座 (Gemini)</option>
+                    <option value="const-cancer">♋ 巨蟹座 (Cancer)</option>
+                    <option value="const-leo">♌ 獅子座 (Leo)</option>
+                    <option value="const-virgo">♍ 處女座 (Virgo)</option>
+                    <option value="const-libra">♎ 天秤座 (Libra)</option>
+                    <option value="const-scorpio">♏ 天蠍座 (Scorpio)</option>
+                    <option value="const-sagittarius">♐ 射手座 (Sagittarius)</option>
+                    <option value="const-capricorn">♑ 摩羯座 (Capricorn)</option>
+                    <option value="const-aquarius">♒ 水瓶座 (Aquarius)</option>
+                    <option value="const-pisces">♓ 雙魚座 (Pisces)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="settings-dev-notification-section" style="display: none;">
+            <hr style="border: none; border-top: 1px solid var(--border-color); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">通知測試</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 1rem;">點擊測試瀏覽器通知（模擬信用卡結帳與繳費通知）。</p>
+            <button class="btn-select-option" onclick="triggerNotificationTest()">發送測試通知</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Right Sidebar Info Panel (Estimated Remaining balances & Credit card bills) -->
+    <aside id="right-panel">
+      
+      <!-- Day Ledger Financial totals -->
+      <div class="panel-section">
+        <div class="panel-title" id="right-panel-title">今日收支總計</div>
+        <div class="day-summary-grid">
+          <div class="summary-card">
+            <div class="summary-label">收入</div>
+            <div class="summary-val income" id="right-day-income">NT$ 0</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-label">支出</div>
+            <div class="summary-val expense" id="right-day-expense">(NT$ 0)</div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-label">合計</div>
+            <div class="summary-val total" id="right-day-net">NT$ 0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Account Balances & Estimates -->
+      <div class="panel-section">
+        <div class="panel-title">帳戶餘額預估</div>
+        <div class="estimates-list" id="right-accounts-estimates">
+          <!-- Dynamically Rendered -->
+        </div>
+      </div>
+
+      <!-- Credit Cards Spent & Alerts -->
+      <div class="panel-section">
+        <div class="panel-title">信用卡帳單與通知</div>
+        <div class="cc-alerts-list" id="right-cc-alerts">
+          <!-- Dynamically Rendered Credit Card Alerts -->
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- --- Modals Implementations --- -->
+  
+  <!-- 1. Add/Edit Transaction Modal -->
+  <div class="modal-overlay" id="modal-transaction">
+    <div class="modal-content" style="overflow: visible;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-transaction-title">新增記帳</h2>
+        <button class="btn-close" onclick="closeModal('modal-transaction')">×</button>
+      </div>
+      <form id="form-transaction" onsubmit="handleTransactionSubmit(event)">
+        <input type="hidden" id="trans-id">
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label>交易類型</label>
+            <div class="button-selector" id="trans-type-selector" style="display: flex;">
+              <button type="button" class="btn-select-option active" onclick="setTransType('expense')" style="flex: 1; padding: 0.5rem;">支出</button>
+              <button type="button" class="btn-select-option" onclick="setTransType('income')" style="flex: 1; padding: 0.5rem;">收入</button>
+              <button type="button" class="btn-select-option" onclick="setTransType('transfer')" style="flex: 1; padding: 0.5rem;">轉帳</button>
+            </div>
+            <input type="hidden" id="trans-type" value="expense">
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label id="trans-amount-label">金額 (NT$)</label>
+            <input type="number" step="1" min="1" id="trans-amount" placeholder="請輸入金額" required style="font-size: 1.2rem; font-weight: bold; transition: all 0.3s ease; height: 42px;" oninput="calculateCcInstallmentPreview()">
+          </div>
+        </div>
+
+        <div class="form-row" style="overflow: visible;">
+          <!-- Source Account Button Selector -->
+          <div class="form-group" id="form-group-source-account" style="overflow: visible;">
+            <label id="label-source-account">扣款帳戶</label>
+            <div class="account-selector-wrapper">
+              <div class="account-selector-buttons" id="trans-account-type-buttons-src">
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('src', 'cash')" id="btn-src-cash">我的錢包</button>
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('src', 'bank')" id="btn-src-bank">銀行帳戶</button>
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('src', 'credit')" id="btn-src-credit">信用卡</button>
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('src', 'securities')" id="btn-src-securities">證券戶</button>
+              </div>
+              <input type="hidden" id="trans-account" required>
+              <div class="account-popover" id="popover-src"></div>
+            </div>
+          </div>
+          
+          <!-- Destination Account Button Selector (For transfers) -->
+          <div class="form-group" id="form-group-dest-account" style="display: none; overflow: visible;">
+            <label>轉入帳戶</label>
+            <div class="account-selector-wrapper">
+              <div class="account-selector-buttons" id="trans-account-type-buttons-dst">
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('dst', 'cash')" id="btn-dst-cash">我的錢包</button>
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('dst', 'bank')" id="btn-dst-bank">銀行帳戶</button>
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('dst', 'credit')" id="btn-dst-credit">信用卡</button>
+                <button type="button" class="btn-account-select" onclick="handleAccountTypeSelectBtn('dst', 'securities')" id="btn-dst-securities">證券戶</button>
+              </div>
+              <input type="hidden" id="trans-dest-account">
+              <div class="account-popover" id="popover-dst"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" id="form-group-category" style="flex: 1;">
+            <label>收支類別</label>
+            <select id="trans-category">
+              <!-- Dynamic Options -->
+            </select>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>備註說明</label>
+            <input type="text" id="trans-notes" placeholder="例如：午餐、薪水發放">
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label>交易日期</label>
+          <input type="date" id="trans-date" required>
+        </div>
+
+        <!-- Credit Card Installment options -->
+        <div class="form-group" id="form-group-cc-installment" style="display: none; background: rgba(255, 255, 255, 0.01); border: 1px solid var(--border-color); padding: 1rem; border-radius: 12px; margin-bottom: 1.25rem;">
+          <label>信用卡分期選項</label>
+          <div class="button-selector" id="cc-installment-type-buttons" style="margin-bottom: 0.5rem;">
+            <button type="button" class="btn-select-option active" id="btn-cc-inst-single" onclick="setCcInstallmentType('single')">僅單筆消費</button>
+            <button type="button" class="btn-select-option" id="btn-cc-inst-free" onclick="setCcInstallmentType('interest-free')">無息分期</button>
+            <button type="button" class="btn-select-option" id="btn-cc-inst-bearing" onclick="setCcInstallmentType('interest-bearing')">有息分期</button>
+          </div>
+          <input type="hidden" id="cc-installment-type" value="single">
+
+          <div id="cc-installment-periods-row" style="display: none; margin-top: 0.75rem;">
+            <label style="margin-bottom: 0.35rem; display: block;">選擇分期期數</label>
+            <div class="button-selector" id="cc-installment-periods-buttons">
+              <button type="button" class="btn-select-option active" id="btn-cc-period-3" onclick="setCcInstallmentPeriod(3)">3期</button>
+              <button type="button" class="btn-select-option" id="btn-cc-period-6" onclick="setCcInstallmentPeriod(6)">6期</button>
+              <button type="button" class="btn-select-option" id="btn-cc-period-9" onclick="setCcInstallmentPeriod(9)">9期</button>
+              <button type="button" class="btn-select-option" id="btn-cc-period-12" onclick="setCcInstallmentPeriod(12)">12期</button>
+              <button type="button" class="btn-select-option" id="btn-cc-period-24" onclick="setCcInstallmentPeriod(24)">24期</button>
+            </div>
+            <input type="hidden" id="cc-installment-periods" value="3">
+          </div>
+
+          <div id="cc-installment-rate-row" style="display: none; margin-top: 0.75rem;">
+            <label style="margin-bottom: 0.35rem; display: block;">分期年利率 (%)</label>
+            <input type="number" step="0.1" min="0" max="100" id="cc-installment-rate" value="6.0" oninput="calculateCcInstallmentPreview()" style="padding: 0.5rem 0.75rem; font-size: 0.9rem;">
+          </div>
+
+          <div id="cc-installment-preview" style="display: none; margin-top: 0.75rem; background: rgba(99, 102, 241, 0.08); padding: 0.75rem 1rem; border-radius: 8px; border: 1px solid rgba(99, 102, 241, 0.2); font-size: 0.8125rem;"></div>
+        </div>
+
+        <!-- Trans notes moved up -->
+
+        <button type="submit" class="btn-submit">儲存記帳</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Add Account Modal -->
+  <div class="modal-overlay" id="modal-account">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">新增帳戶</h2>
+        <button class="btn-close" onclick="closeModal('modal-account')">×</button>
+      </div>
+      <form id="form-account" onsubmit="handleAccountSubmit(event)">
+        <div class="form-group">
+          <label>帳戶種類</label>
+          <div class="button-selector" id="account-type-selector">
+            <button type="button" class="btn-select-option active" onclick="setAccountType('cash')">現金</button>
+            <button type="button" class="btn-select-option" onclick="setAccountType('bank')">銀行</button>
+            <button type="button" class="btn-select-option" onclick="setAccountType('credit')">信用卡</button>
+            <button type="button" class="btn-select-option" onclick="setAccountType('securities')">證券戶</button>
+          </div>
+          <input type="hidden" id="account-type" value="cash">
+        </div>
+
+        <div class="form-group">
+          <label>帳戶名稱</label>
+          <input type="text" id="account-name" placeholder="例如：第一銀行、我的錢包、台積電證券" required>
+        </div>
+
+        <div class="form-row">
+          <div style="display: flex; gap: 1rem; width: 100%;">
+            <div class="form-group" id="account-initial-balance-group" style="flex: 1;">
+              <label>初始餘額 (NT$)</label>
+              <input type="number" step="1" min="0" id="account-initial-balance" placeholder="0" value="0">
+            </div>
+            <!-- Securities specific info -->
+            <div class="form-group" id="securities-settings-row" style="display: none; flex: 1;">
+              <label>初始已投入股票資金 (NT$)</label>
+              <input type="number" step="1" min="0" id="account-securities-invested" placeholder="0" value="0">
+            </div>
+          </div>
+          <!-- Cash Account: Budget settings -->
+          <div class="form-group" id="budget-settings-row" style="width: 100%;">
+            <div style="display: flex; gap: 0.5rem;">
+              <div style="flex: 1;">
+                <label>每月支出預算 (需大於0)</label>
+                <input type="number" step="1" min="1" id="account-budget" placeholder="未設置">
+              </div>
+              <div style="width: 100px;">
+                <label>每月結算日</label>
+                <select id="account-budget-reset-day" class="day-selector-1-31"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Credit Card settings -->
+        <div class="form-row" id="cc-settings-row" style="display: none; grid-template-columns: 1fr 1fr; row-gap: 1rem;">
+          <div class="form-group">
+            <label>每月信用卡額度 (NT$)</label>
+            <input type="number" step="1" min="1" id="account-credit-limit" placeholder="例如：100000">
+          </div>
+          <div class="form-group">
+            <label>額度警示門檻金額 (NT$)</label>
+            <input type="number" step="1" min="0" id="account-warning-threshold" placeholder="例如：5000" value="5000">
+          </div>
+          <div class="form-group">
+            <label>每月結帳日</label>
+            <select id="account-billing-day" class="day-selector-1-31"></select>
+          </div>
+          <div class="form-group">
+            <label>每月繳費截止日</label>
+            <select id="account-due-day" class="day-selector-1-31"></select>
+          </div>
+        </div>
+
+        <!-- Securities specific info -->
+        <div class="form-group" id="securities-settings-row" style="display: none;">
+          <label>初始已投入股票資金 (NT$)</label>
+          <input type="number" step="1" min="0" id="account-securities-invested" placeholder="0" value="0">
+        </div>
+
+        <button type="submit" class="btn-submit">建立帳戶</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2B. Edit Account Modal -->
+  <div class="modal-overlay" id="modal-account-edit">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">編輯帳戶</h2>
+        <button class="btn-close" onclick="closeModal('modal-account-edit')">×</button>
+      </div>
+      <form id="form-account-edit" onsubmit="handleAccountEditSubmit(event)">
+        <input type="hidden" id="account-edit-id">
+        <input type="hidden" id="account-edit-type">
+        
+        <div class="form-group">
+          <label>帳戶名稱</label>
+          <input type="text" id="account-edit-name" required>
+        </div>
+
+        <!-- Cash Account: Budget settings -->
+        <div class="form-row" id="budget-edit-settings-row" style="display: none;">
+          <div class="form-group">
+            <label>每月支出預算 (需大於0)</label>
+            <input type="number" step="1" min="1" id="account-edit-budget" placeholder="未設置">
+          </div>
+          <div class="form-group">
+            <label>每月結算日 (天，1-31)</label>
+            <input type="number" min="1" max="31" id="account-edit-budget-reset-day">
+          </div>
+        </div>
+
+        <!-- Credit Card settings -->
+        <div class="form-row" id="cc-edit-settings-row" style="display: none; grid-template-columns: 1fr 1fr; row-gap: 1rem;">
+          <div class="form-group">
+            <label>每月信用卡額度 (NT$)</label>
+            <input type="number" step="1" min="1" id="account-edit-credit-limit">
+          </div>
+          <div class="form-group">
+            <label>額度警示門檻金額 (NT$)</label>
+            <input type="number" step="1" min="0" id="account-edit-warning-threshold">
+          </div>
+          <div class="form-group">
+            <label>每月結帳日</label>
+            <select id="account-edit-billing-day" class="day-selector-1-31"></select>
+          </div>
+          <div class="form-group">
+            <label>每月繳費截止日</label>
+            <select id="account-edit-due-day" class="day-selector-1-31"></select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">儲存修改</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Add Recurring Modal -->
+  <div class="modal-overlay" id="modal-recurring">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">新增訂閱或固定收支</h2>
+        <button class="btn-close" onclick="closeModal('modal-recurring')">×</button>
+      </div>
+      <form id="form-recurring" onsubmit="handleRecurringSubmit(event)">
+        <div class="form-group">
+          <label>固定名稱</label>
+          <input type="text" id="recur-name" placeholder="例如：每月房租、發薪水、定額投資" required>
+        </div>
+        
+        <div class="form-group">
+          <label>專屬圖標 (可選)</label>
+          <div class="button-selector" id="recur-icon-selector" style="display: flex; gap: 0.25rem; flex-wrap: wrap; margin-bottom: 0.25rem;">
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('🎬')">🎬 Netflix/影音</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('🎵')">🎵 Spotify/音樂</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('▶️')">▶️ YouTube</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('🏋️')">🏋️ 健身房</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('☁️')">☁️ 雲端空間</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('📱')">📱 電信費</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('💡')">💡 水電瓦斯</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('🏠')">🏠 房租</button>
+            <button type="button" class="btn-select-option" onclick="selectRecurIcon('🎮')">🎮 遊戲</button>
+            <button type="button" class="btn-select-option active" onclick="selectRecurIcon('🟣')" id="btn-recur-icon-default">🟣 預設紫點</button>
+          </div>
+          <input type="hidden" id="recur-icon" value="🟣">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>類型</label>
+            <select id="recur-type" onchange="toggleRecurTypeFields()" required>
+              <option value="expense">支出</option>
+              <option value="income">收入</option>
+              <option value="transfer">轉帳</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>金額 (NT$)</label>
+            <input type="number" step="1" min="1" id="recur-amount" placeholder="請輸入金額" required>
+          </div>
+        </div>
+
+        <!-- Interactive Fast Button Selectors (按鈕式選擇) -->
+        <div class="form-group" id="recur-source-group">
+          <label id="recur-source-label">扣款/轉出帳戶</label>
+          <div class="button-selector" id="recur-source-buttons">
+            <!-- Rendered accounts as buttons -->
+          </div>
+          <input type="hidden" id="recur-source-account">
+        </div>
+
+        <div class="form-group" id="recur-dest-group" style="display: none;">
+          <label>收款/轉入帳戶</label>
+          <div class="button-selector" id="recur-dest-buttons">
+            <!-- Rendered accounts as buttons -->
+          </div>
+          <input type="hidden" id="recur-dest-account">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>執行週期</label>
+            <select id="recur-frequency" onchange="handleRecurFrequencyChange()">
+              <option value="yearly">每年一次</option>
+              <option value="monthly">每月一次</option>
+              <option value="weekly">每週一次</option>
+              <option value="daily">每天一次</option>
+            </select>
+          </div>
+          <div class="form-group" id="recur-day-anchor-group">
+            <label>扣款日 (幾號)</label>
+            <input type="number" min="1" max="31" id="recur-day-anchor" value="1" required>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">建立固定規則</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Setup Carrier Barcode Modal -->
+  <div class="modal-overlay" id="modal-carrier-setup">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">設定載具條碼</h2>
+        <button class="btn-close" onclick="closeModal('modal-carrier-setup')">×</button>
+      </div>
+      <form id="form-carrier-setup" onsubmit="handleCarrierSetupSubmit(event)">
+        <div class="form-group">
+          <label>載具條碼 (需以斜線 / 開頭，共 8 碼)</label>
+          <input type="text" id="carrier-barcode-input" placeholder="例如：/AB12345" required pattern="^/[A-Z0-9.+-]{7}$" title="必須是斜線開頭的 8 碼條碼">
+        </div>
+        <div class="form-group">
+          <label>載具驗證碼 (密碼，本機加密儲存)</label>
+          <input type="password" id="carrier-pin-input" placeholder="財政部載具密碼">
+        </div>
+        <button type="submit" class="btn-submit">確認儲存</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Add Split Plan Modal -->
+  <div class="modal-overlay" id="modal-split-plan">
+    <div class="modal-content" style="max-width: 450px;">
+      <div class="modal-header">
+        <h2 class="modal-title">新建分帳計畫</h2>
+        <button class="btn-close" onclick="closeModal('modal-split-plan')">×</button>
+      </div>
+      <form id="form-split-plan" onsubmit="handleSplitPlanSubmit(event)">
+        <div class="form-group">
+          <label>分帳計畫名稱</label>
+          <input type="text" id="split-plan-name" placeholder="例如：宜蘭兩天一夜旅行、合租公寓水電" required>
+        </div>
+        
+        <div class="form-group">
+          <label>參與成員管理</label>
+          <div id="split-members-builder" style="display: flex; flex-direction: column; gap: 0.75rem; background: var(--bg-input); padding: 1rem; border-radius: 12px; border: 1px solid var(--border-color);">
+            <div id="split-members-list" style="display: flex; flex-direction: column; gap: 0.5rem; max-height: 140px; overflow-y: auto;">
+              <!-- Dynamically populated members list -->
+            </div>
+            
+            <!-- Button to open inputs -->
+            <div id="split-member-btn-row" style="display: flex; justify-content: center; border-top: 1px solid var(--border-color); padding-top: 0.75rem;">
+              <button type="button" class="btn-primary" onclick="toggleMemberInputs(true)" style="padding: 0.45rem 1.25rem; font-size: 0.8125rem; box-shadow: none; border-radius: 8px;">＋ 新增成員</button>
+            </div>
+            
+            <!-- Decoupled member info inputs (initially hidden) -->
+            <div id="split-member-inputs-container" style="display: none; border-top: 1px solid var(--border-color); padding-top: 0.75rem; flex-direction: column; gap: 0.5rem;">
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <input type="text" id="split-member-input-name" placeholder="新增成員名字" style="flex: 1; padding: 0.45rem 0.6rem; font-size: 0.8125rem;">
+                <select id="split-member-input-avatar" style="width: auto; padding: 0.45rem 0.25rem; font-size: 0.8125rem; background: var(--bg-input);">
+                  <option value="🦊">🦊 狐狸</option>
+                  <option value="🐱">🐱 貓咪</option>
+                  <option value="🐼">🐼 熊貓</option>
+                  <option value="🦁">🦁 獅子</option>
+                  <option value="🐷">🐷 小豬</option>
+                  <option value="🐨">🐨 樹熊</option>
+                  <option value="🐵">🐵 猴子</option>
+                  <option value="🐮">🐮 小牛</option>
+                </select>
+              </div>
+              <div style="display: flex; gap: 0.5rem; align-items: center;">
+                <select id="split-member-input-user-link" style="flex: 1; padding: 0.45rem; font-size: 0.8125rem; background: var(--bg-input);">
+                  <option value="">(不連結系統使用者)</option>
+                </select>
+                <div style="display: flex; gap: 0.35rem;">
+                  <button type="button" class="btn-primary" onclick="addMemberToBuilder()" style="padding: 0.45rem 1rem; font-size: 0.8125rem; box-shadow: none;">完成</button>
+                  <button type="button" class="btn-select-option" onclick="toggleMemberInputs(false)" style="padding: 0.45rem 1rem; font-size: 0.8125rem; margin: 0;">取消</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <input type="hidden" id="split-plan-members-data" value="[]">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>開始日期</label>
+            <input type="date" id="split-plan-start" required>
+          </div>
+          <div class="form-group">
+            <label>結束日期</label>
+            <input type="date" id="split-plan-end" required>
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">建立計畫</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Dream List -->
+  <div class="modal-overlay" id="modal-dream">
+    <div class="modal-content" style="max-width: 400px;">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-dream-title">新增夢想</h2>
+        <button class="btn-close" onclick="closeModal('modal-dream')">×</button>
+      </div>
+      <form id="form-dream" onsubmit="handleDreamSubmit(event)">
+        <input type="hidden" id="dream-edit-id">
+        <div class="form-group">
+          <label>夢想圖標</label>
+          <input type="text" id="dream-icon" required placeholder="例如：🚗、🏠、💻">
+        </div>
+        <div class="form-group">
+          <label>夢想名稱</label>
+          <input type="text" id="dream-name" required placeholder="例如：買新車、出國旅遊">
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>目標金額</label>
+            <input type="number" id="dream-target" required min="1" step="1">
+          </div>
+          <div class="form-group">
+            <label>目前已存</label>
+            <input type="number" id="dream-current" required min="0" step="1" value="0">
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">儲存夢想</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: Update Dream Progress -->
+  <div class="modal-overlay" id="modal-dream-progress">
+    <div class="modal-content" style="max-width: 320px;">
+      <div class="modal-header">
+        <h2 class="modal-title">存入夢想基金</h2>
+        <button class="btn-close" onclick="closeModal('modal-dream-progress')">×</button>
+      </div>
+      <form id="form-dream-progress" onsubmit="handleDreamProgressSubmit(event)">
+        <input type="hidden" id="dream-progress-id">
+        <div class="form-group">
+          <label>本次存入金額</label>
+          <input type="number" id="dream-progress-amount" required min="1" step="1" placeholder="例如：1000">
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">確認存入</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 6. Add Split Transaction Modal -->
+  <div class="modal-overlay" id="modal-split-trans">
+    <div class="modal-content" style="max-width: 520px; overflow: visible;">
+      <div class="modal-header">
+        <h2 class="modal-title">新增分帳款項</h2>
+        <button class="btn-close" onclick="closeModal('modal-split-trans')">×</button>
+      </div>
+      <form id="form-split-trans" onsubmit="handleSplitTransSubmit(event)">
+        <input type="hidden" id="split-trans-plan-id">
+        
+        <div class="form-group">
+          <label>消費款項名稱</label>
+          <input type="text" id="split-trans-name" placeholder="例如：民宿住宿費、租車" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label>金額 (NT$)</label>
+            <input type="number" step="1" min="1" id="split-trans-amount" placeholder="0" required oninput="calculateRealtimeSplitPreview()">
+          </div>
+          <div class="form-group">
+            <label>付款墊付人</label>
+            <select id="split-trans-payer" required onchange="calculateRealtimeSplitPreview()">
+              <!-- Dynamic members options -->
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>款項日期</label>
+          <input type="date" id="split-trans-date" required>
+        </div>
+
+        <!-- Split members choices -->
+        <div class="form-group">
+          <label>分攤成員 (預設均分)</label>
+          <div style="max-height: 150px; overflow-y: auto; background: var(--bg-input); padding: 1rem; border-radius: 10px; border: 1px solid var(--border-color);" id="split-members-list-checkboxes" oninput="calculateRealtimeSplitPreview()">
+            <!-- Dynamic members list with checkbox & weight/amount input -->
+          </div>
+        </div>
+
+        <!-- Real-time Split Preview -->
+        <div class="form-group" id="split-preview-group" style="display: none; background: rgba(139, 92, 246, 0.05); padding: 0.75rem 1rem; border-radius: 10px; border: 1px solid rgba(139, 92, 246, 0.15); font-size: 0.8125rem;">
+          <div style="font-weight: bold; margin-bottom: 0.25rem; color: var(--color-purple); display: flex; align-items: center; gap: 0.25rem;">
+            <span>💰 即時分攤試算 (試算結果)：</span>
+          </div>
+          <div id="split-preview-list" style="display: flex; flex-direction: column; gap: 0.25rem;"></div>
+        </div>
+
+        <button type="submit" class="btn-submit">加入分帳</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 7. Securities Transfer Modal (Inter-account Stock Balance / Cash) -->
+  <div class="modal-overlay" id="modal-securities-transfer">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">證券帳戶資金互轉</h2>
+        <button class="btn-close" onclick="closeModal('modal-securities-transfer')">×</button>
+      </div>
+      <form id="form-securities-transfer" onsubmit="handleSecuritiesTransferSubmit(event)">
+        <input type="hidden" id="sec-trans-account-id">
+        <div class="form-group">
+          <label>證券帳戶</label>
+          <div style="font-family: var(--font-title); font-size: 1.15rem; font-weight: bold; margin-bottom: 0.5rem;" id="sec-trans-account-name">台積電證券戶</div>
+        </div>
+
+        <div class="form-group">
+          <label>互轉方向</label>
+          <div class="button-selector" id="sec-direction-selector">
+            <button type="button" class="btn-select-option active" onclick="setSecDirection('buy')" id="btn-sec-buy">帳戶餘額 ➔ 已投入股票資金 (買股)</button>
+            <button type="button" class="btn-select-option" onclick="setSecDirection('sell')" id="btn-sec-sell">已投入股票資金 ➔ 帳戶餘額 (賣股)</button>
+          </div>
+          <input type="hidden" id="sec-direction" value="buy">
+        </div>
+
+        <div class="form-group">
+          <label>轉移金額 (NT$)</label>
+          <input type="number" step="1" min="1" id="sec-trans-amount" placeholder="請輸入金額" required>
+        </div>
+
+        <div class="form-group">
+          <label>備註說明</label>
+          <input type="text" id="sec-trans-notes" placeholder="例如：買入台積電、賣出0050">
+        </div>
+
+        <button type="submit" class="btn-submit">確認轉移</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 8. Real QR Scanner Modal -->
+  <div class="modal-overlay" id="modal-qr-simulation">
+    <div class="modal-content" style="max-width: 480px;">
+      <div class="modal-header">
+        <h2 class="modal-title">實體發票 QR 掃描記帳</h2>
+        <button class="btn-close" onclick="closeRealQrScanner(); closeModal('modal-qr-simulation')">×</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div id="qr-reader" style="width: 100%;"></div>
+        
+        <div style="background: rgba(0, 242, 254, 0.05); padding: 0.75rem 1rem; border-radius: 10px; border: 1px solid rgba(0, 242, 254, 0.2); font-size: 0.8125rem;">
+          💡 <strong>使用說明</strong>：請將發票左側或右側的 QR Code 放入相機框中。程式將會自動讀取並解析發票金額、號碼與消費明細。
+        </div>
+
+        <div id="qr-mock-buttons-section" style="display: none;">
+          <p style="font-size: 0.8125rem; color: var(--text-secondary); text-align: center;">或快速選擇模擬發票進行測試：</p>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;">
+            <button class="btn-select-option" style="font-size: 0.75rem; padding: 0.5rem 0.25rem;" onclick="simulateQrScanSuccess('starbucks')">星巴克 $245</button>
+            <button class="btn-select-option" style="font-size: 0.75rem; padding: 0.5rem 0.25rem;" onclick="simulateQrScanSuccess('carrefour')">家樂福 $1280</button>
+            <button class="btn-select-option" style="font-size: 0.75rem; padding: 0.5rem 0.25rem;" onclick="simulateQrScanSuccess('uniqlo')">UNIQLO $990</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load JS Modules -->
+  <script src="./html5-qrcode.min.js"></script>
+  <script src="./forge.min.js"></script>
+  <script src="./security.js"></script>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+  <script>
+    // ==========================================
+    // 🚀 請在這裡貼上您的 firebaseConfig 🚀
+    // ==========================================
+    window.firebaseConfig = {
+      apiKey: "AIzaSyDXf58QTRFw7FmvSXz6aPTAVWXuC9xBAyc",
+      authDomain: "shuang-tz-ji.firebaseapp.com",
+      projectId: "shuang-tz-ji",
+      storageBucket: "shuang-tz-ji.firebasestorage.app",
+      messagingSenderId: "944882535991",
+      appId: "1:944882535991:web:abcf6605fb596c9de679b2",
+      measurementId: "G-1KCXMXH1W3"
+    };
+
+    if (window.firebaseConfig && window.firebaseConfig.projectId) {
+      firebase.initializeApp(window.firebaseConfig);
+      window.db = firebase.firestore();
+      console.log("✅ Firebase 初始化完成");
+    } else {
+      console.warn("⚠️ Firebase 未設定，將退回使用 LocalStorage 模式");
+    }
+  </script>
+
+  <script src="./app.js"></script>
+  
+  <script>
+    // Register PWA Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          console.log('PWA Service Worker registered successfully:', reg.scope);
+        }).catch((err) => {
+          console.warn('PWA Service Worker registration failed:', err);
+        });
+      });
+    }
+
+    // Scanner animation CSS keyframe injected
+    const scannerKeyframeStyle = document.createElement('style');
+    scannerKeyframeStyle.innerHTML = `
+      @keyframes scannerLine {
+        0%, 100% { top: 10%; opacity: 0.3; }
+        50% { top: 90%; opacity: 1; }
+      }
+    `;
+    document.head.appendChild(scannerKeyframeStyle);
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "short_name": "雙子記",
+  "name": "雙子記 - 記帳與分帳",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#121824",
+  "theme_color": "#1A2232",
+  "display": "standalone",
+  "orientation": "portrait"
+}
