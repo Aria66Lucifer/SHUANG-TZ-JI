@@ -1721,7 +1721,6 @@ function renderDailyLedger() {
   netLabel.innerHTML = '';
 
   const headerMascot = document.getElementById('ledger-header-mascot');
-  const petTheme = AppState.petTheme || 'none';
   
   if (headerMascot) {
     if ((dayTx.length > 0 || upcomingTx.length > 0) && petTheme !== 'none') {
