@@ -188,53 +188,78 @@
           </div>
         </div>
 
-        <div class="form-row">
+        <!-- Row: 當前數量+單位 | 最低警戒數量 | 入倉位置 (#5) -->
+        <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr;">
           <div class="form-group" style="flex: 1;">
-            <label>入倉日期</label>
-            <input type="date" id="inventory-in-date" required>
-          </div>
-          <div class="form-group" style="flex: 1;">
-            <label>入倉位置</label>
-            <input type="text" id="inventory-location" required placeholder="例如：客廳櫃子、床底">
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group" style="flex: 1;">
-            <label>當前數量</label>
+            <label>當前數量及單位</label>
             <div style="display: flex; gap: 0.5rem;">
               <input type="number" id="inventory-quantity" required min="0" step="1" value="1" style="flex: 2;">
-              <input type="text" id="inventory-unit" required placeholder="單位(包/瓶)" style="flex: 1;">
+              <select id="inventory-unit" required style="flex: 1;">
+                <option value="">選擇</option>
+                <option value="個">個</option>
+                <option value="條">條</option>
+                <option value="包">包</option>
+                <option value="盒">盒</option>
+                <option value="罐">罐</option>
+                <option value="瓶">瓶</option>
+                <option value="袋">袋</option>
+                <option value="箱">箱</option>
+              </select>
             </div>
           </div>
           <div class="form-group" style="flex: 1;">
             <label>最低警戒數量</label>
             <input type="number" id="inventory-threshold" min="0" step="1" value="1" placeholder="低於此數量加入待買">
           </div>
-        </div>
-
-        <div class="form-group">
-          <label>本批物資到期日 (可選)</label>
-          <input type="date" id="inventory-expiry-date">
-        </div>
-
-        <div class="form-row" style="align-items: flex-end;">
-          <div class="form-group" style="flex: 2;">
-            <label>到期日前通知設定 (可選)</label>
-            <select id="inventory-notify-type" onchange="handleNotifyTypeChange()">
-              <option value="">不通知</option>
-              <option value="days">幾天前 (1-6天)</option>
-              <option value="weeks">幾週前 (1-4週)</option>
-              <option value="months">幾個月前 (1-12個月)</option>
-              <option value="years">幾年前 (自行輸入)</option>
+          <div class="form-group" style="flex: 1;">
+            <label>入倉位置</label>
+            <select id="inventory-location" required>
+              <option value="">請選擇</option>
+              <option value="和室">和室</option>
+              <option value="浴室前小桌">浴室前小桌</option>
             </select>
           </div>
-          <div class="form-group" style="flex: 1; display: none;" id="notify-value-group">
-            <input type="number" id="inventory-notify-value" min="1" step="1" placeholder="數值">
+        </div>
+
+        <!-- Row: 入倉日期 | 本批物資到期日 | 到期日前通知設定 (#3) -->
+        <div class="form-row" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="form-group" style="flex: 1;">
+            <label>入倉日期</label>
+            <input type="text" id="inventory-in-date" class="wheel-date-trigger" readonly onclick="openWheelPicker(this.value, val => { this.value = val; })" required>
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>本批物資到期日</label>
+            <div style="display: flex; gap: 0.25rem;">
+              <select id="inventory-expiry-year" style="flex: 1.2;" onchange="syncExpiryDate()">
+                <option value="">年</option>
+              </select>
+              <select id="inventory-expiry-month" style="flex: 1;" onchange="syncExpiryDate()">
+                <option value="">月</option>
+              </select>
+              <select id="inventory-expiry-day" style="flex: 1;" onchange="syncExpiryDate()">
+                <option value="">日</option>
+              </select>
+            </div>
+            <input type="hidden" id="inventory-expiry-date">
+          </div>
+          <div class="form-group" style="flex: 1;">
+            <label>到期通知</label>
+            <select id="inventory-notify-type" onchange="handleNotifyTypeChange()">
+              <option value="">不通知</option>
+              <option value="days">天</option>
+              <option value="weeks">週</option>
+              <option value="months">月</option>
+              <option value="years">年</option>
+            </select>
+            <div id="notify-value-group" style="display: none; margin-top: 0.35rem;">
+              <select id="inventory-notify-value">
+                <!-- Dynamically populated based on type -->
+              </select>
+            </div>
           </div>
         </div>
 
-        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">儲存存貨</button>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 0.5rem;">儲存物資</button>
       </form>
     </div>
   </div>
@@ -344,7 +369,7 @@
           <li class="nav-item" data-tab="tab-dream">
             <a href="javascript:void(0)">
               <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              <span>夢想清單</span>
+              <span>願望清單</span>
             </a>
           </li>
           <li class="nav-item" data-tab="tab-carrier">
@@ -451,33 +476,7 @@
           <!-- Dynamically Rendered Budget Tracker -->
         </div>
 
-        <!-- Monthly Budget & Spending Statistics Charts -->
-        <div class="glass-card" style="margin-top: 1.5rem; display: grid; grid-template-columns: 1fr 1.2fr; gap: 2rem;" id="accounts-charts-section">
-          <!-- Left: Cashflow summary chart -->
-          <div style="display: flex; flex-direction: column; gap: 1rem;">
-            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
-              本月收支概況
-            </h3>
-            <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 1.5rem;" id="cashflow-bars-container">
-              <!-- Rendered Income/Expense Comparison Bars -->
-            </div>
-          </div>
-          <!-- Right: Expense breakdown by categories -->
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
-              <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; color: var(--text-secondary); margin: 0;">
-                本月支出排行
-              </h3>
-              <div class="button-selector" style="margin: 0; display: flex; gap: 0.25rem;">
-                <button type="button" class="btn-select-option active" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 6px; margin: 0;" id="chart-type-pie" onclick="toggleChartType('pie')">圓餅圖</button>
-                <button type="button" class="btn-select-option" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 6px; margin: 0;" id="chart-type-bar" onclick="toggleChartType('bar')">長條圖</button>
-              </div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;" id="category-breakdown-container">
-              <!-- Rendered Category Ranking Progress Bars or Pie/Bar SVG -->
-            </div>
-          </div>
-        </div>
+        <!-- Monthly Budget & Spending Statistics Charts moved to right panel -->
       </section>
 
       <!-- --- Tab 3: Recurring Transactions --- -->
@@ -522,11 +521,11 @@
             <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
-            <h1 class="section-title">夢想清單</h1>
+            <h1 class="section-title">願望清單</h1>
           </div>
           <button class="btn-primary" onclick="openAddDreamModal()">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-            新增夢想
+            新增願望
           </button>
         </div>
 
@@ -610,7 +609,7 @@
             <button class="btn-icon-toggle" onclick="toggleSidebar()" aria-label="Toggle Sidebar">
               <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
             </button>
-            <h1 class="section-title">物資與存貨管理</h1>
+            <h1 class="section-title">物資管理</h1>
           </div>
           <button class="btn-primary" onclick="openAddInventoryModal()">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
@@ -618,12 +617,14 @@
           </button>
         </div>
         
-        <div class="glass-card" style="margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid var(--color-indigo);">
-          <div>
+        <div class="glass-card" style="margin-bottom: 1.5rem; display: flex; flex-direction: column; justify-content: space-between; align-items: center; border-left: 4px solid var(--color-indigo);">
+          <div style="width: 100%;">
             <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.25rem;">共用採買清單</h3>
             <p style="font-size: 0.8125rem; color: var(--text-secondary); margin: 0;">自動列出低於警戒線的物品，採買後可一鍵轉入分帳</p>
           </div>
-          <button class="btn-outline" onclick="generateShoppingList()">檢視待買清單</button>
+          <div style="display: flex; gap: 0.5rem; width: 100%; margin-top: 1rem;">
+            <button class="btn-primary" onclick="generateShoppingList()" style="flex: 1;">📝 檢視採買清單</button>
+          </div>
         </div>
 
         <div class="accounts-grid" id="inventory-grid-container">
@@ -688,6 +689,43 @@
               <!-- Rendered chips -->
             </div>
           </div>
+
+          <!-- Inventory Locations -->
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--theme-color);">入倉位置管理</h2>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-location-input" placeholder="新增入倉位置 (例: 客廳)">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addInventoryLocation()">新增</button>
+            </div>
+            <div class="category-tags-flex" id="location-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+
+          <!-- Inventory Units -->
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--theme-color);">物資單位管理</h2>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-unit-input" placeholder="新增單位 (例: 包)">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addInventoryUnit()">新增</button>
+            </div>
+            <div class="category-tags-flex" id="unit-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+
+          <!-- Wishlist Icons -->
+          <div class="glass-card category-list-box">
+            <h2 class="panel-title" style="color: var(--color-purple);">願望圖標管理</h2>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+              <input type="text" id="new-wishlist-icon-input" placeholder="貼上 emoji (如: 🎁)">
+              <button class="btn-primary" style="padding: 0.5rem 1rem;" onclick="addIcon('wishlist')">新增</button>
+            </div>
+            <div class="category-tags-flex" id="wishlist-icons-chips">
+              <!-- Rendered chips -->
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -703,6 +741,20 @@
         </div>
 
         <div class="glass-card" style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+          <div>
+            <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">本月收支概況結算日</h3>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.5rem;">設定「本月」的起始日期，作為首頁與右側面板的收支計算範圍。若該月沒有設定的日期，將自動取該月最後一天。</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <span style="font-size: 0.875rem;">每月</span>
+              <select id="setting-settlement-day" class="day-selector-1-31" style="padding: 0.5rem; border-radius: 8px; background: var(--bg-input); border: 1px solid var(--border-color); color: var(--text-primary);" onchange="saveSettlementDay()">
+                <!-- Options 1 to 31 will be injected via JS -->
+              </select>
+              <span style="font-size: 0.875rem;">日結算</span>
+            </div>
+          </div>
+
+          <hr style="border: none; border-top: 1px solid var(--border-color);">
+
           <div>
             <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin-bottom: 0.5rem;">安全保護設定</h3>
             <div style="display: flex; gap: 1rem;">
@@ -863,39 +915,87 @@
     <!-- Right Sidebar Info Panel (Estimated Remaining balances & Credit card bills) -->
     <aside id="right-panel">
       
-      <!-- Day Ledger Financial totals -->
-      <div class="panel-section">
-        <div class="panel-title" id="right-panel-title">今日收支總計</div>
-        <div class="day-summary-grid">
-          <div class="summary-card">
-            <div class="summary-label">收入</div>
-            <div class="summary-val income" id="right-day-income">NT$ 0</div>
+      <div id="right-panel-calendar" class="right-panel-content active" style="display: flex; flex-direction: column; gap: 2rem;">
+        <!-- Day Ledger Financial totals -->
+        <div class="panel-section">
+          <div class="panel-title" id="right-panel-title">今日收支總計</div>
+          <div class="day-summary-grid">
+            <div class="summary-card">
+              <div class="summary-label">收入</div>
+              <div class="summary-val income" id="right-day-income">NT$ 0</div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-label">支出</div>
+              <div class="summary-val expense" id="right-day-expense">(NT$ 0)</div>
+            </div>
+            <div class="summary-card">
+              <div class="summary-label">合計</div>
+              <div class="summary-val total" id="right-day-net">NT$ 0</div>
+            </div>
           </div>
-          <div class="summary-card">
-            <div class="summary-label">支出</div>
-            <div class="summary-val expense" id="right-day-expense">(NT$ 0)</div>
+        </div>
+
+        <!-- Live Account Balances & Estimates -->
+        <div class="panel-section">
+          <div class="panel-title">帳戶餘額預估</div>
+          <div class="estimates-list" id="right-accounts-estimates">
+            <!-- Dynamically Rendered -->
           </div>
-          <div class="summary-card">
-            <div class="summary-label">合計</div>
-            <div class="summary-val total" id="right-day-net">NT$ 0</div>
+        </div>
+
+        <!-- Credit Cards Spent & Alerts -->
+        <div class="panel-section">
+          <div class="panel-title">信用卡帳單與通知</div>
+          <div class="cc-alerts-list" id="right-cc-alerts">
+            <!-- Dynamically Rendered Credit Card Alerts -->
           </div>
         </div>
       </div>
 
-      <!-- Live Account Balances & Estimates -->
-      <div class="panel-section">
-        <div class="panel-title">帳戶餘額預估</div>
-        <div class="estimates-list" id="right-accounts-estimates">
-          <!-- Dynamically Rendered -->
+      <!-- ACCOUNTS SECTION -->
+      <div id="right-panel-accounts" class="right-panel-content" style="display: none; flex-direction: column; gap: 2rem;">
+        <div class="panel-section">
+          <h3 class="panel-title">本月收支概況</h3>
+          <div style="display: flex; flex-direction: column; justify-content: center; height: 100%; gap: 1.5rem;" id="cashflow-bars-container">
+            <!-- Rendered Income/Expense Comparison Bars -->
+          </div>
+        </div>
+        <div class="panel-section">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">
+            <h3 class="panel-title" style="border: none; padding: 0;">本月支出排行</h3>
+            <div class="button-selector" style="margin: 0; display: flex; gap: 0.25rem;">
+              <button type="button" class="btn-select-option active" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 6px; margin: 0;" id="chart-type-pie" onclick="toggleChartType('pie')">圓餅圖</button>
+              <button type="button" class="btn-select-option" style="padding: 0.25rem 0.5rem; font-size: 0.75rem; border-radius: 6px; margin: 0;" id="chart-type-bar" onclick="toggleChartType('bar')">長條圖</button>
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem;" id="category-breakdown-container">
+            <!-- Rendered Category Ranking Progress Bars or Pie/Bar SVG -->
+          </div>
         </div>
       </div>
 
-      <!-- Credit Cards Spent & Alerts -->
-      <div class="panel-section">
-        <div class="panel-title">信用卡帳單與通知</div>
-        <div class="cc-alerts-list" id="right-cc-alerts">
-          <!-- Dynamically Rendered Credit Card Alerts -->
-        </div>
+      <!-- INVENTORY SECTION -->
+      <div id="right-panel-inventory" class="right-panel-content" style="display: none; flex-direction: column; gap: 2rem;">
+         <div class="panel-section">
+           <div class="panel-title">物資管理總覽</div>
+           <div id="right-inventory-summary"></div>
+         </div>
+      </div>
+      
+      <!-- RECURRING SECTION -->
+      <div id="right-panel-recurring" class="right-panel-content" style="display: none; flex-direction: column; gap: 2rem;">
+         <div class="panel-section">
+           <div class="panel-title">訂閱與固定收支總覽</div>
+           <div id="right-recurring-summary"></div>
+         </div>
+      </div>
+      
+      <!-- SPLIT PLAN SECTION -->
+      <div id="right-panel-split" class="right-panel-content" style="display: none; flex-direction: column; gap: 2rem;">
+         <div class="panel-section">
+           <div class="panel-title">款項紀錄總覽</div>
+           <div id="right-split-summary"></div>
+         </div>
       </div>
     </aside>
 
@@ -975,7 +1075,7 @@
         
         <div class="form-group">
           <label>交易日期</label>
-          <input type="date" id="trans-date" required>
+          <input type="text" id="trans-date" class="wheel-date-trigger" readonly onclick="openWheelPicker(this.value, val => { this.value = val; })" required>
         </div>
 
         <!-- Credit Card Installment options -->
@@ -1282,7 +1382,6 @@
             <!-- Decoupled member info inputs (initially hidden) -->
             <div id="split-member-inputs-container" style="display: none; border-top: 1px solid var(--border-color); padding-top: 0.75rem; flex-direction: column; gap: 0.5rem;">
               <div style="display: flex; gap: 0.5rem; align-items: center;">
-                <input type="text" id="split-member-input-name" placeholder="新增成員名字" style="flex: 1; padding: 0.45rem 0.6rem; font-size: 0.8125rem;">
                 <select id="split-member-input-avatar" style="width: auto; padding: 0.45rem 0.25rem; font-size: 0.8125rem; background: var(--bg-input);">
                   <option value="🦊">🦊 狐狸</option>
                   <option value="🐱">🐱 貓咪</option>
@@ -1293,6 +1392,7 @@
                   <option value="🐵">🐵 猴子</option>
                   <option value="🐮">🐮 小牛</option>
                 </select>
+                <input type="text" id="split-member-input-name" placeholder="新增成員名字" style="flex: 1; padding: 0.45rem 0.6rem; font-size: 0.8125rem;">
               </div>
               <div style="display: flex; gap: 0.5rem; align-items: center;">
                 <select id="split-member-input-user-link" style="flex: 1; padding: 0.45rem; font-size: 0.8125rem; background: var(--bg-input);">
@@ -1311,11 +1411,11 @@
         <div class="form-row">
           <div class="form-group">
             <label>開始日期</label>
-            <input type="date" id="split-plan-start" required>
+            <input type="text" id="split-plan-start" class="wheel-date-trigger" readonly onclick="openWheelPicker(this.value, val => { this.value = val; })" required>
           </div>
           <div class="form-group">
             <label>結束日期</label>
-            <input type="date" id="split-plan-end" required>
+            <input type="text" id="split-plan-end" class="wheel-date-trigger" readonly onclick="openWheelPicker(this.value, val => { this.value = val; })" required>
           </div>
         </div>
         <button type="submit" class="btn-submit">建立計畫</button>
@@ -1327,17 +1427,17 @@
   <div class="modal-overlay" id="modal-dream">
     <div class="modal-content" style="max-width: 400px;">
       <div class="modal-header">
-        <h2 class="modal-title" id="modal-dream-title">新增夢想</h2>
+        <h2 class="modal-title" id="modal-dream-title">新增願望</h2>
         <button class="btn-close" onclick="closeModal('modal-dream')">×</button>
       </div>
       <form id="form-dream" onsubmit="handleDreamSubmit(event)">
         <input type="hidden" id="dream-edit-id">
         <div class="form-group">
-          <label>夢想圖標</label>
+          <label>願望圖標</label>
           <input type="text" id="dream-icon" required placeholder="例如：🚗、🏠、💻">
         </div>
         <div class="form-group">
-          <label>夢想名稱</label>
+          <label>願望名稱</label>
           <input type="text" id="dream-name" required placeholder="例如：買新車、出國旅遊">
         </div>
         <div class="form-row">
@@ -1350,7 +1450,7 @@
             <input type="number" id="dream-current" required min="0" step="1" value="0">
           </div>
         </div>
-        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">儲存夢想</button>
+        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 1rem;">儲存願望</button>
       </form>
     </div>
   </div>
@@ -1359,7 +1459,7 @@
   <div class="modal-overlay" id="modal-dream-progress">
     <div class="modal-content" style="max-width: 320px;">
       <div class="modal-header">
-        <h2 class="modal-title">存入夢想基金</h2>
+        <h2 class="modal-title">存入願望基金</h2>
         <button class="btn-close" onclick="closeModal('modal-dream-progress')">×</button>
       </div>
       <form id="form-dream-progress" onsubmit="handleDreamProgressSubmit(event)">
@@ -1403,7 +1503,7 @@
 
         <div class="form-group">
           <label>款項日期</label>
-          <input type="date" id="split-trans-date" required>
+          <input type="text" id="split-trans-date" class="wheel-date-trigger" readonly onclick="openWheelPicker(this.value, val => { this.value = val; })" required>
         </div>
 
         <!-- Split members choices -->
@@ -1486,6 +1586,29 @@
             <button class="btn-select-option" style="font-size: 0.75rem; padding: 0.5rem 0.25rem;" onclick="simulateQrScanSuccess('carrefour')">家樂福 $1280</button>
             <button class="btn-select-option" style="font-size: 0.75rem; padding: 0.5rem 0.25rem;" onclick="simulateQrScanSuccess('uniqlo')">UNIQLO $990</button>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 9. Date Wheel Picker Overlay -->
+  <div class="wheel-picker-overlay" id="wheel-date-picker">
+    <div class="wheel-picker-container">
+      <div class="wheel-picker-header">
+        <button class="btn-outline" style="border:none; color: var(--text-secondary);" onclick="closeWheelPicker()">取消</button>
+        <span style="font-weight: bold; font-family: var(--font-title);">選擇日期</span>
+        <button class="btn-outline" style="border:none; color: var(--color-blue); font-weight: bold;" onclick="confirmWheelPicker()">完成</button>
+      </div>
+      <div class="wheel-picker-body">
+        <div class="wheel-selection-overlay"></div>
+        <div class="wheel-column" id="wheel-col-year">
+          <!-- Options injected by JS -->
+        </div>
+        <div class="wheel-column" id="wheel-col-month">
+          <!-- Options injected by JS -->
+        </div>
+        <div class="wheel-column" id="wheel-col-day">
+          <!-- Options injected by JS -->
         </div>
       </div>
     </div>

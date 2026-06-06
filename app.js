@@ -1,5 +1,5 @@
 /**
- * Core Application Controller for 萬記帳 & 多功能分帳 App.
+ * Core Application Controller for ?祈?撣?& 憭??賢?撣?App.
  * Implements states, rendering engines, business logic, and security workflows.
  */
 
@@ -8,8 +8,8 @@ let AppState = {
   accounts: [],
   transactions: [],
   categories: {
-    expense: ['飲食', '服飾', '住宅', '交通', '育兒', '社交娛樂', '購物', '醫療', '寵物', '運動', '保險', '學習', '投資', '日用品', '辦公', '孝親費', '其他'],
-    income: ['薪水', '投資', '中獎', '獎金', '生活費', '其他']
+    expense: ['憌脤?', '?ˇ', '雿?', '鈭日?, '?脣?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '??', '靽', '摮貊?', '??', '?亦??, '颲血', '摮扛鞎?, '?嗡?'],
+    income: ['?芣偌', '??', '銝剔?', '??', '?暑鞎?, '?嗡?']
   },
   recurring: [],
   splitPlans: [],
@@ -18,30 +18,32 @@ let AppState = {
   carrierInvoices: [],
   lastRecurringCheckDate: '',
   inventory: [],
-  inventoryIcons: ['🧻', '🧴', '🧺', '🗑️', '💧', '🍚', '🥚', '🥫', '🐾', '📦'],
-  recurringIcons: ['🎬', '🎵', '▶️', '🏋️', '☁️', '📱', '💡', '🏠', '🎮', '🟣'],
+  inventoryIcons: ['?宏', '?妥', '?宋', '??儭?, '?', '??', '??', '?市', '?', '?'],
+  recurringIcons: ['?', '?', '?塚?', '??儭?, '??', '?', '?', '??', '?', '?'],
   dreams: [],
   inventoryCategories: {
-    '人類專區': {
-      '居家用品': ['衛生紙', '濕廁紙', '安睡褲', '洗臉巾', '濕紙巾', '夾鏈袋', '燈泡', '電池', '牙線', '垃圾袋'],
-      '洗沐用品': ['洗髮精', '護髮乳', '沐浴乳', '洗面乳', '牙刷', '舌苔刷', '牙膏', '沐浴球'],
-      '洗衣用品': ['洗衣球', '洗衣精', '香香豆', '小蘇打粉', '洗衣網/袋', '手洗精'],
-      '清潔用品': ['抹布', '菜瓜布', '清潔噴霧', '洗衣機清潔劑', '馬桶清潔劑', '眼鏡清潔液', '除濕顆粒', '消臭噴霧'],
-      '機器耗材': ['吸塵器', '掃地機器人'],
-      '廚房用品': ['餐具', '碗盤', '鍋具', '杯子', '剪刀', '保鮮膜', '保鮮袋'],
-      '一次性用品': ['手套', '水槽濾網', '氣炸鍋烤紙'],
-      '醫療用品': ['藥品', '貼布', '噴霧', '藥膏', '棉花棒', 'ok繃', '棉球', '痘痘貼'],
-      '保養品': ['臉部保養', '身體保養', '手足保養', '頭部保養'],
-      '化妝品': ['粉底', '防曬', '口紅', '粉餅'],
-      '食品': ['米', '麵條/泡麵', '飲料/冰品', '零食', '蔬菜', '生鮮肉品'],
-      '工作用品': ['袖套', '頭套']
+    '鈭粹?撠?': {
+      '撅振?典?': ['銵?蝝?, '瞈?蝝?, '摰銴?, '瘣?撌?, '瞈?撌?, '憭暸?鋡?, '?部', '?餅?', '??', '?鋡?],
+      '瘣??典?': ['瘣垣蝎?, '霅琿垣銋?, '瘝絕銋?, '瘣銋?, '?', '????, '??', '瘝絕??],
+      '瘣﹝?典?': ['瘣﹝??, '瘣﹝蝎?, '擐?鞊?, '撠???', '瘣﹝蝬?鋡?, '??蝎?],
+      '皜??典?': ['?孵?', '??撣?, '皜??湧', '瘣﹝璈?瞏?', '擐祆▲皜???, '?潮皜?瘨?, '?斗?憿?', '瘨?湧'],
+      '璈??': ['?詨△??, '?璈鈭?],
+      '撱?典?': ['擗', '蝣', '?', '?臬?', '?芸?', '靽悅??, '靽悅鋡?],
+      '銝甈⊥抒??: ['??', '瘞湔局瞈曄雯', '瘞??蝝?],
+      '?怎??典?': ['?亙?', '鞎澆?', '?湧', '?亥?', '璉璉?, 'ok蝜?, '璉?', '??鞎?],
+      '靽???: ['?靽?', '頨恍?靽?', '?雲靽?', '?剝靽?'],
+      '????: ['蝎?', '?脫', '???', '蝎?'],
+      '憌?': ['蝐?, '暻菜?/瘜⊿熊', '憌脫?/?啣?', '?園?', '?祈?', '?悅??'],
+      '撌乩??典?': ['鋡?', '?剖?']
     },
-    '愛寵專區': {
-      '寵物用品': ['飼料', '罐頭', '零食', '保健食品'],
-      '清潔用品': ['乾洗澡手套', '沐浴乳', '貓砂', '除臭球', '消臭噴霧'],
-      '娛樂用品': ['貓抓板', '玩具', '貓窩', '貓墊', '貓碗']
+    '?秘撠?': {
+      '撖萇?典?': ['憌潭?', '蝵', '?園?', '靽憌?'],
+      '皜??典?': ['銋暹?瞉⊥?憟?, '瘝絕銋?, '鞎?', '?方??, '瘨?湧'],
+      '憡??典?': ['鞎???, '?拙', '鞎版', '鞎?', '鞎?']
     }
   },
+  inventoryLocations: ['摰Ｗ輒', '撱', '瘚游恕', '?亙恕', '?脰?摰?, '頠?', '颲血摰?, '?賢'],
+  inventoryUnits: ['??, '??, '??, '??, '鋡?, '蝵?, '璇?, '??, '蝯?, '??, '??, '撘?],
   
   // Customization Preferences
   logoStyle: 'draftA',
@@ -51,7 +53,7 @@ let AppState = {
   buttonTheme: 'ocean',
   devMode: false,
   petTheme: 'none',
-  appName: '雙子記 - 記帳與分帳'
+  appName: '??閮?- 閮董??撣?
 };
 
 // Auth and navigation variables
@@ -87,7 +89,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Populate day selectors 1-31
   let dayOptionsHtml = '';
   for(let i=1; i<=31; i++) {
-    dayOptionsHtml += `<option value="${i}">${i}日</option>`;
+    dayOptionsHtml += `<option value="${i}">${i}??/option>`;
   }
   document.querySelectorAll('.day-selector-1-31').forEach(select => {
     select.innerHTML = dayOptionsHtml;
@@ -160,6 +162,29 @@ function switchTab(tabId) {
     }
   });
 
+  // Switch Right Panel Content
+  const rightPanelSections = [
+    'right-panel-calendar', 'right-panel-accounts', 'right-panel-inventory',
+    'right-panel-recurring', 'right-panel-split'
+  ];
+  
+  let targetRightPanel = 'right-panel-calendar'; // default
+  if (tabId === 'tab-accounts') targetRightPanel = 'right-panel-accounts';
+  if (tabId === 'tab-inventory') targetRightPanel = 'right-panel-inventory';
+  if (tabId === 'tab-recurring') targetRightPanel = 'right-panel-recurring';
+  if (tabId === 'tab-split') targetRightPanel = 'right-panel-split';
+
+  rightPanelSections.forEach(panelId => {
+    const el = document.getElementById(panelId);
+    if (el) {
+      if (panelId === targetRightPanel) {
+        el.style.display = 'flex';
+      } else {
+        el.style.display = 'none';
+      }
+    }
+  });
+
   // Render content depending on tab
   if (tabId === 'tab-calendar') {
     renderCalendar();
@@ -195,14 +220,14 @@ function switchAuthTab(mode) {
   if (mode === 'login') {
     loginTab.classList.add('active');
     registerTab.classList.remove('active');
-    submitBtn.innerText = '登入安全帳本';
-    subtitle.innerText = '請輸入帳號與密碼解鎖您的加密帳本';
+    submitBtn.innerText = '?餃摰撣單';
+    subtitle.innerText = '隢撓?亙董??撖Ⅳ閫???函???撣單';
     subtitle.style.color = 'var(--text-secondary)';
   } else {
     loginTab.classList.remove('active');
     registerTab.classList.add('active');
-    submitBtn.innerText = '註冊新帳號';
-    subtitle.innerText = '註冊的密碼將直接作為您的本地加密鑰，請務必記牢！';
+    submitBtn.innerText = '閮餃??啣董??;
+    subtitle.innerText = '閮餃???蝣澆??湔雿?函??砍???堆?隢?敹??ｇ?';
     subtitle.style.color = 'var(--text-secondary)';
   }
 }
@@ -235,7 +260,7 @@ async function handleAuthSubmit(event) {
     // Registration Flow
     try {
       if (window.Security.userExists(username)) {
-        alert("註冊失敗：該帳號已被註冊！");
+        alert("閮餃?憭望?嚗府撣唾?撌脰◤閮餃?嚗?);
         return;
       }
       
@@ -247,7 +272,7 @@ async function handleAuthSubmit(event) {
       createDefaultDatabase();
       await saveStateToStorage();
       
-      alert(`帳號 "${username}" 註冊成功！已為您自動登入。`);
+      alert(`撣唾? "${username}" 閮餃???嚗歇?箸?芸??餃?);
       
       if (remember) {
         localStorage.setItem('auth_remembered_user', username);
@@ -258,7 +283,7 @@ async function handleAuthSubmit(event) {
       loginFailCount = 0;
       unlockApp();
     } catch (e) {
-      alert("註冊出錯：" + e.message);
+      alert("閮餃??粹嚗? + e.message);
     }
   } else {
     // Login Flow
@@ -283,7 +308,7 @@ async function handleAuthSubmit(event) {
         
         unlockApp();
       } catch (err) {
-        const reset = confirm("資料解密失敗！您的快取可能已因先前錯誤而損毀。\n\n請問是否要清除損毀的快取，並建立全新的空帳本？\n（此動作將清空該帳號所有本地資料）");
+        const reset = confirm("鞈?閫??憭望?嚗?翰??賢歇???隤方?瘥?n\n隢??臬閬??斗?瘥?翰??銝血遣蝡?啁?蝛箏董?穿?\n嚗迨??撠?蝛箄府撣唾????啗???");
         if (reset) {
           localStorage.removeItem(window.Security.getUserDataKey(currentUser));
           createDefaultDatabase();
@@ -298,7 +323,7 @@ async function handleAuthSubmit(event) {
       // Login failed
       loginFailCount++;
       lockBox.classList.add('shake');
-      document.getElementById('lock-subtitle').innerText = '帳號或密碼錯誤！請重新輸入';
+      document.getElementById('lock-subtitle').innerText = '撣唾???蝣潮隤歹?隢??啗撓??;
       document.getElementById('lock-subtitle').style.color = 'var(--color-red)';
       setTimeout(() => {
         lockBox.classList.remove('shake');
@@ -318,16 +343,16 @@ async function handleAuthSubmit(event) {
 async function handleAccountRecovery() {
   const username = document.getElementById('auth-username').value.trim().toLowerCase();
   if (!username) {
-    alert('請先在上方填寫您的帳號名稱，再執行重新綁定。');
+    alert('隢??其??孵‵撖急?董??蝔梧??銵??啁?摰?);
     return;
   }
   
   const confirmed = confirm(
-    `⚠️ 重新綁定登入憑證 (保留舊資料)\n\n帳號：${username}\n\n` +
-    `如果您確定密碼正確，但系統一直顯示錯誤，可能是瀏覽器快取異常。\n` +
-    `此功能將清除異常的本地憑證，但您的記帳資料會完全保留。\n\n` +
-    `執行後，請使用「您原本正確的密碼」切換到「註冊新帳號」頁籤重新完成綁定，即可恢復所有資料讀取。\n\n` +
-    `確定要繼續嗎？`
+    `?? ?蝬??餃?? (靽?????\n\n撣唾?嚗?{username}\n\n` +
+    `憒??函Ⅱ摰?蝣潭迤蝣綽?雿頂蝯曹??湧＊蝷粹隤歹??航?舐汗?典翰?撣詻n` +
+    `甇文??賢?皜?啣虜??唳?霅?雿??撣唾???摰靽??n\n` +
+    `?瑁?敺?隢蝙?具?甇?Ⅱ??蝣潦???酉?撣唾???蝐日??啣???摰??喳?Ｗ儔??????n\n` +
+    `蝣箏?閬匱蝥?嚗
   );
   
   if (!confirmed) return;
@@ -341,12 +366,12 @@ async function handleAccountRecovery() {
     document.getElementById('auth-password').value = '';
     document.getElementById('auth-password').focus();
     
-    document.getElementById('lock-subtitle').innerText = '憑證已解綁！請輸入您的原始密碼重新完成「註冊並綁定」以恢復資料';
+    document.getElementById('lock-subtitle').innerText = '??撌脰圾蝬?隢撓?交??憪?蝣潮??啣??酉?蒂蝬??誑?Ｗ儔鞈?';
     document.getElementById('lock-subtitle').style.color = 'var(--color-primary, #00F2FE)';
     
     // Rename register button temporarily
     const submitBtn = document.getElementById('auth-submit-btn');
-    submitBtn.innerText = '完成重新綁定';
+    submitBtn.innerText = '摰??蝬?';
     
     // Hide recovery hint
     const hint = document.getElementById('auth-recovery-hint');
@@ -354,7 +379,7 @@ async function handleAccountRecovery() {
     loginFailCount = 0;
     
   } catch (e) {
-    alert('重置過程中發生錯誤：' + e.message);
+    alert('?蔭??銝剔?隤歹?' + e.message);
   }
 }
 
@@ -548,10 +573,10 @@ async function changeButtonTheme(themeId) {
 // --- Dynamic App Name Customizer ---
 function applyAppName() {
   const sidebarBrand = document.querySelector('.brand-name');
-  if (sidebarBrand) sidebarBrand.innerText = '雙子記';
+  if (sidebarBrand) sidebarBrand.innerText = '??閮?;
   const lockTitle = document.querySelector('.lock-title');
-  if (lockTitle) lockTitle.innerText = '雙子記 - 記帳與分帳';
-  document.title = '雙子記 - 記帳與分帳';
+  if (lockTitle) lockTitle.innerText = '??閮?- 閮董??撣?;
+  document.title = '??閮?- 閮董??撣?;
 }
 
 async function changeAppName(name) {
@@ -630,7 +655,24 @@ function syncVisualPreferencesUI() {
 
   // Sync Pet Theme
   updatePetThemeUI();
+  
+  // Sync Settlement Day
+  const settleDaySelect = document.getElementById('setting-settlement-day');
+  if (settleDaySelect) {
+    settleDaySelect.value = AppState.settlementDay || 1;
+  }
 }
+
+async function saveSettlementDay() {
+  const select = document.getElementById('setting-settlement-day');
+  if (select) {
+    AppState.settlementDay = Number(select.value);
+    await saveStateToStorage();
+    renderAccountsStatistics(); // Update the right panel immediately
+  }
+}
+
+
 
 async function changeDevMode(enabled) {
   AppState.devMode = enabled;
@@ -677,25 +719,25 @@ async function changePetTheme(theme) {
 
 function getThemeEmoji(theme) {
   const map = {
-    'cat': '🐱', 'dog': '🐶', 'rabbit': '🐰',
-    'zodiac-rat': '🐭', 'zodiac-ox': '🐮', 'zodiac-tiger': '🐯', 'zodiac-rabbit': '🐰',
-    'zodiac-dragon': '🐲', 'zodiac-snake': '🐍', 'zodiac-horse': '🐴', 'zodiac-goat': '🐑',
-    'zodiac-monkey': '🐵', 'zodiac-rooster': '🐔', 'zodiac-dog': '🐶', 'zodiac-pig': '🐷',
-    'const-aries': '♈', 'const-taurus': '♉', 'const-gemini': '♊', 'const-cancer': '♋',
-    'const-leo': '♌', 'const-virgo': '♍', 'const-libra': '♎', 'const-scorpio': '♏',
-    'const-sagittarius': '♐', 'const-capricorn': '♑', 'const-aquarius': '♒', 'const-pisces': '♓'
+    'cat': '?', 'dog': '?', 'rabbit': '?',
+    'zodiac-rat': '?', 'zodiac-ox': '?', 'zodiac-tiger': '?', 'zodiac-rabbit': '?',
+    'zodiac-dragon': '?', 'zodiac-snake': '??', 'zodiac-horse': '?', 'zodiac-goat': '??',
+    'zodiac-monkey': '?', 'zodiac-rooster': '??', 'zodiac-dog': '?', 'zodiac-pig': '?',
+    'const-aries': '??, 'const-taurus': '??, 'const-gemini': '??, 'const-cancer': '??,
+    'const-leo': '??, 'const-virgo': '??, 'const-libra': '??, 'const-scorpio': '??,
+    'const-sagittarius': '??, 'const-capricorn': '??, 'const-aquarius': '??, 'const-pisces': '??
   };
   return map[theme] || '';
 }
 
 function getThemeWatermark(theme) {
-  if (theme === 'cat') return '🐾 🐱 🐾';
-  if (theme === 'dog') return '🐾 🐶 🐾';
-  if (theme === 'rabbit') return '🌸 🐰 🌸';
+  if (theme === 'cat') return '? ? ?';
+  if (theme === 'dog') return '? ? ?';
+  if (theme === 'rabbit') return '? ? ?';
   
   const emoji = getThemeEmoji(theme);
   if (emoji) {
-    return `✨ ${emoji} ✨`;
+    return `??${emoji} ?灼;
   }
   return '';
 }
@@ -757,7 +799,29 @@ function getMascotSvg(theme, size = 80) {
     `;
   }
   if (theme.startsWith('const-')) {
-    const emoji = getThemeEmoji(theme);
+    const constPaths = {
+      'const-aries': 'M 30 60 L 50 35 L 70 65',
+      'const-taurus': 'M 35 65 L 45 45 L 65 40 L 75 60',
+      'const-gemini': 'M 35 35 L 35 65 M 65 35 L 65 65 M 30 35 L 70 35 M 30 65 L 70 65',
+      'const-cancer': 'M 40 40 L 60 40 M 60 40 L 50 60 M 50 60 L 40 40',
+      'const-leo': 'M 70 35 L 50 45 L 35 35 L 45 65 L 65 65 L 70 35',
+      'const-virgo': 'M 30 35 L 50 70 L 70 35 M 50 70 L 50 50 L 30 35',
+      'const-libra': 'M 30 60 L 70 60 M 40 50 L 60 50 M 50 50 L 50 40 L 60 40',
+      'const-scorpio': 'M 30 45 L 40 65 L 50 45 L 60 65 L 70 35',
+      'const-sagittarius': 'M 35 65 L 65 35 M 50 35 L 65 35 L 65 50 M 35 65 L 45 65 M 35 65 L 35 55',
+      'const-capricorn': 'M 35 65 L 50 35 L 65 65 L 50 55 L 35 65',
+      'const-aquarius': 'M 30 45 L 40 35 L 50 45 L 60 35 L 70 45 M 30 65 L 40 55 L 50 65 L 60 55 L 70 65',
+      'const-pisces': 'M 30 50 L 70 50 M 35 35 L 35 65 M 65 35 L 65 65'
+    };
+    
+    const pathData = constPaths[theme] || 'M 30 50 L 70 50';
+    const points = pathData.match(/\d+ \d+/g) || [];
+    const starsHtml = Array.from(new Set(points)).map((pt, i) => {
+      const [x, y] = pt.split(' ');
+      const animDelay = (i * 0.2).toFixed(1);
+      return `<circle cx="${x}" cy="${y}" r="2.5" fill="#FFF" style="${size < 50 ? '' : `animation: twinkle 1.5s infinite alternate ${animDelay}s;`}" />`;
+    }).join('');
+
     return `
       <svg class="constellation-disk" viewBox="0 0 100 100" width="${size}" height="${size}" style="overflow: visible;">
         <defs>
@@ -776,11 +840,8 @@ function getMascotSvg(theme, size = 80) {
         <circle cx="50" cy="50" r="42" fill="url(#nebula-${theme})" stroke="#00F2FE" stroke-width="2" style="filter: drop-shadow(0 4px 10px rgba(0, 242, 254, 0.4));" />
         <circle cx="50" cy="50" r="38" fill="none" stroke="#00F2FE" stroke-width="0.8" stroke-dasharray="2 4" />
         <g style="transform-origin: 50px 50px;">
-          <circle cx="28" cy="28" r="1.5" fill="#FFF" style="${size < 50 ? '' : 'animation: twinkle 1s infinite alternate;'}" />
-          <circle cx="72" cy="32" r="2" fill="#00F2FE" style="${size < 50 ? '' : 'animation: twinkle 1.5s infinite alternate 0.5s;'}" />
-          <circle cx="34" cy="68" r="1.5" fill="#FFF" style="${size < 50 ? '' : 'animation: twinkle 1.2s infinite alternate 0.2s;'}" />
-          <circle cx="68" cy="72" r="2" fill="#FFF" style="${size < 50 ? '' : 'animation: twinkle 1.8s infinite alternate 0.7s;'}" />
-          <text x="50" y="60" font-size="34" text-anchor="middle" style="user-select: none; filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));">${emoji}</text>
+          <path d="${pathData}" fill="none" stroke="#00F2FE" stroke-width="1.5" stroke-dasharray="3 3" style="filter: drop-shadow(0 0 3px rgba(0, 242, 254, 0.8));" />
+          ${starsHtml}
         </g>
       </svg>
     `;
@@ -801,12 +862,6 @@ function syncMascotDropdownsUI(theme) {
     petSub.style.display = 'none';
     zodiacSub.style.display = 'none';
     constSub.style.display = 'none';
-  } else if (theme === 'cat' || theme === 'dog' || theme === 'rabbit') {
-    typeSelector.value = 'pet';
-    document.getElementById('mascot-select-pet').value = theme;
-    petSub.style.display = 'block';
-    zodiacSub.style.display = 'none';
-    constSub.style.display = 'none';
   } else if (theme.startsWith('zodiac-')) {
     typeSelector.value = 'zodiac';
     document.getElementById('mascot-select-zodiac').value = theme;
@@ -819,6 +874,13 @@ function syncMascotDropdownsUI(theme) {
     petSub.style.display = 'none';
     zodiacSub.style.display = 'none';
     constSub.style.display = 'block';
+  } else {
+    // Default to pet for all other themes (cat, dog, rabbit, etc.)
+    typeSelector.value = 'pet';
+    document.getElementById('mascot-select-pet').value = theme;
+    petSub.style.display = 'block';
+    zodiacSub.style.display = 'none';
+    constSub.style.display = 'none';
   }
 }
 
@@ -907,17 +969,17 @@ function updatePetThemeUI() {
 function createDefaultDatabase() {
   AppState = {
     accounts: [
-      { id: 'acc_cash_1', name: '我的錢包 (現金)', type: 'cash', balance: 2000, initialBalance: 2000, budget: 10000 },
-      { id: 'acc_bank_1', name: '國泰世華銀行', type: 'bank', balance: 85000, initialBalance: 85000 },
-      { id: 'acc_credit_1', name: '台新 FlyGo 卡', type: 'credit', balance: 0, initialBalance: 0, billingDay: 10, dueDay: 25, creditLimit: 100000, warningThreshold: 5000 },
-      { id: 'acc_sec_1', name: '富邦證券戶', type: 'securities', balance: 15000, initialBalance: 15000, securitiesInvested: 120000 }
+      { id: 'acc_cash_1', name: '???Ｗ? (?暸?)', type: 'cash', balance: 2000, initialBalance: 2000, budget: 10000 },
+      { id: 'acc_bank_1', name: '?陸銝?銵?, type: 'bank', balance: 85000, initialBalance: 85000 },
+      { id: 'acc_credit_1', name: '?唳 FlyGo ??, type: 'credit', balance: 0, initialBalance: 0, billingDay: 10, dueDay: 25, creditLimit: 100000, warningThreshold: 5000 },
+      { id: 'acc_sec_1', name: '撖霅??, type: 'securities', balance: 15000, initialBalance: 15000, securitiesInvested: 120000 }
     ],
     transactions: [
-      { id: 'tx_init_1', type: 'income', amount: 35000, accountId: 'acc_bank_1', category: '薪水', date: new Date().toISOString().split('T')[0], notes: '本月固定薪資匯入' }
+      { id: 'tx_init_1', type: 'income', amount: 35000, accountId: 'acc_bank_1', category: '?芣偌', date: new Date().toISOString().split('T')[0], notes: '?祆??箏??芾??臬' }
     ],
     categories: {
-      expense: ['飲食', '服飾', '住宅', '交通', '育兒', '社交娛樂', '購物', '醫療', '寵物', '運動', '保險', '學習', '投資', '日用品', '辦公', '孝親費', '其他'],
-      income: ['薪水', '投資', '中獎', '獎金', '生活費', '其他']
+      expense: ['憌脤?', '?ˇ', '雿?', '鈭日?, '?脣?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '??', '靽', '摮貊?', '??', '?亦??, '颲血', '摮扛鞎?, '?嗡?'],
+      income: ['?芣偌', '??', '銝剔?', '??', '?暑鞎?, '?嗡?']
     },
     recurring: [],
     splitPlans: [],
@@ -927,19 +989,19 @@ function createDefaultDatabase() {
     carrierInvoices: [
       {
         id: 'inv_mock_1',
-        store: '統一超商 (7-11)',
+        store: '蝯曹?頞? (7-11)',
         amount: 85,
         date: new Date().toISOString().split('T')[0],
-        items: [{ name: '大拿鐵', price: 55 }, { name: '茶葉蛋', price: 30 }],
+        items: [{ name: '憭扳??, price: 55 }, { name: '?嗉???, price: 30 }],
         suggestedAccount: 'acc_cash_1',
         paymentConfirmed: false
       },
       {
         id: 'inv_mock_2',
-        store: '星巴克咖啡',
+        store: '?毀????,
         amount: 165,
         date: new Date().toISOString().split('T')[0],
-        items: [{ name: '巧克力可可碎片星冰樂', price: 165 }],
+        items: [{ name: '撌批???舐????唳?', price: 165 }],
         suggestedAccount: 'acc_credit_1',
         paymentConfirmed: false
       }
@@ -951,7 +1013,7 @@ function createDefaultDatabase() {
     fontStyle: 'modern',
     chartType: 'pie',
     themeMode: 'auto',
-    appName: '雙子記',
+    appName: '??閮?,
     globalMonthlyBudget: 20000
   };
 }
@@ -1025,8 +1087,8 @@ async function loadStateFromStorage() {
       // Repair logic for backward compatibility/missing properties
       if (!AppState.categories) {
         AppState.categories = {
-          expense: ['飲食', '服飾', '住宅', '交通', '育兒', '社交娛樂', '購物', '醫療', '寵物', '運動', '保險', '學習', '投資', '日用品', '辦公', '孝親費', '其他'],
-          income: ['薪水', '投資', '中獎', '獎金', '生活費', '其他']
+          expense: ['憌脤?', '?ˇ', '雿?', '鈭日?, '?脣?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '??', '靽', '摮貊?', '??', '?亦??, '颲血', '摮扛鞎?, '?嗡?'],
+          income: ['?芣偌', '??', '銝剔?', '??', '?暑鞎?, '?嗡?']
         };
       }
       if (!AppState.recurring) AppState.recurring = [];
@@ -1034,29 +1096,29 @@ async function loadStateFromStorage() {
       if (!AppState.carrierInvoices) AppState.carrierInvoices = [];
       if (!AppState.logoStyle) AppState.logoStyle = 'draftA';
       if (!AppState.inventory) AppState.inventory = [];
-      if (!AppState.inventoryIcons) AppState.inventoryIcons = ['🧻', '🧴', '🧺', '🗑️', '💧', '🍚', '🥚', '🥫', '🐾', '📦'];
-      if (!AppState.recurringIcons) AppState.recurringIcons = ['🎬', '🎵', '▶️', '🏋️', '☁️', '📱', '💡', '🏠', '🎮', '🟣'];
+      if (!AppState.inventoryIcons) AppState.inventoryIcons = ['?宏', '?妥', '?宋', '??儭?, '?', '??', '??', '?市', '?', '?'];
+      if (!AppState.recurringIcons) AppState.recurringIcons = ['?', '?', '?塚?', '??儭?, '??', '?', '?', '??', '?', '?'];
       if (!AppState.dreams) AppState.dreams = [];
       if (!AppState.inventoryCategories) {
         AppState.inventoryCategories = {
-          '人類專區': {
-            '居家用品': ['衛生紙', '濕廁紙', '安睡褲', '洗臉巾', '濕紙巾', '夾鏈袋', '燈泡', '電池', '牙線', '垃圾袋'],
-            '洗沐用品': ['洗髮精', '護髮乳', '沐浴乳', '洗面乳', '牙刷', '舌苔刷', '牙膏', '沐浴球'],
-            '洗衣用品': ['洗衣球', '洗衣精', '香香豆', '小蘇打粉', '洗衣網/袋', '手洗精'],
-            '清潔用品': ['抹布', '菜瓜布', '清潔噴霧', '洗衣機清潔劑', '馬桶清潔劑', '眼鏡清潔液', '除濕顆粒', '消臭噴霧'],
-            '機器耗材': ['吸塵器', '掃地機器人'],
-            '廚房用品': ['餐具', '碗盤', '鍋具', '杯子', '剪刀', '保鮮膜', '保鮮袋'],
-            '一次性用品': ['手套', '水槽濾網', '氣炸鍋烤紙'],
-            '醫療用品': ['藥品', '貼布', '噴霧', '藥膏', '棉花棒', 'ok繃', '棉球', '痘痘貼'],
-            '保養品': ['臉部保養', '身體保養', '手足保養', '頭部保養'],
-            '化妝品': ['粉底', '防曬', '口紅', '粉餅'],
-            '食品': ['米', '麵條/泡麵', '飲料/冰品', '零食', '蔬菜', '生鮮肉品'],
-            '工作用品': ['袖套', '頭套']
+          '鈭粹?撠?': {
+            '撅振?典?': ['銵?蝝?, '瞈?蝝?, '摰銴?, '瘣?撌?, '瞈?撌?, '憭暸?鋡?, '?部', '?餅?', '??', '?鋡?],
+            '瘣??典?': ['瘣垣蝎?, '霅琿垣銋?, '瘝絕銋?, '瘣銋?, '?', '????, '??', '瘝絕??],
+            '瘣﹝?典?': ['瘣﹝??, '瘣﹝蝎?, '擐?鞊?, '撠???', '瘣﹝蝬?鋡?, '??蝎?],
+            '皜??典?': ['?孵?', '??撣?, '皜??湧', '瘣﹝璈?瞏?', '擐祆▲皜???, '?潮皜?瘨?, '?斗?憿?', '瘨?湧'],
+            '璈??': ['?詨△??, '?璈鈭?],
+            '撱?典?': ['擗', '蝣', '?', '?臬?', '?芸?', '靽悅??, '靽悅鋡?],
+            '銝甈⊥抒??: ['??', '瘞湔局瞈曄雯', '瘞??蝝?],
+            '?怎??典?': ['?亙?', '鞎澆?', '?湧', '?亥?', '璉璉?, 'ok蝜?, '璉?', '??鞎?],
+            '靽???: ['?靽?', '頨恍?靽?', '?雲靽?', '?剝靽?'],
+            '????: ['蝎?', '?脫', '???', '蝎?'],
+            '憌?': ['蝐?, '暻菜?/瘜⊿熊', '憌脫?/?啣?', '?園?', '?祈?', '?悅??'],
+            '撌乩??典?': ['鋡?', '?剖?']
           },
-          '愛寵專區': {
-            '寵物用品': ['飼料', '罐頭', '零食', '保健食品'],
-            '清潔用品': ['乾洗澡手套', '沐浴乳', '貓砂', '除臭球', '消臭噴霧'],
-            '娛樂用品': ['貓抓板', '玩具', '貓窩', '貓墊', '貓碗']
+          '?秘撠?': {
+            '撖萇?典?': ['憌潭?', '蝵', '?園?', '靽憌?'],
+            '皜??典?': ['銋暹?瞉⊥?憟?, '瘝絕銋?, '鞎?', '?方??, '瘨?湧'],
+            '憡??典?': ['鞎???, '?拙', '鞎版', '鞎?', '鞎?']
           }
         };
       }
@@ -1075,7 +1137,7 @@ async function loadStateFromStorage() {
           }
         });
       }
-      AppState.appName = '雙子記 - 記帳與分帳';
+      AppState.appName = '??閮?- 閮董??撣?;
       
       // Sync styles immediately
       syncVisualPreferencesUI();
@@ -1498,7 +1560,10 @@ function checkShowCcInstallmentOptions() {
   }
 }
 
+let ccInstallmentTimeout = null;
 function calculateCcInstallmentPreview() {
+  clearTimeout(ccInstallmentTimeout);
+  ccInstallmentTimeout = setTimeout(() => {
   const amount = Number(document.getElementById('trans-amount').value) || 0;
   const type = document.getElementById('cc-installment-type').value;
   const periods = Number(document.getElementById('cc-installment-periods').value) || 3;
@@ -1528,16 +1593,16 @@ function calculateCcInstallmentPreview() {
   if (firstTotal !== regularTotal) {
     previewDiv.innerHTML = `
       <div style="line-height: 1.4;">
-        分期試算：首期付款 <strong>${formatAccounting(firstTotal)}</strong> (含尾差)，
-        後續每期 <strong>${formatAccounting(regularTotal)}</strong>，共 <strong>${periods}</strong> 期。
-        ${type === 'interest-bearing' ? `<br>(含每期利息 ${formatAccounting(interestPerPeriod)}，年利率 ${rate}%)` : ''}
+        ??閰衣?嚗???甈?<strong>${formatAccounting(firstTotal)}</strong> (?怠偏撌?嚗?
+        敺?瘥? <strong>${formatAccounting(regularTotal)}</strong>嚗 <strong>${periods}</strong> ??
+        ${type === 'interest-bearing' ? `<br>(?急????${formatAccounting(interestPerPeriod)}嚗僑?拍? ${rate}%)` : ''}
       </div>
     `;
   } else {
     previewDiv.innerHTML = `
       <div style="line-height: 1.4;">
-        分期試算：每期付款 <strong>${formatAccounting(regularTotal)}</strong>，共 <strong>${periods}</strong> 期。
-        ${type === 'interest-bearing' ? `<br>(含每期利息 ${formatAccounting(interestPerPeriod)}，年利率 ${rate}%)` : ''}
+        ??閰衣?嚗???甈?<strong>${formatAccounting(regularTotal)}</strong>嚗 <strong>${periods}</strong> ??
+        ${type === 'interest-bearing' ? `<br>(?急????${formatAccounting(interestPerPeriod)}嚗僑?拍? ${rate}%)` : ''}
       </div>
     `;
   }
@@ -1568,13 +1633,13 @@ function renderCalendar() {
   const monthYearLabel = document.getElementById('calendar-current-month-year');
   
   // Set month label
-  const localeMonths = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'];
-  monthYearLabel.innerText = `${currentCalendarDate.getFullYear()}年 ${localeMonths[currentCalendarDate.getMonth()]}`;
+  const localeMonths = ['銝??, '鈭?', '銝?', '??', '鈭?', '?剜?', '銝?', '?急?', '銋?', '??', '????, '????];
+  monthYearLabel.innerText = `${currentCalendarDate.getFullYear()}撟?${localeMonths[currentCalendarDate.getMonth()]}`;
 
   container.innerHTML = '';
   
   // Render Day Labels (Sun - Sat)
-  const daysLabels = ['日', '一', '二', '三', '四', '五', '六'];
+  const daysLabels = ['??, '銝', '鈭?, '銝?, '??, '鈭?, '??];
   daysLabels.forEach(lbl => {
     const dayLabelEl = document.createElement('div');
     dayLabelEl.className = 'calendar-day-label';
@@ -1661,10 +1726,10 @@ function createDayCell(container, dayNum, dateStr, isOtherMonth) {
       dotsContainer.appendChild(dot);
     }
     if (upcomingTx.length > 0) {
-      const uniqueIcons = [...new Set(upcomingTx.map(t => t.icon || '🟣'))];
+      const uniqueIcons = [...new Set(upcomingTx.map(t => t.icon || '?'))];
       uniqueIcons.slice(0, 3).forEach(ic => {
         const dot = document.createElement('div');
-        if (ic === '🟣') {
+        if (ic === '?') {
           dot.className = 'dot';
           dot.style.background = 'var(--color-purple)';
         } else {
@@ -1691,8 +1756,8 @@ function renderDailyLedger() {
   
   // Format selected date description
   const d = new Date(selectedDate);
-  const weekDay = ['日', '一', '二', '三', '四', '五', '六'][d.getDay()];
-  dateLabel.innerText = `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日(星期${weekDay})`;
+  const weekDay = ['??, '銝', '鈭?, '銝?, '??, '鈭?, '??][d.getDay()];
+  dateLabel.innerText = `${d.getFullYear()}撟?{d.getMonth()+1}??{d.getDate()}????${weekDay})`;
 
   container.innerHTML = '';
   container.style.position = 'relative';
@@ -1756,7 +1821,7 @@ function renderDailyLedger() {
             <rect x="44" y="24" width="12" height="4" rx="1" fill="#be185d" />
           </svg>
         </div>
-        <p style="color: var(--text-secondary); font-size: 0.875rem;">本日未有任何交易紀錄，點擊「記一筆」開始記帳吧！</p>
+        <p style="color: var(--text-secondary); font-size: 0.875rem;">?祆?芣?隞颱?鈭斗?蝝??暺???銝蝑?憪?撣喳嚗?/p>
       `;
     }
     
@@ -1777,11 +1842,11 @@ function renderDailyLedger() {
     
     // Find account name
     const acc = AppState.accounts.find(a => a.id === rule.sourceAccountId);
-    const accName = acc ? acc.name : '未知帳戶';
+    const accName = acc ? acc.name : '?芰撣單';
     
-      const iconToUse = rule.icon || '🟣';
+      const iconToUse = rule.icon || '?';
       let iconHtml = '';
-      if (iconToUse === '🟣') {
+      if (iconToUse === '?') {
         iconHtml = `<div class="ledger-icon" style="background: rgba(168, 85, 247, 0.2); color: var(--color-purple);"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>`;
       } else {
         iconHtml = `<div class="ledger-icon" style="background: rgba(168, 85, 247, 0.1); font-size: 1.25rem;">${iconToUse}</div>`;
@@ -1791,13 +1856,13 @@ function renderDailyLedger() {
         <div class="ledger-left">
           ${iconHtml}
           <div class="ledger-info">
-          <div class="ledger-title" style="color: var(--color-purple);">預告扣款 - ${escapeHtml(rule.name)}</div>
-          <div class="ledger-account-tag">將由 ${escapeHtml(accName)} 支付</div>
+          <div class="ledger-title" style="color: var(--color-purple);">????狡 - ${escapeHtml(rule.name)}</div>
+          <div class="ledger-account-tag">撠 ${escapeHtml(accName)} ?臭?</div>
         </div>
       </div>
       <div class="ledger-right">
         ${getAccountingSpan(rule.amount, rule.type)}
-        <div class="ledger-account-tag">系統將自動扣款</div>
+        <div class="ledger-account-tag">蝟餌絞撠?甈?/div>
       </div>
     `;
     container.appendChild(item);
@@ -1812,15 +1877,15 @@ function renderDailyLedger() {
     const destAcc = t.destAccountId ? AppState.accounts.find(a => a.id === t.destAccountId) : null;
     
     let accountInfo = '';
-    let categoryIcon = '📝';
+    let categoryIcon = '??';
     
     if (t.type === 'transfer') {
-      const srcName = acc ? acc.name : (t.accountId.endsWith('_invested') ? '股票資金' : '未知');
-      const destName = destAcc ? destAcc.name : (t.destAccountId.endsWith('_invested') ? '股票資金' : '未知');
-      accountInfo = `${srcName} ➔ ${destName}`;
-      categoryIcon = '💱';
+      const srcName = acc ? acc.name : (t.accountId.endsWith('_invested') ? '?∠巨鞈?' : '?芰');
+      const destName = destAcc ? destAcc.name : (t.destAccountId.endsWith('_invested') ? '?∠巨鞈?' : '?芰');
+      accountInfo = `${srcName} ??${destName}`;
+      categoryIcon = '?';
     } else {
-      accountInfo = acc ? acc.name : '未知帳戶';
+      accountInfo = acc ? acc.name : '?芰撣單';
       // Icon selection based on category
       categoryIcon = getCategoryEmoji(t.category);
     }
@@ -1840,10 +1905,10 @@ function renderDailyLedger() {
       <div class="ledger-right">
         ${getAccountingSpan(t.type === 'expense' ? -Number(t.amount) : Number(t.amount), t.type)}
         <div class="ledger-actions" style="display: flex; gap: 0.25rem;">
-          <button class="btn-icon-action" onclick="editTransaction('${t.id}')" title="編輯">
+          <button class="btn-icon-action" onclick="editTransaction('${t.id}')" title="蝺刻摩">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
           </button>
-          <button class="btn-icon-action" onclick="deleteTransaction('${t.id}')" title="刪除">
+          <button class="btn-icon-action" onclick="deleteTransaction('${t.id}')" title="?芷">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
           </button>
         </div>
@@ -1875,13 +1940,13 @@ function renderDailyLedger() {
 
 function openHashtagModal(tag) {
   const container = document.getElementById('hashtag-search-results');
-  document.getElementById('hashtag-search-title').innerText = `#${tag} 標籤紀錄`;
+  document.getElementById('hashtag-search-title').innerText = `#${tag} 璅惜蝝?;
   
   // Find all transactions with this tag
   const matchingTx = AppState.transactions.filter(t => t.notes && t.notes.includes(`#${tag}`));
   
   if (matchingTx.length === 0) {
-    container.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">無相關紀錄</div>`;
+    container.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">?∠????/div>`;
   } else {
     let totalIncome = 0;
     let totalExpense = 0;
@@ -1892,12 +1957,12 @@ function openHashtagModal(tag) {
       if (t.type === 'expense') totalExpense += Number(t.amount);
       
       const acc = AppState.accounts.find(a => a.id === t.accountId);
-      const accName = acc ? acc.name : '未知';
+      const accName = acc ? acc.name : '?芰';
       html += `
         <li style="display: flex; justify-content: space-between; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
           <div style="display: flex; flex-direction: column; gap: 0.25rem;">
             <span style="font-weight: 600; color: var(--text-primary);">${escapeHtml(t.notes || t.category)}</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted);">${t.date} · ${accName}</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">${t.date} 繚 ${accName}</span>
           </div>
           <div style="font-family: var(--font-title); font-weight: 700; color: ${t.type === 'income' ? 'var(--color-green)' : t.type === 'expense' ? 'var(--color-red)' : 'var(--text-secondary)'};">
             ${getAccountingSpan(t.amount, t.type)}
@@ -1908,7 +1973,7 @@ function openHashtagModal(tag) {
     
     html += `</ul>
       <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600;">
-        <span>標籤總計結餘：</span>
+        <span>璅惜蝮質?蝯?嚗?/span>
         <span style="color: ${(totalIncome - totalExpense) >= 0 ? 'var(--color-green)' : 'var(--color-red)'};">${formatAccounting(totalIncome - totalExpense)}</span>
       </div>
     `;
@@ -1921,14 +1986,14 @@ function openHashtagModal(tag) {
 function getCategoryEmoji(cat) {
   const emojis = {
     // Expense
-    '飲食': '🍔', '服飾': '👕', '住宅': '🏠', '交通': '🚗', '育兒': '👶', 
-    '社交娛樂': '🎉', '購物': '🛍️', '醫療': '🏥', '寵物': '🐱', '運動': '🏃', 
-    '保險': '🛡️', '學習': '📚', '投資': '📈', '日用品': '🧴', '辦公': '💼', 
-    '孝親費': '👵', '其他': '📦',
+    '憌脤?': '??', '?ˇ': '??', '雿?': '??', '鈭日?: '??', '?脣?': '?', 
+    '蝷曆漱憡?': '??', '鞈潛': '??儭?, '?怎?': '?', '撖萇': '?', '??': '??', 
+    '靽': '?儭?, '摮貊?': '??', '??': '??', '?亦??: '?妥', '颲血': '?', 
+    '摮扛鞎?: '?', '?嗡?': '?',
     // Income
-    '薪水': '💰', '中獎': '🎫', '獎金': '🏆', '生活費': '💵'
+    '?芣偌': '?', '銝剔?': '?', '??': '??', '?暑鞎?: '?'
   };
-  return emojis[cat] || '📝';
+  return emojis[cat] || '??';
 }
 
 // --- RENDER 3: Accounts Page ---
@@ -1968,14 +2033,14 @@ function renderAccounts() {
   
   netWorthCard.innerHTML = `
     <div>
-      <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">資產淨值總計</div>
+      <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">鞈瘛典潛蜇閮?/div>
       <div style="font-family: var(--font-title); font-size: 2.25rem; font-weight: 900; background: linear-gradient(90deg, #00F2FE, #4FACFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
         ${formatAccounting(netWorth)}
       </div>
     </div>
     <div style="text-align: right; font-size: 0.875rem; color: var(--text-secondary);">
-      <div>總資產：${formatAccounting(totalAssets)}</div>
-      <div>總負債：${formatAccounting(-totalLiabilities)}</div>
+      <div>蝮質??ｇ?${formatAccounting(totalAssets)}</div>
+      <div>蝮質??蛛?${formatAccounting(-totalLiabilities)}</div>
     </div>
   `;
   container.appendChild(netWorthCard);
@@ -1988,11 +2053,11 @@ function renderAccounts() {
   actionCard.innerHTML = `
     <button class="btn-primary" onclick="openAddAccountModal('cash')" style="flex: 1; padding: 0.8rem; justify-content: center;">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      新增帳戶
+      ?啣?撣單
     </button>
     <button class="btn-primary" onclick="openAddAccountModal('credit')" style="flex: 1; padding: 0.8rem; justify-content: center;">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      新增信用卡
+      ?啣?靽∠??
     </button>
   `;
   container.appendChild(actionCard);
@@ -2014,13 +2079,13 @@ function renderAccounts() {
       const availableLimit = cycleStatus.availableLimit;
       const limit = Number(acc.creditLimit) || 100000;
       
-      balanceValHtml = `<span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">可用額度</span>` + getAccountingSpan(availableLimit, 'income');
+      balanceValHtml = `<span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">?舐憿漲</span>` + getAccountingSpan(availableLimit, 'income');
       
       let warningHtml = '';
       if (cycleStatus.isBelowThreshold) {
         warningHtml = `
           <div class="credit-card-warning">
-            <span>⚠️ 額度警示！剩餘額度低於門檻 ${formatAccounting(acc.warningThreshold || 0)}</span>
+            <span>?? 憿漲霅衣內嚗擗?摨虫??潮?瑼?${formatAccounting(acc.warningThreshold || 0)}</span>
           </div>
         `;
       }
@@ -2028,25 +2093,25 @@ function renderAccounts() {
       extraDetailsHtml = `
         <div class="credit-details-grid">
           <div>
-            <div class="sub-balance-label">本期累計消費</div>
+            <div class="sub-balance-label">?祆?蝝航?瘨祥</div>
             <div class="sub-balance-val" style="color: var(--color-red);">${formatAccounting(spent)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">本期已還款</div>
+            <div class="sub-balance-label">?祆?撌脤?甈?/div>
             <div class="sub-balance-val" style="color: var(--color-green);">${formatAccounting(repaid)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">每月信用額度</div>
+            <div class="sub-balance-label">瘥?靽∠憿漲</div>
             <div class="sub-balance-val">${formatAccounting(limit)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">未結帳單餘額</div>
+            <div class="sub-balance-label">?芰?撣喳擗?</div>
             <div class="sub-balance-val">${formatAccounting(creditSpent[acc.id])}</div>
           </div>
         </div>
         <div class="card-billing-details" style="margin-top: 0.75rem;">
-          <span>結帳日: 每月 ${acc.billingDay} 號</span>
-          <span>截止日: 每月 ${acc.dueDay} 號</span>
+          <span>蝯董?? 瘥? ${acc.billingDay} ??/span>
+          <span>?芣迫?? 瘥? ${acc.dueDay} ??/span>
         </div>
         ${warningHtml}
       `;
@@ -2058,16 +2123,16 @@ function renderAccounts() {
       extraDetailsHtml = `
         <div class="securities-sub-balances">
           <div>
-            <div class="sub-balance-label">帳戶內餘額</div>
+            <div class="sub-balance-label">撣單?折?憿?/div>
             <div class="sub-balance-val">${formatAccounting(accState.balance)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">已投入股票資金</div>
+            <div class="sub-balance-label">撌脫??亥蟡刻???/div>
             <div class="sub-balance-val">${formatAccounting(accState.securitiesInvested)}</div>
           </div>
         </div>
         <button class="btn-select-option" style="width: 100%; margin-top: 1rem; border-color: var(--color-gold); color: var(--color-gold);" onclick="openSecuritiesTransferModal('${acc.id}')">
-          資金互轉 (買入/賣出)
+          鞈?鈭? (鞎瑕/鞈?)
         </button>
       `;
     } else {
@@ -2096,8 +2161,8 @@ function renderAccounts() {
         extraDetailsHtml = `
           <div class="budget-progress-container">
             <div class="budget-progress-header">
-              <span>本期已花 (${cycleRangeStr}): ${formatAccounting(currentMonthCashExpenses)}</span>
-              <span>預算上限: ${formatAccounting(acc.budget)}</span>
+              <span>?祆?撌脰 (${cycleRangeStr}): ${formatAccounting(currentMonthCashExpenses)}</span>
+              <span>??銝?: ${formatAccounting(acc.budget)}</span>
             </div>
             <div class="budget-progress-bar">
               <div class="budget-progress-fill ${overBudget ? 'overbudget' : ''}" style="width: ${budgetPercent}%"></div>
@@ -2110,7 +2175,7 @@ function renderAccounts() {
     card.innerHTML = `
       <div class="account-card-header">
         <span class="account-card-name">${escapeHtml(acc.name)}</span>
-        <span class="account-card-type">${acc.type === 'credit' ? '信用卡' : acc.type === 'securities' ? '證券戶' : acc.type === 'bank' ? '銀行' : '現金'}</span>
+        <span class="account-card-type">${acc.type === 'credit' ? '靽∠?? : acc.type === 'securities' ? '霅?? : acc.type === 'bank' ? '?銵? : '?暸?'}</span>
       </div>
       <div class="account-card-balance">
         ${balanceValHtml}
@@ -2118,10 +2183,10 @@ function renderAccounts() {
       ${extraDetailsHtml}
       
       <div style="margin-top: 1rem; display: flex; justify-content: flex-end; gap: 0.5rem;">
-        <button class="btn-icon-action" onclick="openEditAccountModal('${acc.id}')" title="編輯帳戶名稱及預算">
+        <button class="btn-icon-action" onclick="openEditAccountModal('${acc.id}')" title="蝺刻摩撣單?迂??蝞?>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
         </button>
-        <button class="btn-icon-action" onclick="deleteAccount('${acc.id}')" title="刪除帳戶">
+        <button class="btn-icon-action" onclick="deleteAccount('${acc.id}')" title="?芷撣單">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         </button>
       </div>
@@ -2140,14 +2205,60 @@ function renderAccountsStatistics() {
   
   if (!cashflowContainer || !categoryContainer) return;
   
-  // Calculate current month date range
+  // Calculate current month date range based on settlementDay
+  const settlementDay = Number(AppState.settlementDay || 1);
   const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
-  const currentMonthPrefix = `${year}-${String(month + 1).padStart(2, '0')}`;
+  const currentYear = now.getFullYear();
+  const currentMonth = now.getMonth();
   
-  // Filter transactions for this month
-  const thisMonthTx = AppState.transactions.filter(t => t.date.startsWith(currentMonthPrefix));
+  let startMonth = currentMonth;
+  let startYear = currentYear;
+  
+  // If today is before settlementDay, we belong to the previous month's cycle
+  if (now.getDate() < settlementDay) {
+    startMonth -= 1;
+    if (startMonth < 0) {
+      startMonth = 11;
+      startYear -= 1;
+    }
+  }
+  
+  // Create start date. Cap to last day of month if necessary.
+  let startDate = new Date(startYear, startMonth, settlementDay);
+  if (startDate.getMonth() !== startMonth) {
+    startDate = new Date(startYear, startMonth + 1, 0);
+  }
+  
+  let endMonth = startMonth + 1;
+  let endYear = startYear;
+  if (endMonth > 11) {
+    endMonth = 0;
+    endYear += 1;
+  }
+  
+  let nextStartDate = new Date(endYear, endMonth, settlementDay);
+  if (nextStartDate.getMonth() !== endMonth) {
+    nextStartDate = new Date(endYear, endMonth + 1, 0);
+  }
+  
+  const endDate = new Date(nextStartDate);
+  endDate.setDate(endDate.getDate() - 1);
+  
+  const formatYMD = d => {
+    return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  };
+  
+  const startStr = formatYMD(startDate);
+  const endStr = formatYMD(endDate);
+  
+  // Update Title
+  const panelTitle = document.querySelector('#right-panel-accounts .panel-title');
+  if (panelTitle && panelTitle.innerText.includes('本月收支概況')) {
+    panelTitle.innerHTML = `本月收支概況 <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal; margin-left:0.5rem;">(${startStr} ~ ${endStr})</span>`;
+  }
+  
+  // Filter transactions for this cycle
+  const thisMonthTx = AppState.transactions.filter(t => t.date >= startStr && t.date <= endStr);
   
   let incomeTotal = 0;
   let expenseTotal = 0;
@@ -2163,16 +2274,22 @@ function renderAccountsStatistics() {
     }
   });
 
-  // 1. Draw Cashflow Summary Bars
-  const maxFlow = Math.max(incomeTotal, expenseTotal, 1); // Avoid division by zero
+  // 1. Draw Cashflow Summary Bars & Net Balance
+  const maxFlow = Math.max(incomeTotal, expenseTotal, 1);
   const incPercent = (incomeTotal / maxFlow) * 100;
   const expPercent = (expenseTotal / maxFlow) * 100;
+  const balance = incomeTotal - expenseTotal;
   
   cashflowContainer.innerHTML = `
+    <!-- Net Balance -->
+    <div style="margin-bottom: 0.5rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+      <div style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.25rem;">本期結餘</div>
+      <div style="font-family: var(--font-title); font-size: 1.75rem; font-weight: bold; color: ${balance >= 0 ? 'var(--color-green)' : 'var(--color-red)'};">${formatAccounting(balance)}</div>
+    </div>
     <!-- Income Bar -->
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
-        <span style="font-weight: 600;">🟢 本月總收入</span>
+        <span style="font-weight: 600;">📥 本期總收入</span>
         <span style="font-family: var(--font-title); font-weight: 700; color: var(--color-green);">${formatAccounting(incomeTotal)}</span>
       </div>
       <div style="height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden;">
@@ -2182,7 +2299,7 @@ function renderAccountsStatistics() {
     <!-- Expense Bar -->
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
-        <span style="font-weight: 600;">🔴 本月總支出</span>
+        <span style="font-weight: 600;">📤 本期總支出</span>
         <span style="font-family: var(--font-title); font-weight: 700; color: var(--color-red);">${formatAccounting(expenseTotal)}</span>
       </div>
       <div style="height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden;">
@@ -2204,7 +2321,7 @@ function renderAccountsStatistics() {
   if (sortedCategories.length === 0) {
     categoryContainer.innerHTML = `
       <div style="text-align: center; color: var(--text-muted); font-size: 0.875rem; padding: 3rem 0;">
-        本月無任何支出數據
+        ?祆??∩遙雿?箸??
       </div>
     `;
     return;
@@ -2292,7 +2409,7 @@ function renderAccountsStatistics() {
         <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #6B7280; display: inline-block;"></span>
-            <span>📦 其他</span>
+            <span>? ?嗡?</span>
           </div>
           <span style="color: var(--text-secondary); font-weight: 600;">${otherPercent}% (${formatAccounting(otherSum)})</span>
         </div>
@@ -2311,7 +2428,7 @@ function renderAccountsStatistics() {
           ${circlesHtml}
         </svg>
         <div style="position: absolute; text-align: center; pointer-events: none;">
-          <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">總支出</div>
+          <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">蝮賣??/div>
           <div style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">${formatAccounting(totalExpense)}</div>
         </div>
       </div>
@@ -2429,7 +2546,7 @@ function renderFinancialHealth(income, expense) {
   if (!container) return;
   
   if (income === 0 && expense === 0) {
-    container.innerHTML = `<div style="width: 100%; text-align: center; color: var(--text-muted); padding: 1rem;">暫無本月數據以評估理財健康度</div>`;
+    container.innerHTML = `<div style="width: 100%; text-align: center; color: var(--text-muted); padding: 1rem;">?怎?祆??豢?隞亥?隡啁?鞎∪摨瑕漲</div>`;
     return;
   }
   
@@ -2450,28 +2567,28 @@ function renderFinancialHealth(income, expense) {
   score = Math.max(0, Math.min(100, Math.round(score)));
   
   let gradeColor = 'var(--color-green)';
-  let gradeText = '財務狀況極佳！繼續保持';
+  let gradeText = '鞎∪??瘜扔雿喉?蝜潛?靽?';
   if (score < 40) {
     gradeColor = 'var(--color-red)';
-    gradeText = '入不敷出，需注意開銷！';
+    gradeText = '?乩??瑕嚗?瘜冽??嚗?;
   } else if (score < 70) {
     gradeColor = 'var(--color-gold)';
-    gradeText = '表現平穩，可再提升儲蓄率';
+    gradeText = '銵函撟喟帘嚗?????';
   }
 
   container.innerHTML = `
     <div style="flex: 0 0 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; position: relative; background: conic-gradient(${gradeColor} ${score}%, rgba(255,255,255,0.05) 0); box-shadow: 0 0 20px ${gradeColor}40;">
       <div style="position: absolute; inset: 10px; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column;">
         <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 800; color: var(--text-primary); line-height: 1;">${score}</span>
-        <span style="font-size: 0.6rem; color: var(--text-muted);">分</span>
+        <span style="font-size: 0.6rem; color: var(--text-muted);">??/span>
       </div>
     </div>
     <div style="flex: 1;">
-      <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin: 0 0 0.25rem 0;">本月理財健康度</h3>
+      <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin: 0 0 0.25rem 0;">?祆??瓷?亙熒摨?/h3>
       <p style="font-size: 0.85rem; color: ${gradeColor}; font-weight: 600; margin: 0 0 0.5rem 0;">${gradeText}</p>
       <div style="display: flex; gap: 1rem; font-size: 0.8125rem; color: var(--text-secondary);">
-        <div>本月儲蓄：<span style="color: ${savings >= 0 ? 'var(--color-green)' : 'var(--color-red)'}; font-weight: bold;">${formatAccounting(savings)}</span></div>
-        <div>儲蓄率：<span style="color: var(--text-primary); font-weight: bold;">${income > 0 ? savingsRate.toFixed(1) : 0}%</span></div>
+        <div>?祆??脰?嚗?span style="color: ${savings >= 0 ? 'var(--color-green)' : 'var(--color-red)'}; font-weight: bold;">${formatAccounting(savings)}</span></div>
+        <div>?脰???<span style="color: var(--text-primary); font-weight: bold;">${income > 0 ? savingsRate.toFixed(1) : 0}%</span></div>
       </div>
     </div>
   `;
@@ -2493,16 +2610,16 @@ function renderGlobalBudgetTracker(expenseTotal) {
   }
   
   const remaining = budget - expenseTotal;
-  const remainingText = remaining >= 0 ? `剩餘 ${formatAccounting(remaining)}` : `超支 ${formatAccounting(Math.abs(remaining))}`;
+  const remainingText = remaining >= 0 ? `?拚? ${formatAccounting(remaining)}` : `頞 ${formatAccounting(Math.abs(remaining))}`;
 
   container.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
-      <h3 style="font-family: var(--font-title); font-size: 1rem; font-weight: 700; color: var(--text-secondary); margin: 0;">本月總預算</h3>
+      <h3 style="font-family: var(--font-title); font-size: 1rem; font-weight: 700; color: var(--text-secondary); margin: 0;">?祆?蝮賡?蝞?/h3>
       <span style="font-size: 0.85rem; color: ${color}; font-weight: 600;">${remainingText}</span>
     </div>
     <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
-      <span>已用 ${formatAccounting(expenseTotal)}</span>
-      <span>總額 ${formatAccounting(budget)}</span>
+      <span>撌脩 ${formatAccounting(expenseTotal)}</span>
+      <span>蝮賡? ${formatAccounting(budget)}</span>
     </div>
     <div style="height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; margin-top: 0.25rem;">
       <div style="height: 100%; width: ${percent}%; background: ${color}; border-radius: 5px; transition: width var(--transition-normal); box-shadow: 0 0 10px ${color}80;"></div>
@@ -2541,7 +2658,7 @@ function renderRecurring() {
     tbody.innerHTML = `
       <tr>
         <td colspan="7" style="padding: 3rem; text-align: center; color: var(--text-muted);">
-          尚未設定任何固定收支規則
+          撠閮剖?隞颱??箏??嗆閬?
         </td>
       </tr>
     `;
@@ -2557,15 +2674,15 @@ function renderRecurring() {
     const destAcc = AppState.accounts.find(a => a.id === r.destAccountId);
     
     let typeLabel = '';
-    if (r.type === 'income') typeLabel = '<span style="color: var(--color-green)">固定收入</span>';
-    if (r.type === 'expense') typeLabel = '<span style="color: var(--color-red)">固定支出</span>';
-    if (r.type === 'transfer') typeLabel = '<span style="color: var(--color-blue)">固定轉帳</span>';
+    if (r.type === 'income') typeLabel = '<span style="color: var(--color-green)">?箏??嗅</span>';
+    if (r.type === 'expense') typeLabel = '<span style="color: var(--color-red)">?箏??臬</span>';
+    if (r.type === 'transfer') typeLabel = '<span style="color: var(--color-blue)">?箏?頧董</span>';
 
     let freqText = '';
-    if (r.frequency === 'daily') freqText = '每天';
-    if (r.frequency === 'weekly') freqText = `每週 (週 ${r.dayAnchor})`;
-    if (r.frequency === 'monthly') freqText = `每月 ${r.dayAnchor} 日`;
-    if (r.frequency === 'yearly') freqText = `每年 ${r.monthAnchor} 月 ${r.dayAnchor} 日`;
+    if (r.frequency === 'daily') freqText = '瘥予';
+    if (r.frequency === 'weekly') freqText = `瘥?(??${r.dayAnchor})`;
+    if (r.frequency === 'monthly') freqText = `瘥? ${r.dayAnchor} ?匝;
+    if (r.frequency === 'yearly') freqText = `瘥僑 ${r.monthAnchor} ??${r.dayAnchor} ?匝;
 
     tr.innerHTML = `
       <td style="padding: 1.25rem; font-weight: 600;">${escapeHtml(r.name)}</td>
@@ -2575,13 +2692,17 @@ function renderRecurring() {
       <td style="padding: 1.25rem; color: var(--text-secondary);">${destAcc ? escapeHtml(destAcc.name) : '-'}</td>
       <td style="padding: 1.25rem; color: var(--text-secondary);">${freqText}</td>
       <td style="padding: 1.25rem; text-align: right;">
-        <button class="btn-icon-action" onclick="deleteRecurringRule('${r.id}')" title="刪除">
+        <button class="btn-icon-action" onclick="deleteRecurringRule('${r.id}')" title="?芷">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         </button>
       </td>
     `;
     tbody.appendChild(tr);
   });
+  
+  if (typeof renderRecurringRightPanel === 'function') {
+    renderRecurringRightPanel();
+  }
 }
 
 // --- RENDER 5: Inventory Management ---
@@ -2591,7 +2712,7 @@ function renderInventory() {
   container.innerHTML = '';
   
   if (!AppState.inventory || AppState.inventory.length === 0) {
-    container.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">目前沒有任何物資紀錄。點擊「新增物資」開始管理！</div>`;
+    container.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">?桀?瘝?隞颱??抵?蝝???憓鞈?憪恣??</div>`;
     return;
   }
   
@@ -2606,21 +2727,20 @@ function renderInventory() {
     }
     
     card.innerHTML = `
-      ${isLowStock ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-red); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">庫存過低</div>' : ''}
+      ${isLowStock ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-red); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">摨怠???</div>' : ''}
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-        <h3 style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin: 0;">${item.icon || '📦'} ${escapeHtml(item.name)}</h3>
-        <div class="dropdown-container">
-          <button class="btn-icon-toggle" onclick="toggleDropdown(event, 'inv-menu-${item.id}')">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-secondary)"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        <h3 style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin: 0;">${item.icon || '?'} ${escapeHtml(item.name)}</h3>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn-icon-action" onclick="openEditInventoryModal('${item.id}')" title="蝺刻摩">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
           </button>
-          <div class="dropdown-menu" id="inv-menu-${item.id}">
-            <button class="dropdown-item" onclick="openEditInventoryModal('${item.id}')">編輯</button>
-            <button class="dropdown-item text-danger" onclick="deleteInventoryItem('${item.id}')">刪除</button>
-          </div>
+          <button class="btn-icon-action" style="color: var(--color-red);" onclick="deleteInventoryItem('${item.id}')" title="?芷">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+          </button>
         </div>
       </div>
       <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">剩餘數量</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">?拚??賊?</span>
         <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: ${isLowStock ? 'var(--color-red)' : 'var(--text-primary)'};">
           ${item.quantity} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">${escapeHtml(item.unit)}</span>
         </span>
@@ -2635,11 +2755,15 @@ function renderInventory() {
       </div>
       ${isLowStock ? `
       <div style="margin-top: 0.5rem;">
-        <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem; background: var(--color-green); border-color: var(--color-green);" onclick="openRestockModal('${item.id}')">📦 已補貨</button>
+        <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem; background: var(--color-green); border-color: var(--color-green);" onclick="openRestockModal('${item.id}')">? 撌脰?鞎?/button>
       </div>` : ''}
     `;
     container.appendChild(card);
   });
+  
+  if (typeof renderInventoryRightPanel === 'function') {
+    renderInventoryRightPanel();
+  }
 }
 
 function selectInventoryIcon(icon) {
@@ -2681,7 +2805,7 @@ function renderInventoryIconsDropdown() {
 function populateInventoryCategories() {
   const areaSelect = document.getElementById('inventory-user-area');
   if (!areaSelect) return;
-  areaSelect.innerHTML = '<option value="">請選擇使用者區</option>';
+  areaSelect.innerHTML = '<option value="">隢?蝙?刻?</option>';
   Object.keys(AppState.inventoryCategories).forEach(area => {
     const opt = document.createElement('option');
     opt.value = area;
@@ -2695,8 +2819,8 @@ function handleUserAreaChange() {
   const mainSelect = document.getElementById('inventory-main-category');
   const subSelect = document.getElementById('inventory-sub-category');
   
-  mainSelect.innerHTML = '<option value="">請選擇大類</option>';
-  subSelect.innerHTML = '<option value="">請先選擇大類</option>';
+  mainSelect.innerHTML = '<option value="">隢?之憿?/option>';
+  subSelect.innerHTML = '<option value="">隢??豢?憭折?</option>';
   
   if (area && AppState.inventoryCategories[area]) {
     Object.keys(AppState.inventoryCategories[area]).forEach(main => {
@@ -2713,7 +2837,7 @@ function handleMainCategoryChange() {
   const main = document.getElementById('inventory-main-category').value;
   const subSelect = document.getElementById('inventory-sub-category');
   
-  subSelect.innerHTML = '<option value="">請選擇細項</option>';
+  subSelect.innerHTML = '<option value="">隢?敦??/option>';
   
   if (area && main && AppState.inventoryCategories[area][main]) {
     AppState.inventoryCategories[area][main].forEach(sub => {
@@ -2740,52 +2864,56 @@ function handleNotifyTypeChange() {
     if (type === 'days') document.getElementById('inventory-notify-value').placeholder = '1-6';
     else if (type === 'weeks') document.getElementById('inventory-notify-value').placeholder = '1-4';
     else if (type === 'months') document.getElementById('inventory-notify-value').placeholder = '1-12';
-    else document.getElementById('inventory-notify-value').placeholder = '自行輸入';
+    else document.getElementById('inventory-notify-value').placeholder = '?芾?頛詨';
   } else {
     group.style.display = 'none';
   }
 }
 
+let inventorySearchTimeout = null;
 function handleInventorySearch(event) {
   const query = event.target.value.trim().toLowerCase();
-  const resultsDiv = document.getElementById('inventory-search-results');
   
-  if (!query) {
-    resultsDiv.style.display = 'none';
-    return;
-  }
-  
-  resultsDiv.innerHTML = '';
-  let found = false;
-  
-  Object.keys(AppState.inventoryCategories).forEach(area => {
-    Object.keys(AppState.inventoryCategories[area]).forEach(main => {
-      AppState.inventoryCategories[area][main].forEach(sub => {
-        if (sub.toLowerCase().includes(query)) {
-          found = true;
-          const item = document.createElement('div');
-          item.className = 'dropdown-item';
-          item.style.cursor = 'pointer';
-          item.innerText = `${area} > ${main} > ${sub}`;
-          item.onclick = () => {
-            document.getElementById('inventory-user-area').value = area;
-            handleUserAreaChange();
-            document.getElementById('inventory-main-category').value = main;
-            handleMainCategoryChange();
-            document.getElementById('inventory-sub-category').value = sub;
-            handleSubCategoryChange();
-            resultsDiv.style.display = 'none';
-            document.getElementById('inventory-search').value = '';
-          };
-          resultsDiv.appendChild(item);
-        }
+  clearTimeout(inventorySearchTimeout);
+  inventorySearchTimeout = setTimeout(() => {
+    const resultsDiv = document.getElementById('inventory-search-results');
+    
+    if (!query) {
+      resultsDiv.style.display = 'none';
+      return;
+    }
+    
+    resultsDiv.innerHTML = '';
+    let found = false;
+    
+    Object.keys(AppState.inventoryCategories).forEach(area => {
+      Object.keys(AppState.inventoryCategories[area]).forEach(main => {
+        AppState.inventoryCategories[area][main].forEach(sub => {
+          if (sub.toLowerCase().includes(query)) {
+            found = true;
+            const item = document.createElement('div');
+            item.className = 'dropdown-item';
+            item.style.cursor = 'pointer';
+            item.innerText = `${area} > ${main} > ${sub}`;
+            item.onclick = () => {
+              document.getElementById('inventory-user-area').value = area;
+              handleUserAreaChange();
+              document.getElementById('inventory-main-category').value = main;
+              handleMainCategoryChange();
+              document.getElementById('inventory-sub-category').value = sub;
+              handleSubCategoryChange();
+              resultsDiv.style.display = 'none';
+              document.getElementById('inventory-search').value = '';
+            };
+            resultsDiv.appendChild(item);
+          }
+        });
       });
     });
-  });
-  
-  if (found) {
-    resultsDiv.style.display = 'block';
-  } else {
+    
+    if (found) {
+      resultsDiv.style.display = 'block';
+    } else {
     resultsDiv.style.display = 'none';
   }
 }
@@ -2793,12 +2921,15 @@ function handleInventorySearch(event) {
 function openAddInventoryModal() {
   document.getElementById('form-inventory').reset();
   document.getElementById('inventory-edit-id').value = '';
-  document.getElementById('modal-inventory-title').innerText = '新增存貨';
+  document.getElementById('modal-inventory-title').innerText = '?啣??抵?';
   
   renderInventoryIconsDropdown();
-  selectInventoryIcon(AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '📦');
+  selectInventoryIcon(AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '?');
   
   populateInventoryCategories();
+  populateInventoryLocationsAndUnits();
+  initExpiryDateSelects();
+  
   document.getElementById('inventory-user-area').value = '';
   handleUserAreaChange();
   
@@ -2815,6 +2946,9 @@ function openEditInventoryModal(id) {
   document.getElementById('inventory-edit-id').value = item.id;
   
   populateInventoryCategories();
+  populateInventoryLocationsAndUnits();
+  initExpiryDateSelects();
+  
   document.getElementById('inventory-user-area').value = item.userArea || '';
   handleUserAreaChange();
   document.getElementById('inventory-main-category').value = item.mainCategory || '';
@@ -2828,15 +2962,27 @@ function openEditInventoryModal(id) {
   document.getElementById('inventory-quantity').value = item.quantity;
   document.getElementById('inventory-unit').value = item.unit || '';
   document.getElementById('inventory-threshold').value = item.threshold || '';
-  document.getElementById('inventory-expiry-date').value = item.expiryDate || '';
+  
+  if (item.expiryDate) {
+    document.getElementById('inventory-expiry-date').value = item.expiryDate;
+    const [y, m, d] = item.expiryDate.split('-');
+    document.getElementById('inventory-expiry-year').value = y || '';
+    document.getElementById('inventory-expiry-month').value = m ? parseInt(m, 10).toString() : '';
+    document.getElementById('inventory-expiry-day').value = d ? parseInt(d, 10).toString() : '';
+  } else {
+    document.getElementById('inventory-expiry-date').value = '';
+    document.getElementById('inventory-expiry-year').value = '';
+    document.getElementById('inventory-expiry-month').value = '';
+    document.getElementById('inventory-expiry-day').value = '';
+  }
   
   document.getElementById('inventory-notify-type').value = item.notifyType || '';
   handleNotifyTypeChange();
   document.getElementById('inventory-notify-value').value = item.notifyValue || '';
 
-  document.getElementById('modal-inventory-title').innerText = '編輯存貨';
+  document.getElementById('modal-inventory-title').innerText = '蝺刻摩?抵?';
   renderInventoryIconsDropdown();
-  selectInventoryIcon(item.icon || (AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '📦'));
+  selectInventoryIcon(item.icon || (AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '?'));
   openModal('modal-inventory');
   
   const menus = document.querySelectorAll('.dropdown-menu');
@@ -2850,7 +2996,13 @@ async function handleInventorySubmit(event) {
   const mainCategory = document.getElementById('inventory-main-category').value;
   const subCategory = document.getElementById('inventory-sub-category').value;
   const store = document.getElementById('inventory-store').value;
-  const name = document.getElementById('inventory-name').value;
+  let name = document.getElementById('inventory-name').value.trim();
+  
+  // Requirement #2: If name is empty, use subcategory name
+  if (!name) {
+    name = subCategory;
+  }
+  
   const inDate = document.getElementById('inventory-in-date').value;
   const location = document.getElementById('inventory-location').value;
   const quantity = Number(document.getElementById('inventory-quantity').value);
@@ -2859,7 +3011,7 @@ async function handleInventorySubmit(event) {
   const expiryDate = document.getElementById('inventory-expiry-date').value;
   const notifyType = document.getElementById('inventory-notify-type').value;
   const notifyValue = Number(document.getElementById('inventory-notify-value').value) || 0;
-  const icon = document.getElementById('inventory-icon').value || '📦';
+  const icon = document.getElementById('inventory-icon').value || '?';
   
   const payload = {
     userArea, mainCategory, subCategory, store, name, inDate, location, quantity, unit, threshold, expiryDate, notifyType, notifyValue, icon
@@ -2883,7 +3035,7 @@ async function handleInventorySubmit(event) {
 }
 
 async function deleteInventoryItem(id) {
-  if (confirm('確定要刪除此物資紀錄嗎？')) {
+  if (confirm('蝣箏?閬?斗迨?抵?蝝??嚗?)) {
     AppState.inventory = AppState.inventory.filter(i => i.id !== id);
     await saveStateToStorage();
     renderInventory();
@@ -2904,7 +3056,7 @@ function generateShoppingList() {
   const lowStockItems = AppState.inventory.filter(i => i.threshold && i.quantity <= i.threshold);
   
   if (lowStockItems.length === 0) {
-    alert('目前存貨充足，無待補品項！');
+    alert('?桀?摮疏?雲嚗敺???嚗?);
     return;
   } else {
     let html = `<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">`;
@@ -2914,9 +3066,9 @@ function generateShoppingList() {
         <li style="display: flex; justify-content: space-between; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
           <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
             <input type="checkbox" checked class="shopping-item-check" data-id="${item.id}">
-            <span>${item.icon || '📦'} ${escapeHtml(item.name)}</span>
+            <span>${item.icon || '?'} ${escapeHtml(item.name)}</span>
           </label>
-          <span style="color: var(--text-secondary); font-size: 0.85rem;">建議購買至少 ${needed} ${escapeHtml(item.unit)}</span>
+          <span style="color: var(--text-secondary); font-size: 0.85rem;">撱箄降鞈潸眺?喳? ${needed} ${escapeHtml(item.unit)}</span>
         </li>
       `;
     });
@@ -2925,7 +3077,7 @@ function generateShoppingList() {
   }
   
   const splitSelect = document.getElementById('shopping-split-plan');
-  splitSelect.innerHTML = `<option value="">-- 選擇分帳計畫 (可選) --</option>`;
+  splitSelect.innerHTML = `<option value="">-- ?豢??董閮 (?舫) --</option>`;
   AppState.splitPlans.forEach(plan => {
     splitSelect.innerHTML += `<option value="${plan.id}">${escapeHtml(plan.name)}</option>`;
   });
@@ -2945,13 +3097,13 @@ function openRestockModal(id) {
 async function executeShoppingSplit() {
   const checks = document.querySelectorAll('.shopping-item-check:checked');
   if (checks.length === 0) {
-    alert("請至少勾選一項採買物品！");
+    alert("隢撠?訾??鞎瑞??");
     return;
   }
   
   const amount = Number(document.getElementById('shopping-total-amount').value);
   if (!amount || amount <= 0) {
-    alert("請輸入有效的採買總金額！");
+    alert("隢撓?交????∟眺蝮賡?憿?");
     return;
   }
   
@@ -2977,15 +3129,15 @@ async function executeShoppingSplit() {
       
       plan.transactions.push({
         id: `sptx_${Date.now()}`,
-        name: `採買: ${itemNames}`,
+        name: `?∟眺: ${itemNames}`,
         amount: amount,
         paidBy: currentUser,
         date: new Date().toISOString().split('T')[0]
       });
-      alert(`已成功補充庫存，並將 ${formatAccounting(amount)} 轉入分帳計畫「${plan.name}」！`);
+      alert(`撌脫????澈摮?銝血? ${formatAccounting(amount)} 頧?董閮??{plan.name}??`);
     }
   } else {
-    alert(`已成功補充庫存！(提醒：您未選擇分帳計畫)`);
+    alert(`撌脫????澈摮?(??嚗?芷??撣唾???`);
   }
   
   await saveStateToStorage();
@@ -3003,7 +3155,7 @@ function renderSplitPlans() {
     container.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 1.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        <p>目前沒有任何分帳計畫</p>
+        <p>?桀?瘝?隞颱??董閮</p>
       </div>
     `;
     return;
@@ -3014,7 +3166,7 @@ function renderSplitPlans() {
     card.className = 'split-plan-card';
     
     // Status text
-    const statusLabel = plan.status === 'settled' ? '已結算' : '分帳中';
+    const statusLabel = plan.status === 'settled' ? '撌脩?蝞? : '?董銝?;
     const statusClass = plan.status === 'settled' ? 'settled' : 'active';
 
     // Summary of total spend
@@ -3027,7 +3179,7 @@ function renderSplitPlans() {
     if (plan.status === 'settled' && plan.settlement) {
       const instructions = plan.settlement.map(inst => `
         <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; border-bottom: 1px dashed rgba(255,255,255,0.05); padding: 0.25rem 0;">
-          <span>👉 <strong>${escapeHtml(inst.from)}</strong> 應付給 <strong>${escapeHtml(inst.to)}</strong></span>
+          <span>?? <strong>${escapeHtml(inst.from)}</strong> ??蝯?<strong>${escapeHtml(inst.to)}</strong></span>
           <span style="color: var(--color-purple); font-weight: bold;">${formatAccounting(inst.amount)}</span>
         </div>
       `).join('');
@@ -3077,7 +3229,7 @@ function renderSplitPlans() {
         let nodes = '';
         plan.members.forEach(m => {
           const c = coords[m];
-          const isMe = m === '我' || m === currentUser;
+          const isMe = m === '?? || m === currentUser;
           const color = isMe ? '#00F2FE' : '#FF5B94';
           nodes += `
             <circle cx="${c.x}" cy="${c.y}" r="11" fill="var(--bg-card-solid)" stroke="${color}" stroke-width="1.5" />
@@ -3109,11 +3261,11 @@ function renderSplitPlans() {
 
       settlementHtml = `
         <div class="split-settlement-results">
-          <div class="settlement-title">💰 結算明細與導航圖</div>
+          <div class="settlement-title">? 蝯??敦???芸?</div>
           ${diagramSvg}
-          ${instructions || '<div style="font-size: 0.75rem; color: var(--text-muted);">金額已全部軋平，無需收付款</div>'}
+          ${instructions || '<div style="font-size: 0.75rem; color: var(--text-muted);">??撌脣?刻?撟喉??⊿??嗡?甈?/div>'}
           <button class="btn-select-option" style="margin-top: 0.5rem; width: 100%; border-color: var(--color-purple); color: var(--color-purple);" onclick="copyToClipboard(\`${rawReport}\`)">
-            複製結算報告 (分享Line)
+            銴ˊ蝯??勗? (?澈Line)
           </button>
         </div>
       `;
@@ -3122,14 +3274,14 @@ function renderSplitPlans() {
       settlementHtml = `
         <div style="display: flex; gap: 0.5rem; margin-top: auto; align-items: flex-end;">
           <button class="btn-primary" style="flex: 1; padding: 0.75rem 0.5rem; justify-content: center; font-size: 0.875rem; border-radius: 14px;" onclick="openAddSplitTransModal('${plan.id}')">
-            記分帳款
+            閮?撣單狡
           </button>
           <div class="settle-btn-wrapper" style="position: relative; display: inline-flex; flex: 1;">
             <div class="peeking-cat" style="display: flex; align-items: flex-end; justify-content: center; width: 40px; height: 32px; overflow: hidden; position: absolute; top: -20px; left: 10px;">
               ${getMascotSvg(AppState.petTheme, 40)}
             </div>
             <button class="btn-settle-celebrate" onclick="settleSplitPlan('${plan.id}')" style="border: 2px solid var(--theme-color) !important; color: var(--text-primary) !important; box-shadow: none !important;">
-              結算此計畫
+              蝯?甇方???
             </button>
           </div>
         </div>
@@ -3141,18 +3293,18 @@ function renderSplitPlans() {
     if (plan.transactions.length > 0) {
       txLogList = plan.transactions.map(t => `
         <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">
-          <span>${t.date ? `<span style="font-size:0.75rem; color:var(--text-muted); margin-right:0.4rem;">[${t.date}]</span>` : ''}${escapeHtml(t.name)} (由 ${escapeHtml(t.payer)} 墊付)</span>
+          <span>${t.date ? `<span style="font-size:0.75rem; color:var(--text-muted); margin-right:0.4rem;">[${t.date}]</span>` : ''}${escapeHtml(t.name)} (??${escapeHtml(t.payer)} 憓?)</span>
           <span>${formatAccounting(t.amount)}</span>
         </div>
-      `).slice(0, 3).join('') + (plan.transactions.length > 3 ? '<div style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">... 及其他款項</div>' : '');
+      `).slice(0, 3).join('') + (plan.transactions.length > 3 ? '<div style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">... ?隞狡??/div>' : '');
     } else {
-      txLogList = '<div style="font-size: 0.75rem; color: var(--text-muted);">無任何款項記錄</div>';
+      txLogList = '<div style="font-size: 0.75rem; color: var(--text-muted);">?∩遙雿狡????/div>';
     }
 
     // Build member chips (Single line with icons)
     const memberChips = plan.members.map(m => `
       <div class="split-member-item" style="background: rgba(255,255,255,0.05); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8125rem; flex-shrink: 0;">
-        <span style="font-size: 0.9rem;">👤</span> <span>${escapeHtml(m)}</span>
+        <span>${escapeHtml(m)}</span>
       </div>
     `).join('');
 
@@ -3162,8 +3314,8 @@ function renderSplitPlans() {
         <span class="split-plan-status ${statusClass}">${statusLabel}</span>
       </div>
       <div class="split-plan-meta">
-        <div>日期區間: ${plan.startDate} ~ ${plan.endDate}</div>
-        <div style="font-weight: 700; margin-top: 0.25rem;">計畫總花費: <span style="color: var(--color-purple); font-size: 1.1rem;">${formatAccounting(totalSpend)}</span></div>
+        <div>?交???? ${plan.startDate} ~ ${plan.endDate}</div>
+        <div style="font-weight: 700; margin-top: 0.25rem;">閮蝮質鞎? <span style="color: var(--color-purple); font-size: 1.1rem;">${formatAccounting(totalSpend)}</span></div>
       </div>
       
       <div class="split-plan-members" style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch;">
@@ -3171,14 +3323,14 @@ function renderSplitPlans() {
       </div>
 
       <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 10px; display: flex; flex-direction: column; gap: 0.35rem;">
-        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 0.25rem;">款項紀錄</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 0.25rem;">甈暸?蝝??/div>
         ${txLogList}
       </div>
 
       ${settlementHtml}
 
       <div style="display: flex; justify-content: flex-end; margin-top: 0.25rem;">
-        <button class="btn-icon-action" onclick="deleteSplitPlan('${plan.id}')" title="刪除此計畫">
+        <button class="btn-icon-action" onclick="deleteSplitPlan('${plan.id}')" title="?芷甇方???>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         </button>
       </div>
@@ -3186,25 +3338,29 @@ function renderSplitPlans() {
     
     container.appendChild(card);
   });
+  
+  if (typeof renderSplitRightPanel === 'function') {
+    renderSplitRightPanel();
+  }
 }
 
 function generateSplitPlanReportText(plan) {
   const totalSpend = plan.transactions.reduce((sum, tx) => sum + Number(tx.amount), 0);
-  let rText = `🔔 ${plan.name} 結算報告 🔔\n`;
-  rText += `活動期間：${plan.startDate} 至 ${plan.endDate}\n`;
-  rText += `總計花費：${formatAccounting(totalSpend)}\n`;
+  let rText = `?? ${plan.name} 蝯??勗? ??\n`;
+  rText += `瘣餃???嚗?{plan.startDate} ??${plan.endDate}\n`;
+  rText += `蝮質??梯祥嚗?{formatAccounting(totalSpend)}\n`;
   rText += `--------------------\n`;
-  rText += `還款清算方式如下：\n`;
+  rText += `?狡皜??孵?憒?嚗n`;
   
   if (plan.settlement && plan.settlement.length > 0) {
     plan.settlement.forEach(inst => {
-      rText += `👉 【${inst.from}】 應轉帳給 【${inst.to}】 ${formatAccounting(inst.amount)}\n`;
+      rText += `?? ??{inst.from}????撣喟策 ??{inst.to}??${formatAccounting(inst.amount)}\n`;
     });
   } else {
-    rText += `無債務關係，無須轉帳！\n`;
+    rText += `?∪??靽??⊿?頧董嚗n`;
   }
   rText += `--------------------\n`;
-  rText += `感謝大家的參與！`;
+  rText += `??憭批振????`;
   return rText;
 }
 
@@ -3215,10 +3371,10 @@ function renderCarrierInvoices() {
   
   if (AppState.carrierBarcode) {
     displayBarcode.innerText = AppState.carrierBarcode;
-    setupBtn.innerText = '修改載具';
+    setupBtn.innerText = '靽格頛';
   } else {
-    displayBarcode.innerText = '尚未設定載具';
-    setupBtn.innerText = '設定載具';
+    displayBarcode.innerText = '撠閮剖?頛';
+    setupBtn.innerText = '閮剖?頛';
   }
 
   const container = document.getElementById('carrier-invoices-review-list');
@@ -3230,7 +3386,7 @@ function renderCarrierInvoices() {
     container.innerHTML = `
       <div class="empty-state" style="padding: 2rem;">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-        <p>目前沒有待審核的載具發票</p>
+        <p>?桀?瘝?敺祟?貊?頛?潛巨</p>
       </div>
     `;
     return;
@@ -3240,7 +3396,7 @@ function renderCarrierInvoices() {
     const card = document.createElement('div');
     card.className = 'invoice-item-card';
 
-    const itemsText = inv.items.map(it => `${it.name}($${it.price})`).join('、');
+    const itemsText = inv.items.map(it => `${it.name}($${it.price})`).join('??);
     
     // Construct account choices dropdown
     const selectOptions = AppState.accounts.map(acc => {
@@ -3251,8 +3407,8 @@ function renderCarrierInvoices() {
     card.innerHTML = `
       <div class="invoice-details">
         <div class="invoice-store">${escapeHtml(inv.store)}</div>
-        <div class="invoice-date">${inv.date} • 發票號碼：${inv.invoiceNo || '無'} • 手機載具匯入</div>
-        <div class="invoice-items-summary">明細：${escapeHtml(itemsText)}</div>
+        <div class="invoice-date">${inv.date} ???潛巨?Ⅳ嚗?{inv.invoiceNo || '??} ????頛?臬</div>
+        <div class="invoice-items-summary">?敦嚗?{escapeHtml(itemsText)}</div>
       </div>
       <div class="invoice-action-panel">
         <div class="invoice-amount">${formatAccounting(inv.amount)}</div>
@@ -3261,7 +3417,7 @@ function renderCarrierInvoices() {
             ${selectOptions}
           </select>
           <button class="btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.8125rem; box-shadow: none;" onclick="confirmCarrierInvoice('${inv.id}')">
-            確認記帳
+            蝣箄?閮董
           </button>
         </div>
       </div>
@@ -3295,7 +3451,7 @@ function renderCategories() {
     chip.className = 'category-editable-chip';
     chip.innerHTML = `
       <span>${escapeHtml(cat)}</span>
-      <button class="btn-del-cat" onclick="deleteCategory('expense', '${cat}')">×</button>
+      <button class="btn-del-cat" onclick="deleteCategory('expense', '${cat}')">?</button>
     `;
     expContainer.appendChild(chip);
   });
@@ -3308,7 +3464,7 @@ function renderCategories() {
     chip.className = 'category-editable-chip';
     chip.innerHTML = `
       <span>${escapeHtml(cat)}</span>
-      <button class="btn-del-cat" onclick="deleteCategory('income', '${cat}')">×</button>
+      <button class="btn-del-cat" onclick="deleteCategory('income', '${cat}')">?</button>
     `;
     incContainer.appendChild(chip);
   });
@@ -3342,21 +3498,83 @@ function renderCategories() {
       recIconsContainer.appendChild(chip);
     });
   }
+
+  // Render Wishlist Icons
+  const wishlistIconsContainer = document.getElementById('wishlist-icons-chips');
+  if (wishlistIconsContainer) {
+    wishlistIconsContainer.innerHTML = '';
+    if (!AppState.wishlistIcons) AppState.wishlistIcons = ['🎁', '✈️', '🚗', '🏠', '📱']; // default fallback
+    AppState.wishlistIcons.forEach(icon => {
+      const chip = document.createElement('div');
+      chip.className = 'category-editable-chip';
+      chip.innerHTML = `
+        <span>${escapeHtml(icon)}</span>
+        <button class="btn-del-cat" onclick="deleteIcon('wishlist', '${icon}')">×</button>
+      `;
+      wishlistIconsContainer.appendChild(chip);
+    });
+  }
+
+  // Render Inventory Locations
+  const locationChipsContainer = document.getElementById('location-chips');
+  if (locationChipsContainer) {
+    locationChipsContainer.innerHTML = '';
+    if (!AppState.inventoryLocations) AppState.inventoryLocations = ['客廳', '廚房', '浴室', '臥室', '儲藏室', '車上', '辦公室', '陽台'];
+    AppState.inventoryLocations.forEach(loc => {
+      const chip = document.createElement('div');
+      chip.className = 'category-editable-chip';
+      chip.innerHTML = `
+        <span>${escapeHtml(loc)}</span>
+        <button class="btn-del-cat" onclick="deleteInventoryLocation('${loc}')">×</button>
+      `;
+      locationChipsContainer.appendChild(chip);
+    });
+  }
+
+  // Render Inventory Units
+  const unitChipsContainer = document.getElementById('unit-chips');
+  if (unitChipsContainer) {
+    unitChipsContainer.innerHTML = '';
+    if (!AppState.inventoryUnits) AppState.inventoryUnits = ['包', '瓶', '個', '盒', '袋', '罐', '條', '片', '組', '支', '卷', '張'];
+    AppState.inventoryUnits.forEach(u => {
+      const chip = document.createElement('div');
+      chip.className = 'category-editable-chip';
+      chip.innerHTML = `
+        <span>${escapeHtml(u)}</span>
+        <button class="btn-del-cat" onclick="deleteInventoryUnit('${u}')">×</button>
+      `;
+      unitChipsContainer.appendChild(chip);
+    });
+  }
 }
 
+let filterCatTimeout = null;
 function filterCategories(type) {
-  renderCategories();
+  clearTimeout(filterCatTimeout);
+  filterCatTimeout = setTimeout(() => {
+    renderCategories();
+  }, 250);
 }
 
 function addIcon(type) {
-  const inputId = type === 'inventory' ? 'new-inventory-icon-input' : 'new-recurring-icon-input';
+  let inputId;
+  if (type === 'inventory') inputId = 'new-inventory-icon-input';
+  else if (type === 'wishlist') inputId = 'new-wishlist-icon-input';
+  else inputId = 'new-recurring-icon-input';
+  
   const inputEl = document.getElementById(inputId);
+  if (!inputEl) return;
   const newIcon = inputEl.value.trim();
   if (!newIcon) return;
   
   if (type === 'inventory') {
     if (!AppState.inventoryIcons.includes(newIcon)) {
       AppState.inventoryIcons.push(newIcon);
+    }
+  } else if (type === 'wishlist') {
+    if (!AppState.wishlistIcons) AppState.wishlistIcons = ['🎁', '✈️', '🚗', '🏠', '📱'];
+    if (!AppState.wishlistIcons.includes(newIcon)) {
+      AppState.wishlistIcons.push(newIcon);
     }
   } else {
     if (!AppState.recurringIcons.includes(newIcon)) {
@@ -3373,11 +3591,61 @@ function deleteIcon(type, icon) {
   if (!confirm(`確定要刪除圖標 [${icon}] 嗎？`)) return;
   if (type === 'inventory') {
     AppState.inventoryIcons = AppState.inventoryIcons.filter(i => i !== icon);
+  } else if (type === 'wishlist') {
+    AppState.wishlistIcons = AppState.wishlistIcons.filter(i => i !== icon);
   } else {
     AppState.recurringIcons = AppState.recurringIcons.filter(i => i !== icon);
   }
   saveStateToStorage();
   renderCategories();
+}
+
+function addInventoryLocation() {
+  const inputEl = document.getElementById('new-location-input');
+  if (!inputEl) return;
+  const val = inputEl.value.trim();
+  if (!val) return;
+  
+  if (!AppState.inventoryLocations) AppState.inventoryLocations = ['客廳', '廚房', '浴室', '臥室', '儲藏室', '車上', '辦公室', '陽台'];
+  if (!AppState.inventoryLocations.includes(val)) {
+    AppState.inventoryLocations.push(val);
+  }
+  inputEl.value = '';
+  saveStateToStorage();
+  renderCategories();
+  populateInventoryLocationsAndUnits(); // Update any dropdowns if rendered
+}
+
+function deleteInventoryLocation(loc) {
+  if (!confirm(`確定要刪除入倉位置 [${loc}] 嗎？`)) return;
+  AppState.inventoryLocations = AppState.inventoryLocations.filter(i => i !== loc);
+  saveStateToStorage();
+  renderCategories();
+  populateInventoryLocationsAndUnits();
+}
+
+function addInventoryUnit() {
+  const inputEl = document.getElementById('new-unit-input');
+  if (!inputEl) return;
+  const val = inputEl.value.trim();
+  if (!val) return;
+  
+  if (!AppState.inventoryUnits) AppState.inventoryUnits = ['包', '瓶', '個', '盒', '袋', '罐', '條', '片', '組', '支', '卷', '張'];
+  if (!AppState.inventoryUnits.includes(val)) {
+    AppState.inventoryUnits.push(val);
+  }
+  inputEl.value = '';
+  saveStateToStorage();
+  renderCategories();
+  populateInventoryLocationsAndUnits();
+}
+
+function deleteInventoryUnit(unit) {
+  if (!confirm(`確定要刪除單位 [${unit}] 嗎？`)) return;
+  AppState.inventoryUnits = AppState.inventoryUnits.filter(i => i !== unit);
+  saveStateToStorage();
+  renderCategories();
+  populateInventoryLocationsAndUnits();
 }
 
 // --- RENDER 8: Side Panel Updates ---
@@ -3393,7 +3661,7 @@ function updateRightPanel() {
   const titleEl = document.getElementById('right-panel-title');
   const todayStr = new Date().toISOString().split('T')[0];
   if (titleEl) {
-    titleEl.innerText = selectedDate === todayStr ? '今日收支總計' : `${selectedDate.replace(/-/g, '/')} 收支總計`;
+    titleEl.innerText = selectedDate === todayStr ? '隞?嗆蝮質?' : `${selectedDate.replace(/-/g, '/')} ?嗆蝮質?`;
   }
 
   let incSum = 0;
@@ -3424,7 +3692,7 @@ function updateRightPanel() {
     let valText = '';
     if (acc.type === 'credit') {
       const cycleStatus = getCreditCardCycleStatus(acc, new Date());
-      valText = `可用: ${formatAccounting(cycleStatus.availableLimit)}`;
+      valText = `?舐: ${formatAccounting(cycleStatus.availableLimit)}`;
     } else if (acc.type === 'securities') {
       const total = balances[acc.id].balance + balances[acc.id].securitiesInvested;
       valText = formatAccounting(total);
@@ -3473,19 +3741,19 @@ function updateRightPanel() {
       alertCard.className = 'cc-alert-card';
       
       let alertTitle = escapeHtml(card.name);
-      let alertContent = `目前未結帳單金額：${formatAccounting(spent)}<br>可用額度：${formatAccounting(cycleStatus.availableLimit)} / ${formatAccounting(Number(card.creditLimit) || 100000)}<br>每月的 ${card.billingDay} 號為結帳日，每月的 ${card.dueDay} 號為繳費截止日。`;
+      let alertContent = `?桀??芰?撣喳??嚗?{formatAccounting(spent)}<br>?舐憿漲嚗?{formatAccounting(cycleStatus.availableLimit)} / ${formatAccounting(Number(card.creditLimit) || 100000)}<br>瘥???${card.billingDay} ?蝯董?伐?瘥???${card.dueDay} ?蝜唾祥?芣迫?乓;
       
       if (isTomorrowBilling) {
-        alertTitle = `⚠️ 明日結帳日 - ${card.name}`;
-        alertContent = `提醒您！明天即將結帳，累計未結算金額為 ${formatAccounting(spent)}。`;
+        alertTitle = `?? ?蝯董??- ${card.name}`;
+        alertContent = `???剁??予?喳?蝯董嚗敞閮蝯?????${formatAccounting(spent)}?;
       } else if (isTomorrowDue) {
-        alertTitle = `🚨 明日繳費截止日 - ${card.name}`;
-        alertContent = `緊急！明天即將截止繳費，請確保已轉帳付訖 ${formatAccounting(spent)} 元！`;
+        alertTitle = `? ?蝜唾祥?芣迫??- ${card.name}`;
+        alertContent = `蝺伐??予?喳??芣迫蝜唾祥嚗?蝣箔?撌脰?撣喃?閮?${formatAccounting(spent)} ??`;
       } else if (isLowLimit) {
-        alertTitle = `⚠️ 額度即將耗盡 - ${card.name}`;
+        alertTitle = `?? 憿漲?喳?? - ${card.name}`;
         alertCard.style.borderColor = 'rgba(239, 68, 68, 0.4)';
         alertCard.style.background = 'rgba(239, 68, 68, 0.08)';
-        alertContent = `警示！可用額度剩餘 <strong>${formatAccounting(cycleStatus.availableLimit)}</strong>，低於警示門檻 ${formatAccounting(card.warningThreshold || 0)}！`;
+        alertContent = `霅衣內嚗?券?摨血擗?<strong>${formatAccounting(cycleStatus.availableLimit)}</strong>嚗??潸郎蝷粹?瑼?${formatAccounting(card.warningThreshold || 0)}嚗;
       }
 
       alertCard.innerHTML = `
@@ -3503,7 +3771,7 @@ function updateRightPanel() {
   if (!hasAlerts) {
     ccAlerts.innerHTML = `
       <div style="font-size: 0.8125rem; color: var(--text-muted); text-align: center; padding: 1rem;">
-        無緊急繳費或結帳提醒。
+        ?∠??亦像鞎餅?蝯董????
       </div>
     `;
   }
@@ -3525,7 +3793,7 @@ function setTransType(type) {
   // Toggle Active style on selector buttons
   const buttons = document.querySelectorAll('#trans-type-selector button');
   buttons.forEach(btn => {
-    if (btn.innerText === (type === 'expense' ? '支出' : type === 'income' ? '收入' : '轉帳')) {
+    if (btn.innerText === (type === 'expense' ? '?臬' : type === 'income' ? '?嗅' : '頧董')) {
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
@@ -3542,12 +3810,12 @@ function setTransType(type) {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'block';
     catGrp.style.display = 'none';
-    labelSrc.innerText = '轉出帳戶';
+    labelSrc.innerText = '頧撣單';
   } else {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'none';
     catGrp.style.display = 'block';
-    labelSrc.innerText = type === 'expense' ? '扣款帳戶' : '收款帳戶';
+    labelSrc.innerText = type === 'expense' ? '??狡撣單' : '?嗆狡撣單';
   }
 
   // Update amount input color based on transaction type
@@ -3616,7 +3884,7 @@ function handleAccountTypeSelectBtn(direction, type) {
   closeAllAccountPopovers();
   
   if (filtered.length === 0) {
-    alert(`您尚未新增任何「${getAccountTypeChineseName(type)}」帳戶，請先前往「帳戶與預算管理」分頁新增！`);
+    alert(`?典??芣憓遙雿?{getAccountTypeChineseName(type)}?董?塚?隢????董?嗉???蝞∠????憓?`);
     return;
   }
   
@@ -3631,7 +3899,7 @@ function handleAccountTypeSelectBtn(direction, type) {
     // Add header to popover
     const header = document.createElement('div');
     header.className = 'account-popover-header';
-    header.innerText = `選擇${getAccountTypeChineseName(type)}`;
+    header.innerText = `?豢?${getAccountTypeChineseName(type)}`;
     popover.appendChild(header);
 
     filtered.forEach(acc => {
@@ -3688,20 +3956,20 @@ function closeAllAccountPopovers() {
 }
 
 function getAccountTypeChineseName(type) {
-  const mapping = { cash: '現金', bank: '銀行', credit: '信用卡', securities: '證券戶' };
-  return mapping[type] || '帳戶';
+  const mapping = { cash: '?暸?', bank: '?銵?, credit: '靽∠??, securities: '霅?? };
+  return mapping[type] || '撣單';
 }
 
 function resetAccountButtons() {
-  document.getElementById('btn-src-cash').innerText = "我的錢包";
-  document.getElementById('btn-src-bank').innerText = "銀行帳戶";
-  document.getElementById('btn-src-credit').innerText = "信用卡";
-  document.getElementById('btn-src-securities').innerText = "證券戶";
+  document.getElementById('btn-src-cash').innerText = "???Ｗ?";
+  document.getElementById('btn-src-bank').innerText = "?銵董??;
+  document.getElementById('btn-src-credit').innerText = "靽∠??;
+  document.getElementById('btn-src-securities').innerText = "霅??;
 
-  document.getElementById('btn-dst-cash').innerText = "我的錢包";
-  document.getElementById('btn-dst-bank').innerText = "銀行帳戶";
-  document.getElementById('btn-dst-credit').innerText = "信用卡";
-  document.getElementById('btn-dst-securities').innerText = "證券戶";
+  document.getElementById('btn-dst-cash').innerText = "???Ｗ?";
+  document.getElementById('btn-dst-bank').innerText = "?銵董??;
+  document.getElementById('btn-dst-credit').innerText = "靽∠??;
+  document.getElementById('btn-dst-securities').innerText = "霅??;
 
   const btns = document.querySelectorAll('.btn-account-select');
   btns.forEach(btn => btn.classList.remove('active'));
@@ -3719,10 +3987,10 @@ function updateAccountButtonsFromInputs() {
   const srcId = document.getElementById('trans-account').value;
   const srcAcc = AppState.accounts.find(a => a.id === srcId);
   
-  document.getElementById('btn-src-cash').innerText = "我的錢包";
-  document.getElementById('btn-src-bank').innerText = "銀行帳戶";
-  document.getElementById('btn-src-credit').innerText = "信用卡";
-  document.getElementById('btn-src-securities').innerText = "證券戶";
+  document.getElementById('btn-src-cash').innerText = "???Ｗ?";
+  document.getElementById('btn-src-bank').innerText = "?銵董??;
+  document.getElementById('btn-src-credit').innerText = "靽∠??;
+  document.getElementById('btn-src-securities').innerText = "霅??;
   
   const srcBtns = document.querySelectorAll('#trans-account-type-buttons-src button');
   srcBtns.forEach(btn => btn.classList.remove('active'));
@@ -3739,10 +4007,10 @@ function updateAccountButtonsFromInputs() {
   const dstId = document.getElementById('trans-dest-account').value;
   const dstAcc = AppState.accounts.find(a => a.id === dstId);
 
-  document.getElementById('btn-dst-cash').innerText = "我的錢包";
-  document.getElementById('btn-dst-bank').innerText = "銀行帳戶";
-  document.getElementById('btn-dst-credit').innerText = "信用卡";
-  document.getElementById('btn-dst-securities').innerText = "證券戶";
+  document.getElementById('btn-dst-cash').innerText = "???Ｗ?";
+  document.getElementById('btn-dst-bank').innerText = "?銵董??;
+  document.getElementById('btn-dst-credit').innerText = "靽∠??;
+  document.getElementById('btn-dst-securities').innerText = "霅??;
 
   const dstBtns = document.querySelectorAll('#trans-account-type-buttons-dst button');
   dstBtns.forEach(btn => btn.classList.remove('active'));
@@ -3792,7 +4060,7 @@ function editTransaction(id) {
   }
   checkShowCcInstallmentOptions();
   
-  document.getElementById('modal-transaction-title').innerText = "編輯記帳";
+  document.getElementById('modal-transaction-title').innerText = "蝺刻摩閮董";
   openModal('modal-transaction');
 }
 
@@ -3800,7 +4068,7 @@ function openAddTransactionModal() {
   document.getElementById('form-transaction').reset();
   document.getElementById('trans-id').value = '';
   document.getElementById('trans-date').value = selectedDate;
-  document.getElementById('modal-transaction-title').innerText = "新增記帳";
+  document.getElementById('modal-transaction-title').innerText = "?啣?閮董";
 
   resetAccountButtons();
   resetCcInstallmentFields();
@@ -3823,22 +4091,22 @@ async function handleTransactionSubmit(event) {
   const amount = Number(document.getElementById('trans-amount').value);
   const accountId = document.getElementById('trans-account').value;
   const destAccountId = type === 'transfer' ? document.getElementById('trans-dest-account').value : null;
-  const category = type === 'transfer' ? '轉帳' : document.getElementById('trans-category').value;
+  const category = type === 'transfer' ? '頧董' : document.getElementById('trans-category').value;
   const date = document.getElementById('trans-date').value;
   const notes = document.getElementById('trans-notes').value;
 
   if (amount <= 0) {
-    alert("記帳金額必須大於 0 元！");
+    alert("閮董??敹?憭扳 0 ??");
     return;
   }
 
   if (!accountId) {
-    alert("請選擇扣款/收款帳戶！");
+    alert("隢?甈??嗆狡撣單嚗?);
     return;
   }
 
   if (type === 'transfer' && accountId === destAccountId) {
-    alert("轉出與轉入帳戶不可相同！");
+    alert("頧???亙董?嗡??舐??");
     return;
   }
 
@@ -3872,7 +4140,7 @@ async function handleTransactionSubmit(event) {
 }
 
 async function deleteTransaction(id) {
-  if (confirm("您確定要刪除此筆記帳紀錄嗎？")) {
+  if (confirm("?函Ⅱ摰??芷甇斤?閮董蝝??嚗?)) {
     AppState.transactions = AppState.transactions.filter(t => t.id !== id);
     await saveStateToStorage();
     switchTab(activeTab);
@@ -3885,7 +4153,7 @@ function setAccountType(type) {
   
   const buttons = document.querySelectorAll('#account-type-selector button');
   buttons.forEach(btn => {
-    const mapping = { cash: '現金', bank: '銀行', credit: '信用卡', securities: '證券戶' };
+    const mapping = { cash: '?暸?', bank: '?銵?, credit: '靽∠??, securities: '霅?? };
     if (btn.innerText === mapping[type]) {
       btn.classList.add('active');
     } else {
@@ -3918,7 +4186,7 @@ async function handleAccountSubmit(event) {
   }
 
   if (initialBalance < 0) {
-    alert("初始餘額不能為負數！");
+    alert("??擗?銝?箄??賂?");
     return;
   }
 
@@ -3930,7 +4198,7 @@ async function handleAccountSubmit(event) {
     const budgetVal = document.getElementById('account-budget').value;
     newAcc.budget = budgetVal ? Number(budgetVal) : null;
     if (newAcc.budget !== null && newAcc.budget <= 0) {
-      alert("支出預算必須大於 0 元！");
+      alert("?臬??敹?憭扳 0 ??");
       return;
     }
     newAcc.budgetResetDay = Number(document.getElementById('account-budget-reset-day').value) || 1;
@@ -3993,7 +4261,7 @@ async function handleAccountEditSubmit(event) {
     const budgetVal = document.getElementById('account-edit-budget').value;
     const budget = budgetVal ? Number(budgetVal) : null;
     if (budget !== null && budget <= 0) {
-      alert("支出預算必須大於 0 元！");
+      alert("?臬??敹?憭扳 0 ??");
       return;
     }
     acc.budget = budget;
@@ -4011,7 +4279,7 @@ async function handleAccountEditSubmit(event) {
 }
 
 async function deleteAccount(id) {
-  if (confirm("刪除帳戶將連同所有關聯的交易紀錄一併刪除，確定要繼續嗎？")) {
+  if (confirm("?芷撣單撠??????舐?鈭斗?蝝??雿萄?歹?蝣箏?閬匱蝥?嚗?)) {
     AppState.accounts = AppState.accounts.filter(a => a.id !== id);
     AppState.transactions = AppState.transactions.filter(t => t.accountId !== id && t.destAccountId !== id);
     await saveStateToStorage();
@@ -4059,7 +4327,7 @@ async function handleSecuritiesTransferSubmit(event) {
   const userNotes = document.getElementById('sec-trans-notes').value.trim();
   
   if (amount <= 0) {
-    alert("轉移金額必須大於 0");
+    alert("頧宏??敹?憭扳 0");
     return;
   }
 
@@ -4068,11 +4336,11 @@ async function handleSecuritiesTransferSubmit(event) {
   
   // Validate if they have enough balance to transfer
   if (dir === 'buy' && accState.balance < amount) {
-    alert("餘額不足！帳戶內現金不足以買入股票。");
+    alert("擗?銝雲嚗董?嗅?暸?銝雲隞亥眺?亥蟡具?);
     return;
   }
   if (dir === 'sell' && accState.securitiesInvested < amount) {
-    alert("已投入股票金額不足以轉出。");
+    alert("撌脫??亥蟡券?憿?頞喃誑頧??);
     return;
   }
 
@@ -4081,7 +4349,7 @@ async function handleSecuritiesTransferSubmit(event) {
   // Sell: accountId = secId + "_invested", destAccountId = secId
   const source = dir === 'buy' ? secId : `${secId}_invested`;
   const dest = dir === 'buy' ? `${secId}_invested` : secId;
-  const noteStr = dir === 'buy' ? '劃轉買入股票資金' : '賣出股票資金返還';
+  const noteStr = dir === 'buy' ? '??鞎瑕?∠巨鞈?' : '鞈??∠巨鞈?餈?';
   const customNotes = userNotes ? `${noteStr} - ${userNotes}` : noteStr;
 
   const newTx = {
@@ -4090,7 +4358,7 @@ async function handleSecuritiesTransferSubmit(event) {
     amount,
     accountId: source,
     destAccountId: dest,
-    category: '證券互轉',
+    category: '霅鈭?',
     date: new Date().toISOString().split('T')[0],
     notes: customNotes
   };
@@ -4111,17 +4379,17 @@ function toggleRecurTypeFields() {
   if (type === 'transfer') {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'block';
-    srcLbl.innerText = '轉出帳戶';
+    srcLbl.innerText = '頧撣單';
   } else {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'none';
-    srcLbl.innerText = type === 'expense' ? '扣款帳戶' : '收款帳戶';
+    srcLbl.innerText = type === 'expense' ? '??狡撣單' : '?嗆狡撣單';
   }
 }
 
 function openAddRecurringModal() {
   document.getElementById('form-recurring').reset();
-  selectRecurIcon('🟣');
+  selectRecurIcon('?');
 
   
   // Build fast button list of accounts for source & destination
@@ -4173,18 +4441,18 @@ async function handleRecurringSubmit(event) {
   const destAccountId = type === 'transfer' ? document.getElementById('recur-dest-account').value : null;
   const frequency = document.getElementById('recur-frequency').value;
   const dayAnchor = Number(document.getElementById('recur-day-anchor').value) || 1;
-  const icon = document.getElementById('recur-icon').value || '🟣';
+  const icon = document.getElementById('recur-icon').value || '?';
 
   if (!sourceAccountId) {
-    alert("請點選選擇扣款帳戶！");
+    alert("隢??賊?甈曉董?塚?");
     return;
   }
   if (type === 'transfer' && !destAccountId) {
-    alert("請點選選擇轉入帳戶！");
+    alert("隢??賊???亙董?塚?");
     return;
   }
   if (type === 'transfer' && sourceAccountId === destAccountId) {
-    alert("轉出與轉入帳戶不可相同！");
+    alert("頧???亙董?嗡??舐??");
     return;
   }
 
@@ -4200,7 +4468,7 @@ async function handleRecurringSubmit(event) {
 }
 
 async function deleteRecurringRule(id) {
-  if (confirm("確定要刪除此固定收支規則嗎？")) {
+  if (confirm("蝣箏?閬?斗迨?箏??嗆閬???")) {
     AppState.recurring = AppState.recurring.filter(r => r.id !== id);
     await saveStateToStorage();
     switchTab(activeTab);
@@ -4284,9 +4552,9 @@ async function processRecurringTransactions() {
           amount: rule.amount,
           accountId: rule.sourceAccountId,
           destAccountId: rule.destAccountId,
-          category: rule.type === 'transfer' ? '轉帳' : '固定收支',
+          category: rule.type === 'transfer' ? '頧董' : '?箏??嗆',
           date: evalDateStr,
-          notes: `[固定收支自動執行] ${rule.name}`
+          notes: `[?箏??嗆?芸??瑁?] ${rule.name}`
         };
 
         // Avoid duplication
@@ -4303,7 +4571,7 @@ async function processRecurringTransactions() {
   
   if (runCount > 0) {
     setTimeout(() => {
-      alert(`已為您自動執行了 ${runCount} 筆固定收支記帳！`);
+      alert(`撌脩?刻?銵? ${runCount} 蝑摰?航?撣喉?`);
     }, 1000);
   }
 }
@@ -4315,13 +4583,13 @@ function populateUserLinkDropdown() {
   const dropdown = document.getElementById('split-member-input-user-link');
   if (!dropdown) return;
   
-  dropdown.innerHTML = '<option value="">(不連結系統使用者)</option>';
+  dropdown.innerHTML = '<option value="">(銝??蝟餌絞雿輻??</option>';
   
   const users = window.Security.getUserRegistry();
   users.forEach(username => {
     const opt = document.createElement('option');
     opt.value = username;
-    opt.innerText = `連結帳號：${username}`;
+    opt.innerText = `???撣唾?嚗?{username}`;
     dropdown.appendChild(opt);
   });
 }
@@ -4355,12 +4623,12 @@ function addMemberToBuilder() {
   const userLink = linkInput.value;
   
   if (!name) {
-    alert("請輸入成員名字！");
+    alert("隢撓?交??∪?摮?");
     return;
   }
   
   if (tempSplitMembers.some(m => m.name === name)) {
-    alert("成員名字不能重複！");
+    alert("???銝??嚗?);
     return;
   }
   
@@ -4399,7 +4667,7 @@ function renderSplitMembersBuilder() {
         <span style="font-weight: 600;">${escapeHtml(m.name)}</span>
         ${m.userLink ? `<span style="font-size: 0.75rem; color: var(--color-purple); background: rgba(139, 92, 246, 0.1); padding: 0.15rem 0.35rem; border-radius: 4px;">@${m.userLink}</span>` : ''}
       </div>
-      <button type="button" class="btn-icon-action" onclick="removeMemberFromBuilder(${idx})" style="color: var(--color-red); border: none; background: none; cursor: pointer; font-size: 1rem;">×</button>
+      <button type="button" class="btn-icon-action" onclick="removeMemberFromBuilder(${idx})" style="color: var(--color-red); border: none; background: none; cursor: pointer; font-size: 1rem;">?</button>
     `;
     listContainer.appendChild(item);
   });
@@ -4414,7 +4682,7 @@ function openAddSplitPlanModal() {
   if (currentUser) {
     tempSplitMembers.push({
       name: currentUser,
-      avatar: '🦊',
+      avatar: '??',
       userLink: currentUser
     });
   }
@@ -4448,11 +4716,11 @@ async function handleSplitPlanSubmit(event) {
   }
 
   if (memberList.length < 2) {
-    alert("分帳計畫必須包含至少兩名成員！");
+    alert("?董閮敹???喳??拙??嚗?);
     return;
   }
 
-  // Prepend avatar emoji to make them look rich, e.g. "🦊 user"
+  // Prepend avatar emoji to make them look rich, e.g. "?? user"
   const members = memberList.map(m => `${m.avatar} ${m.name}`);
 
   const newPlan = {
@@ -4482,15 +4750,22 @@ function openAddSplitTransModal(planId) {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('split-trans-date').value = today;
   
-  // Populate payer dropdown
   const payerSel = document.getElementById('split-trans-payer');
   payerSel.innerHTML = '';
+  let foundMe = false;
   plan.members.forEach(m => {
     const opt = document.createElement('option');
     opt.value = m;
     opt.innerText = m;
+    if (m === '?? || m === (AppState.profile?.name || '??)) {
+      opt.selected = true;
+      foundMe = true;
+    }
     payerSel.appendChild(opt);
   });
+  if (!foundMe && payerSel.options.length > 0) {
+    payerSel.selectedIndex = 0;
+  }
 
   // Populate splits checkboxes with equal shares settings
   const container = document.getElementById('split-members-list-checkboxes');
@@ -4509,8 +4784,8 @@ function openAddSplitTransModal(planId) {
         <span>${escapeHtml(m)}</span>
       </label>
       <div style="display: flex; align-items: center; gap: 0.25rem;">
-        <input type="number" class="split-member-weight" value="1" min="0" style="width: 60px; padding: 0.25rem; font-size: 0.8125rem;" title="分攤權重">
-        <span style="font-size: 0.75rem; color: var(--text-muted);">份</span>
+        <input type="number" class="split-member-weight" value="1" min="0" style="width: 60px; padding: 0.25rem; font-size: 0.8125rem;" title="?甈?">
+        <span style="font-size: 0.75rem; color: var(--text-muted);">隞?/span>
       </div>
     `;
     container.appendChild(row);
@@ -4531,7 +4806,7 @@ async function handleSplitTransSubmit(event) {
   const payer = document.getElementById('split-trans-payer').value;
 
   if (amount <= 0) {
-    alert("分帳金額必須大於 0");
+    alert("?董??敹?憭扳 0");
     return;
   }
 
@@ -4554,7 +4829,7 @@ async function handleSplitTransSubmit(event) {
   });
 
   if (participants.length === 0) {
-    alert("請至少選擇一個分攤成員並填入大於0的權重！");
+    alert("隢撠?????斗??∩蒂憛怠憭扳0????");
     return;
   }
 
@@ -4598,11 +4873,11 @@ async function settleSplitPlan(planId) {
   if (!plan) return;
 
   if (plan.transactions.length === 0) {
-    alert("本分帳計畫無任何花費紀錄，無法進行結算。");
+    alert("?砍?撣唾??怎隞颱??梯祥蝝???⊥??脰?蝯???);
     return;
   }
 
-  if (!confirm("確定要進行最終結算嗎？結算後將無法再新增分帳明細！")) {
+  if (!confirm("蝣箏?閬脰??蝯?蝞?嚗?蝞?撠瘜??啣??董?敦嚗?)) {
     return;
   }
 
@@ -4671,18 +4946,18 @@ async function settleSplitPlan(planId) {
 
   await saveStateToStorage();
   switchTab(activeTab);
-  alert("結算成功！");
+  alert("蝯???嚗?);
 }
 
 async function deleteSplitPlan(id) {
-  if (confirm("確定要刪除此分帳計畫嗎？所有分帳明細將會丟失！")) {
+  if (confirm("蝣箏?閬?斗迨?董閮?????撣單?蝝啣???憭梧?")) {
     AppState.splitPlans = AppState.splitPlans.filter(p => p.id !== id);
     await saveStateToStorage();
     switchTab(activeTab);
   }
 }
 
-// --- E-Invoice (手機載具) Controllers ---
+// --- E-Invoice (??頛) Controllers ---
 function openSetupCarrierModal() {
   document.getElementById('carrier-barcode-input').value = AppState.carrierBarcode || '';
   document.getElementById('carrier-pin-input').value = AppState.carrierPin || '';
@@ -4701,7 +4976,7 @@ async function handleCarrierSetupSubmit(event) {
   await saveStateToStorage();
   closeModal('modal-carrier-setup');
   switchTab(activeTab);
-  alert("載具設定成功！");
+  alert("頛閮剖???嚗?);
 }
 
 function generateMockInvoiceNo() {
@@ -4715,33 +4990,33 @@ function generateMockInvoiceNo() {
 // Trigger simulated API download of carrier invoices
 async function triggerMockInvoiceDownload() {
   if (!AppState.carrierBarcode) {
-    alert("請先設定您的手機載具條碼才能下載發票！");
+    alert("隢?閮剖??函???頛璇Ⅳ?銝??潛巨嚗?);
     switchTab('tab-carrier');
     openSetupCarrierModal();
     return;
   }
 
   // Pre-generate standard mock invoice records
-  const stores = ['統一超商 (7-11)', '全家便利商店', '星巴克咖啡', '家樂福', 'Uber Eats', 'UNIQLO'];
+  const stores = ['蝯曹?頞? (7-11)', '?典振靘踹??', '?毀????, '摰嗆?蝳?, 'Uber Eats', 'UNIQLO'];
   const itemsPreset = {
-    '統一超商 (7-11)': [
-      [{ name: '御飯糰', price: 35 }, { name: '無糖豆漿', price: 25 }],
-      [{ name: '便當', price: 89 }, { name: '純喫茶', price: 25 }]
+    '蝯曹?頞? (7-11)': [
+      [{ name: '敺⊿ㄞ蝟?, price: 35 }, { name: '?∠?鞊撚', price: 25 }],
+      [{ name: '靘輻', price: 89 }, { name: '蝝??, price: 25 }]
     ],
-    '全家便利商店': [
-      [{ name: '霜淇淋', price: 49 }, { name: '美式咖啡', price: 35 }]
+    '?典振靘踹??': [
+      [{ name: '??瘛?, price: 49 }, { name: '蝢??', price: 35 }]
     ],
-    '星巴克咖啡': [
-      [{ name: '特大那鐵', price: 150 }, { name: '起司蛋糕', price: 100 }]
+    '?毀????: [
+      [{ name: '?孵之??', price: 150 }, { name: '韏瑕??', price: 100 }]
     ],
-    '家樂福': [
-      [{ name: '衛生紙一串', price: 249 }, { name: '洗面乳', price: 120 }, { name: '牛奶', price: 150 }]
+    '摰嗆?蝳?: [
+      [{ name: '銵?蝝?銝?, price: 249 }, { name: '瘣銋?, price: 120 }, { name: '?扒', price: 150 }]
     ],
     'Uber Eats': [
-      [{ name: '牛肉麵', price: 180 }, { name: '外送費', price: 30 }]
+      [{ name: '??暻?, price: 180 }, { name: '憭祥', price: 30 }]
     ],
     'UNIQLO': [
-      [{ name: '男裝休閒長褲', price: 790 }]
+      [{ name: '?瑁?隡??瑁仆', price: 790 }]
     ]
   };
 
@@ -4755,7 +5030,7 @@ async function triggerMockInvoiceDownload() {
   const hasCards = AppState.accounts.some(a => a.type === 'credit');
   const hasBank = AppState.accounts.some(a => a.type === 'bank');
 
-  if (['星巴克咖啡', 'Uber Eats', 'UNIQLO'].includes(store) && hasCards) {
+  if (['?毀????, 'Uber Eats', 'UNIQLO'].includes(store) && hasCards) {
     const card = AppState.accounts.find(a => a.type === 'credit');
     suggested = card.id;
   } else if (hasBank) {
@@ -4778,7 +5053,7 @@ async function triggerMockInvoiceDownload() {
   await saveStateToStorage();
   switchTab(activeTab);
   
-  alert(`🔔 下載發票成功！新增一筆來自 ${store} 的載具消費 $${amount}，請在清單中核對並確認匯入記帳。`);
+  alert(`?? 銝??潛巨??嚗憓?蝑???${store} ???瑟?鞎?$${amount}嚗??冽??桐葉?詨?銝衣Ⅱ隤?亥?撣喋);
 }
 
 let html5Qrcode = null;
@@ -4819,7 +5094,7 @@ function parseTaiwanInvoiceQr(text) {
   }
   
   if (items.length === 0) {
-    items.push({ name: '發票消費品項', price: amount });
+    items.push({ name: '?潛巨瘨祥??', price: amount });
   }
   
   return {
@@ -4827,7 +5102,7 @@ function parseTaiwanInvoiceQr(text) {
     date: dateStr,
     amount,
     items,
-    store: '電子發票 (掃描解碼)'
+    store: '?餃??潛巨 (??閫?Ⅳ)'
   };
 }
 
@@ -4865,7 +5140,7 @@ function initRealQrScanner() {
       AppState.carrierInvoices.unshift(newInvoice);
       await saveStateToStorage();
       switchTab('tab-carrier');
-      alert(`🎉 掃描成功！發票號碼：${parsed.invoiceNo}，金額：$${parsed.amount}，已匯入待確認載具明細！`);
+      alert(`?? ????嚗蟡刻?蝣潘?${parsed.invoiceNo}嚗?憿?$${parsed.amount}嚗歇?臬敺Ⅱ隤??瑟?蝝堆?`);
     }
   };
   
@@ -4902,10 +5177,10 @@ async function simulateQrScanSuccess(preset) {
     newInvoice = {
       id: `inv_${Date.now()}`,
       invoiceNo: generateMockInvoiceNo(),
-      store: '星巴克咖啡 (掃描匯入)',
+      store: '?毀????(???臬)',
       amount: 245,
       date: todayStr,
-      items: [{ name: '經典那鐵', price: 150 }, { name: '千層蛋糕', price: 95 }],
+      items: [{ name: '蝬??', price: 150 }, { name: '?惜??', price: 95 }],
       suggestedAccount: cardId,
       paymentConfirmed: false
     };
@@ -4913,10 +5188,10 @@ async function simulateQrScanSuccess(preset) {
     newInvoice = {
       id: `inv_${Date.now()}`,
       invoiceNo: generateMockInvoiceNo(),
-      store: '家樂福 (掃描匯入)',
+      store: '摰嗆?蝳?(???臬)',
       amount: 1280,
       date: todayStr,
-      items: [{ name: '有機燕麥奶', price: 280 }, { name: '平底鍋', price: 1000 }],
+      items: [{ name: '???漸憟?, price: 280 }, { name: '撟喳???, price: 1000 }],
       suggestedAccount: cardId,
       paymentConfirmed: false
     };
@@ -4924,10 +5199,10 @@ async function simulateQrScanSuccess(preset) {
     newInvoice = {
       id: `inv_${Date.now()}`,
       invoiceNo: generateMockInvoiceNo(),
-      store: 'UNIQLO (掃描匯入)',
+      store: 'UNIQLO (???臬)',
       amount: 990,
       date: todayStr,
-      items: [{ name: '素T', price: 390 }, { name: '舒適短褲', price: 600 }],
+      items: [{ name: '蝝', price: 390 }, { name: '??剛仆', price: 600 }],
       suggestedAccount: cardId,
       paymentConfirmed: false
     };
@@ -4937,7 +5212,7 @@ async function simulateQrScanSuccess(preset) {
     AppState.carrierInvoices.unshift(newInvoice);
     await saveStateToStorage();
     switchTab(activeTab);
-    alert(`掃描發票成功！已加入待確認載具明細！`);
+    alert(`???潛巨??嚗歇?敺Ⅱ隤??瑟?蝝堆?`);
   }
 }
 
@@ -4948,7 +5223,7 @@ async function confirmCarrierInvoice(id) {
 
   const chosenAccount = document.getElementById(`inv-pay-acc-${inv.id}`).value;
   
-  const itemsText = inv.items.map(it => `${it.name}`).join('、');
+  const itemsText = inv.items.map(it => `${it.name}`).join('??);
   
   const newTx = {
     id: `tx_carrier_${inv.id}`,
@@ -4956,9 +5231,9 @@ async function confirmCarrierInvoice(id) {
     amount: inv.amount,
     accountId: chosenAccount,
     destAccountId: null,
-    category: '飲食', // Default categorization, user can edit on ledger if needed
+    category: '憌脤?', // Default categorization, user can edit on ledger if needed
     date: inv.date,
-    notes: `[發票載具][發票號碼:${inv.invoiceNo || '無'}] ${inv.store} - ${itemsText}`
+    notes: `[?潛巨頛][?潛巨?Ⅳ:${inv.invoiceNo || '??}] ${inv.store} - ${itemsText}`
   };
 
   // Add to main transactions
@@ -4969,7 +5244,7 @@ async function confirmCarrierInvoice(id) {
 
   await saveStateToStorage();
   switchTab(activeTab);
-  alert("已成功匯入主要記帳帳本中！");
+  alert("撌脫???乩蜓閬?撣喳董?砌葉嚗?);
 }
 
 function parseCsvLine(text) {
@@ -5003,7 +5278,7 @@ function parseSimpleCsv(lines) {
       const date = parts[0].trim();
       const store = parts[1].trim();
       const amount = Number(parts[2].trim()) || 0;
-      const itemDesc = parts[3] ? parts[3].trim() : '發票商品明細';
+      const itemDesc = parts[3] ? parts[3].trim() : '?潛巨???敦';
 
       if (amount > 0 && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
         const newInvoice = {
@@ -5025,7 +5300,7 @@ function parseSimpleCsv(lines) {
   if (importedCount > 0) {
     saveStateToStorage().then(() => {
       switchTab(activeTab);
-      alert(`成功解析並匯入了 ${importedCount} 筆發票明細至待核對載具清單！`);
+      alert(`??閫??銝血?乩? ${importedCount} 蝑蟡冽?蝝啗敺撠??瑟??殷?`);
     });
   }
 }
@@ -5040,21 +5315,21 @@ async function handleInvoiceCsvUpload(event) {
     const text = e.target.result;
     const lines = text.split('\n');
     if (lines.length <= 1) {
-      alert("CSV 檔案為空或格式不正確！");
+      alert("CSV 瑼??箇征?撘?甇?Ⅱ嚗?);
       return;
     }
 
     const headerLine = lines[0].replace(/"/g, '').trim();
     const headers = headerLine.split(',');
 
-    const dateIdx = headers.findIndex(h => h.includes('日期') || h.includes('Date'));
-    const noIdx = headers.findIndex(h => h.includes('號碼') || h.includes('No'));
-    const itemIdx = headers.findIndex(h => h.includes('品名') || h.includes('明細') || h.includes('Item'));
-    const amtIdx = headers.findIndex(h => h.includes('金額') || h.includes('小計') || h.includes('Amount') || h.includes('總額'));
-    const storeIdx = headers.findIndex(h => h.includes('名稱') || h.includes('商家') || h.includes('商店') || h.includes('Store'));
+    const dateIdx = headers.findIndex(h => h.includes('?交?') || h.includes('Date'));
+    const noIdx = headers.findIndex(h => h.includes('?Ⅳ') || h.includes('No'));
+    const itemIdx = headers.findIndex(h => h.includes('??') || h.includes('?敦') || h.includes('Item'));
+    const amtIdx = headers.findIndex(h => h.includes('??') || h.includes('撠?') || h.includes('Amount') || h.includes('蝮賡?'));
+    const storeIdx = headers.findIndex(h => h.includes('?迂') || h.includes('?振') || h.includes('??') || h.includes('Store'));
 
     if (dateIdx === -1 || amtIdx === -1) {
-      alert("無法自動對齊財政部 CSV 欄位，將使用預設格式解析 (欄位順序需為：日期,商家,金額,品名)");
+      alert("?⊥??芸?撠?鞎⊥??CSV 甈?嚗?雿輻?身?澆?閫?? (甈?????綽??交?,?振,??,??)");
       parseSimpleCsv(lines);
       return;
     }
@@ -5071,9 +5346,9 @@ async function handleInvoiceCsvUpload(event) {
 
       const dateRaw = parts[dateIdx].trim();
       const amount = Number(parts[amtIdx].trim()) || 0;
-      const store = storeIdx !== -1 ? parts[storeIdx].trim() : '未知商家';
+      const store = storeIdx !== -1 ? parts[storeIdx].trim() : '?芰?振';
       const invoiceNo = noIdx !== -1 ? parts[noIdx].trim() : `M-${Date.now()}-${i}`;
-      const itemName = itemIdx !== -1 ? parts[itemIdx].trim() : '發票明細品項';
+      const itemName = itemIdx !== -1 ? parts[itemIdx].trim() : '?潛巨?敦??';
 
       let formattedDate = dateRaw.replace(/\//g, '-').replace(/"/g, '');
       if (/^\d{3}-\d{2}-\d{2}$/.test(formattedDate)) {
@@ -5123,9 +5398,9 @@ async function handleInvoiceCsvUpload(event) {
     if (importedCount > 0) {
       await saveStateToStorage();
       switchTab(activeTab);
-      alert(`成功解析並匯入了 ${importedCount} 筆發票明細至待核對載具清單！`);
+      alert(`??閫??銝血?乩? ${importedCount} 蝑蟡冽?蝝啗敺撠??瑟??殷?`);
     } else {
-      alert("CSV 檔案中未發現有效發票資料！");
+      alert("CSV 瑼?銝剜?潛???潛巨鞈?嚗?);
     }
   };
   reader.readAsText(file);
@@ -5139,7 +5414,7 @@ async function addCategory(type, name = null) {
   if (!val) return;
   
   if (AppState.categories[type].includes(val)) {
-    alert("該類別已存在！");
+    alert("閰脤??亙歇摮嚗?);
     return;
   }
 
@@ -5155,16 +5430,16 @@ async function addCategory(type, name = null) {
 
 async function deleteCategory(type, cat) {
   const defaultCats = {
-    expense: ['飲食', '其他'],
-    income: ['薪水', '其他']
+    expense: ['憌脤?', '?嗡?'],
+    income: ['?芣偌', '?嗡?']
   };
   
   if (defaultCats[type].includes(cat)) {
-    alert("核心預設類別無法刪除！");
+    alert("?詨??身憿?⊥??芷嚗?);
     return;
   }
 
-  if (confirm(`刪除類別「${cat}」不會影響已有記帳明細，確定刪除嗎？`)) {
+  if (confirm(`?芷憿??{cat}???蔣?踹歇??撣單?蝝堆?蝣箏??芷??`)) {
     AppState.categories[type] = AppState.categories[type].filter(c => c !== cat);
     await saveStateToStorage();
     renderCategories();
@@ -5174,22 +5449,22 @@ async function deleteCategory(type, cat) {
 // --- Systems Setting Utilities ---
 async function changePinCode() {
   if (!currentUser) return;
-  const oldPassword = prompt("請輸入目前帳號的舊密碼：");
+  const oldPassword = prompt("隢撓?亦?董????蝣潘?");
   const verified = await window.Security.verifyUserLogin(currentUser, oldPassword);
   if (!verified) {
-    alert("舊密碼驗證錯誤，無法修改！");
+    alert("??蝣潮?霅隤歹??⊥?靽格嚗?);
     return;
   }
   
-  const newPassword = prompt("請輸入新密碼：");
+  const newPassword = prompt("隢撓?交撖Ⅳ嚗?);
   if (!newPassword || newPassword.length < 4) {
-    alert("密碼過短，請輸入至少 4 碼！");
+    alert("撖Ⅳ?嚗?頛詨?喳? 4 蝣潘?");
     return;
   }
 
-  const confirmPassword = prompt("請再次輸入新密碼以確認：");
+  const confirmPassword = prompt("隢?甈∟撓?交撖Ⅳ隞亦Ⅱ隤?");
   if (newPassword !== confirmPassword) {
-    alert("兩次密碼輸入不一致，修改失敗！");
+    alert("?拇活撖Ⅳ頛詨銝??湛?靽格憭望?嚗?);
     return;
   }
 
@@ -5201,14 +5476,14 @@ async function changePinCode() {
     
     inMemoryDecryptionKey = newPassword;
     await saveStateToStorage();
-    alert("密碼修改成功！下次登入請使用新密碼。");
+    alert("撖Ⅳ靽格??嚗?甈∠?亥?雿輻?啣?蝣潦?);
   } catch (err) {
-    alert("修改失敗：" + err.message);
+    alert("靽格憭望?嚗? + err.message);
   }
 }
 
 function resetAllApp() {
-  if (confirm("⚠️ 注意！清除所有資料將永久刪除您儲存在本機的所有帳目且無法還原！\n確定要完全重設 App 嗎？")) {
+  if (confirm("?? 瘜冽?嚗??斗?????瘞訾??芷?典摮?祆????董?桐??⊥???嚗n蝣箏?閬??券?閮?App ??")) {
     localStorage.clear();
     location.reload();
   }
@@ -5230,7 +5505,7 @@ async function exportEncryptedBackup() {
     downloadAnchor.click();
     downloadAnchor.remove();
   } catch (err) {
-    alert("匯出備份失敗：" + err.message);
+    alert("?臬?遢憭望?嚗? + err.message);
   }
 }
 
@@ -5239,7 +5514,7 @@ async function importEncryptedBackup(event) {
   const file = event.target.files[0];
   if (!file) return;
   
-  const password = prompt("請輸入該備份檔案對應的密碼：");
+  const password = prompt("隢撓?亥府?遢瑼?撠???蝣潘?");
   if (!password) return;
 
   const reader = new FileReader();
@@ -5259,13 +5534,13 @@ async function importEncryptedBackup(event) {
         
         await saveStateToStorage();
         
-        alert("資料庫還原成功！");
+        alert("鞈?摨恍?????");
         location.reload();
       } else {
-        alert("備份檔案格式不正確！");
+        alert("?遢瑼??澆?銝迤蝣綽?");
       }
     } catch (error) {
-      alert("還原失敗！密碼不正確或備份檔案已損壞。");
+      alert("??憭望?嚗?蝣潔?甇?Ⅱ??隞賣?獢歇????);
     }
   };
   reader.readAsText(file);
@@ -5274,7 +5549,7 @@ async function importEncryptedBackup(event) {
 // Export raw ledger to Excel (CSV)
 function exportLedgerToCsv() {
   let csvContent = "\ufeff"; // BOM for Excel UTF-8 display
-  csvContent += "日期,收支類型,金額,帳戶,轉入帳戶,類別,備註\n";
+  csvContent += "?交?,?嗆憿?,??,撣單,頧撣單,憿,?酉\n";
   
   AppState.transactions.forEach(t => {
     const acc = AppState.accounts.find(a => a.id === t.accountId);
@@ -5284,7 +5559,7 @@ function exportLedgerToCsv() {
     const destAccName = destAcc ? destAcc.name : '';
     const notes = t.notes ? t.notes.replace(/"/g, '""') : '';
 
-    csvContent += `"${t.date}","${t.type === 'income' ? '收入' : t.type === 'expense' ? '支出' : '轉帳'}",${t.amount},"${accName}","${destAccName}","${t.category}","${notes}"\n`;
+    csvContent += `"${t.date}","${t.type === 'income' ? '?嗅' : t.type === 'expense' ? '?臬' : '頧董'}",${t.amount},"${accName}","${destAccName}","${t.category}","${notes}"\n`;
   });
 
   const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
@@ -5299,18 +5574,18 @@ function exportLedgerToCsv() {
 // --- Browser Notifications Center ---
 function triggerNotificationTest() {
   if (!("Notification" in window)) {
-    alert("您的瀏覽器不支援桌面通知功能");
+    alert("?函??汗?其??舀獢??");
     return;
   }
 
   Notification.requestPermission().then(permission => {
     if (permission === "granted") {
-      new Notification("雙子記通知服務", {
-        body: "測試成功！明天的信用卡帳單即將到期！",
+      new Notification("??閮??", {
+        body: "皜祈岫??嚗?憭拍?靽∠?∪董?桀撠??",
         icon: "./icon.svg"
       });
     } else {
-      alert("通知授權被拒絕！請在瀏覽器設定中開啟通知權限。");
+      alert("???鋡急?蝯?隢?汗?刻身摰葉???甈???);
     }
   });
 }
@@ -5327,7 +5602,7 @@ function escapeHtml(str) {
 
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
-    alert("已複製結算報告至剪貼簿！可直接貼上至 Line 群組分享。");
+    alert("撌脰?鋆賜?蝞??芾票蝪選??舐?亥票銝 Line 蝢斤??澈??);
   }).catch(err => {
     console.error('Could not copy text: ', err);
   });
@@ -5388,7 +5663,7 @@ window.toggleMemberInputs = toggleMemberInputs;
 window.removeMemberFromBuilder = removeMemberFromBuilder;
 window.openAddSplitTransModal = openAddSplitTransModal;
 window.handleSplitTransSubmit = handleSplitTransSubmit;
-window.calculateRealtimeSplitPreview = calculateRealtimeSplitPreview;
+// calculateRealtimeSplitPreview removed to prevent ReferenceError
 window.settleSplitPlan = settleSplitPlan;
 window.deleteSplitPlan = deleteSplitPlan;
 window.openSetupCarrierModal = openSetupCarrierModal;
@@ -5419,6 +5694,7 @@ window.triggerNotificationTest = triggerNotificationTest;
 
 // Visual Customizer & Layout exports
 window.changeThemeMode = changeThemeMode;
+window.saveSettlementDay = saveSettlementDay;
 window.changeButtonTheme = changeButtonTheme;
 window.changeDevMode = changeDevMode;
 window.changePetTheme = changePetTheme;
@@ -5434,6 +5710,37 @@ window.setCcInstallmentType = setCcInstallmentType;
 window.setCcInstallmentPeriod = setCcInstallmentPeriod;
 window.calculateCcInstallmentPreview = calculateCcInstallmentPreview;
 
+// Dream/Wish List exposures (previously missing - caused buttons to not respond)
+window.openAddDreamModal = openAddDreamModal;
+window.openEditDreamModal = openEditDreamModal;
+window.handleDreamSubmit = handleDreamSubmit;
+window.handleDreamProgressSubmit = handleDreamProgressSubmit;
+window.deleteDream = deleteDream;
+window.openDreamProgressModal = openDreamProgressModal;
+window.renderDreamList = renderDreamList;
+
+// Inventory helper exposures (previously missing)
+window.handleInventorySearch = handleInventorySearch;
+window.handleUserAreaChange = handleUserAreaChange;
+window.handleMainCategoryChange = handleMainCategoryChange;
+window.handleSubCategoryChange = handleSubCategoryChange;
+window.handleNotifyTypeChange = handleNotifyTypeChange;
+window.addInventoryLocation = addInventoryLocation;
+window.deleteInventoryLocation = deleteInventoryLocation;
+window.addInventoryUnit = addInventoryUnit;
+window.deleteInventoryUnit = deleteInventoryUnit;
+
+// Category icon management exposures
+window.addIcon = addIcon;
+window.deleteIcon = deleteIcon;
+
+// Auth recovery exposure
+window.handleAccountRecovery = handleAccountRecovery;
+
+// Dropdown toggle exposure
+if (typeof toggleDropdown === 'function') window.toggleDropdown = toggleDropdown;
+
+
 // Chart toggle exposure
 async function toggleChartType(type) {
   AppState.chartType = type;
@@ -5448,7 +5755,7 @@ function handleRecurFrequencyChange() {
   const group = document.getElementById('recur-day-anchor-group');
   
   let dayOptions = '';
-  for(let i=1; i<=31; i++) dayOptions += `<option value="${i}">${i}日</option>`;
+  for(let i=1; i<=31; i++) dayOptions += `<option value="${i}">${i}??/option>`;
   
   if (freq === 'daily') {
     group.style.display = 'none';
@@ -5456,21 +5763,21 @@ function handleRecurFrequencyChange() {
   } else if (freq === 'weekly') {
     group.style.display = 'block';
     group.innerHTML = `
-      <label>扣款日</label>
+      <label>??狡??/label>
       <select id="recur-day-anchor" required class="form-control">
-        <option value="1">星期一</option>
-        <option value="2">星期二</option>
-        <option value="3">星期三</option>
-        <option value="4">星期四</option>
-        <option value="5">星期五</option>
-        <option value="6">星期六</option>
-        <option value="0">星期日</option>
+        <option value="1">??銝</option>
+        <option value="2">??鈭?/option>
+        <option value="3">??銝?/option>
+        <option value="4">????/option>
+        <option value="5">??鈭?/option>
+        <option value="6">????/option>
+        <option value="0">????/option>
       </select>
     `;
   } else if (freq === 'monthly') {
     group.style.display = 'block';
     group.innerHTML = `
-      <label>扣款日</label>
+      <label>??狡??/label>
       <select id="recur-day-anchor" required class="form-control">
         ${dayOptions}
       </select>
@@ -5479,10 +5786,10 @@ function handleRecurFrequencyChange() {
     group.style.display = 'block';
     
     let monthOptions = '';
-    for(let i=1; i<=12; i++) monthOptions += `<option value="${i}">${i}月</option>`;
+    for(let i=1; i<=12; i++) monthOptions += `<option value="${i}">${i}??/option>`;
     
     group.innerHTML = `
-      <label>扣款日</label>
+      <label>??狡??/label>
       <div style="display: flex; gap: 0.5rem;">
         <select id="recur-month-anchor" required class="form-control" style="flex:1;">
           ${monthOptions}
@@ -5503,7 +5810,7 @@ function renderDreamList() {
   container.innerHTML = '';
   
   if (!AppState.dreams || AppState.dreams.length === 0) {
-    container.innerHTML = `<div style="padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">目前沒有任何夢想計畫。點擊「新增夢想」開始建立！</div>`;
+    container.innerHTML = `<div style="padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">?桀?瘝?隞颱?憿?閮???憓???憪遣蝡?</div>`;
     return;
   }
   
@@ -5520,7 +5827,7 @@ function renderDreamList() {
     }
     
     card.innerHTML = `
-      ${isCompleted ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-green); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">已達成 🎉</div>' : ''}
+      ${isCompleted ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-green); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">撌脤?????</div>' : ''}
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
         <h3 style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin: 0;">${escapeHtml(dream.icon)} ${escapeHtml(dream.name)}</h3>
         <div class="dropdown-container">
@@ -5528,14 +5835,14 @@ function renderDreamList() {
             <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-secondary)"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
           </button>
           <div class="dropdown-menu" id="dream-menu-${dream.id}">
-            <button class="dropdown-item" onclick="openEditDreamModal('${dream.id}')">編輯</button>
-            <button class="dropdown-item text-danger" onclick="deleteDream('${dream.id}')">刪除</button>
+            <button class="dropdown-item" onclick="openEditDreamModal('${dream.id}')">蝺刻摩</button>
+            <button class="dropdown-item text-danger" onclick="deleteDream('${dream.id}')">?芷</button>
           </div>
         </div>
       </div>
       
       <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">目前進度</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">?桀??脣漲</span>
         <span style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; color: ${isCompleted ? 'var(--color-green)' : 'var(--text-primary)'};">
           ${formatAccounting(dream.current)} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">/ ${formatAccounting(dream.target)}</span>
         </span>
@@ -5547,7 +5854,7 @@ function renderDreamList() {
       <div style="text-align: right; font-size: 0.8rem; color: var(--text-muted); margin-top: -0.5rem; margin-bottom: 1rem;">${progress}%</div>
       
       ${!isCompleted ? `
-      <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;" onclick="openDreamProgressModal('${dream.id}')">存入資金</button>
+      <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;" onclick="openDreamProgressModal('${dream.id}')">摮鞈?</button>
       ` : ''}
     `;
     container.appendChild(card);
@@ -5557,7 +5864,7 @@ function renderDreamList() {
 function openAddDreamModal() {
   document.getElementById('form-dream').reset();
   document.getElementById('dream-edit-id').value = '';
-  document.getElementById('modal-dream-title').innerText = '新增夢想';
+  document.getElementById('modal-dream-title').innerText = '?啣?憿?';
   openModal('modal-dream');
 }
 
@@ -5569,7 +5876,7 @@ function openEditDreamModal(id) {
   document.getElementById('dream-name').value = dream.name;
   document.getElementById('dream-target').value = dream.target;
   document.getElementById('dream-current').value = dream.current;
-  document.getElementById('modal-dream-title').innerText = '編輯夢想';
+  document.getElementById('modal-dream-title').innerText = '蝺刻摩憿?';
   openModal('modal-dream');
   const menus = document.querySelectorAll('.dropdown-menu');
   menus.forEach(m => m.classList.remove('show'));
@@ -5601,7 +5908,7 @@ async function handleDreamSubmit(event) {
 }
 
 async function deleteDream(id) {
-  if (confirm('確定要刪除此夢想清單嗎？')) {
+  if (confirm('確定要刪除此願望清單嗎？')) {
     AppState.dreams = AppState.dreams.filter(d => d.id !== id);
     await saveStateToStorage();
     renderDreamList();
@@ -5625,7 +5932,7 @@ async function handleDreamProgressSubmit(event) {
     if (dream.current >= dream.target) {
       dream.current = dream.target;
       setTimeout(() => {
-        alert(`🎉 恭喜您！達成夢想：${dream.icon} ${dream.name} 🎉`);
+        alert(`🎉 恭喜您！達成願望：${dream.icon} ${dream.name} 🎉`);
       }, 300);
     }
     await saveStateToStorage();
@@ -5633,3 +5940,373 @@ async function handleDreamProgressSubmit(event) {
   }
   closeModal('modal-dream-progress');
 }
+
+// --- Additional Inventory Helper Functions ---
+function populateInventoryLocationsAndUnits() {
+  const locationSelect = document.getElementById('inventory-location');
+  const unitSelect = document.getElementById('inventory-unit');
+  if (!locationSelect || !unitSelect) return;
+  
+  locationSelect.innerHTML = '<option value="">請選擇</option>';
+  unitSelect.innerHTML = '<option value="">選擇</option>';
+  
+  const locations = AppState.inventoryLocations || ['客廳', '廚房', '浴室', '臥室', '儲藏室', '車上', '辦公室', '陽台'];
+  locations.forEach(loc => {
+    const opt = document.createElement('option');
+    opt.value = loc;
+    opt.innerText = loc;
+    locationSelect.appendChild(opt);
+  });
+  
+  const units = AppState.inventoryUnits || ['包', '瓶', '個', '盒', '袋', '罐', '條', '片', '組', '支', '卷', '張'];
+  units.forEach(u => {
+    const opt = document.createElement('option');
+    opt.value = u;
+    opt.innerText = u;
+    unitSelect.appendChild(opt);
+  });
+}
+
+function initExpiryDateSelects() {
+  const ySelect = document.getElementById('inventory-expiry-year');
+  const mSelect = document.getElementById('inventory-expiry-month');
+  const dSelect = document.getElementById('inventory-expiry-day');
+  if (!ySelect || !mSelect || !dSelect) return;
+  
+  ySelect.innerHTML = '<option value="">年</option>';
+  mSelect.innerHTML = '<option value="">月</option>';
+  dSelect.innerHTML = '<option value="">日</option>';
+  
+  const currentYear = new Date().getFullYear();
+  for (let i = currentYear; i <= currentYear + 20; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.innerText = i + '年';
+    ySelect.appendChild(opt);
+  }
+  
+  for (let i = 1; i <= 12; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.innerText = i + '月';
+    mSelect.appendChild(opt);
+  }
+  
+  for (let i = 1; i <= 31; i++) {
+    const opt = document.createElement('option');
+    opt.value = i;
+    opt.innerText = i + '日';
+    dSelect.appendChild(opt);
+  }
+}
+
+function syncExpiryDate() {
+  const ySelect = document.getElementById('inventory-expiry-year').value;
+  const mSelect = document.getElementById('inventory-expiry-month').value;
+  const dSelect = document.getElementById('inventory-expiry-day').value;
+  if (ySelect && mSelect && dSelect) {
+    const m = mSelect.padStart(2, '0');
+    const d = dSelect.padStart(2, '0');
+    document.getElementById('inventory-expiry').value = `${ySelect}-${m}-${d}`;
+  } else {
+    document.getElementById('inventory-expiry').value = '';
+  }
+}
+
+function renderSplitRightPanel() {
+  const container = document.getElementById('right-split-summary');
+  if (!container) return;
+  
+  const selectedId = window.selectedSplitPlanId;
+  const plan = AppState.splitPlans.find(p => p.id === selectedId);
+  
+  if (!plan) {
+    // Default summary
+    const activePlans = AppState.splitPlans.filter(p => p.status !== 'settled').length;
+    const settledPlans = AppState.splitPlans.filter(p => p.status === 'settled').length;
+    
+    let totalSpendAll = 0;
+    AppState.splitPlans.forEach(p => {
+      totalSpendAll += p.transactions.reduce((sum, tx) => sum + Number(tx.amount), 0);
+    });
+    
+    container.innerHTML = `
+      <div class="day-summary-grid">
+        <div class="summary-card">
+          <div class="summary-label">進行中計畫</div>
+          <div class="summary-val total" style="color: var(--color-green);">${activePlans}</div>
+        </div>
+        <div class="summary-card">
+          <div class="summary-label">已結算計畫</div>
+          <div class="summary-val total">${settledPlans}</div>
+        </div>
+      </div>
+      <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">點擊左側分帳計畫卡片，以查看細項花費</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">所有計畫總花費</div>
+        <div style="font-family: var(--font-title); font-size: 1.5rem; font-weight: bold; color: var(--color-purple);">${formatAccounting(totalSpendAll)}</div>
+      </div>
+    `;
+    return;
+  }
+
+  // Calculate detailed costs for the selected plan
+  const totalSpend = plan.transactions.reduce((sum, tx) => sum + Number(tx.amount), 0);
+  
+  // Calculate who paid what
+  const paidAmounts = {};
+  plan.members.forEach(m => paidAmounts[m] = 0);
+  plan.transactions.forEach(tx => {
+    if (!paidAmounts[tx.payer]) paidAmounts[tx.payer] = 0;
+    paidAmounts[tx.payer] += Number(tx.amount);
+  });
+  
+  let membersDetailHtml = plan.members.map(m => `
+    <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.25rem; margin-bottom: 0.25rem;">
+      <span>${escapeHtml(m)} 代墊</span>
+      <span style="font-weight: bold; color: var(--color-green);">${formatAccounting(paidAmounts[m] || 0)}</span>
+    </div>
+  `).join('');
+
+  container.innerHTML = `
+    <div style="margin-bottom: 1rem;">
+      <div style="font-size: 0.9rem; font-weight: bold; color: var(--theme-color); margin-bottom: 0.25rem;">${escapeHtml(plan.name)}</div>
+      <div style="font-size: 0.75rem; color: var(--text-muted);">總細項花費概況</div>
+    </div>
+    
+    <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem;">
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">此計畫總花費</div>
+      <div style="font-family: var(--font-title); font-size: 1.5rem; font-weight: bold; color: var(--color-purple);">${formatAccounting(totalSpend)}</div>
+    </div>
+    
+    <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; font-weight: bold;">各成員代墊狀況</div>
+      <div style="display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8125rem;">
+        ${membersDetailHtml}
+      </div>
+    </div>
+  `;
+}
+
+let splitPreviewTimeout = null;
+function calculateRealtimeSplitPreview() {
+  clearTimeout(splitPreviewTimeout);
+  splitPreviewTimeout = setTimeout(() => {
+    const amountStr = document.getElementById('split-trans-amount').value;
+    const amount = Number(amountStr) || 0;
+    
+    const container = document.getElementById('split-members-list-checkboxes');
+    if (!container) return;
+    
+    const rows = container.querySelectorAll('div');
+    let selectedMembers = [];
+    rows.forEach(row => {
+       const cb = row.querySelector('input[type="checkbox"]');
+       if (cb && cb.checked) {
+          selectedMembers.push(cb.value);
+       }
+    });
+
+    const previewList = document.getElementById('split-preview-list');
+    if (!previewList) return;
+    
+    if (selectedMembers.length === 0 || amount === 0) {
+      previewList.innerHTML = '<div style="color:var(--text-muted); font-size:0.8rem; text-align:center;">無分攤結果</div>';
+      return;
+    }
+    
+    const share = amount / selectedMembers.length;
+    let html = '';
+    selectedMembers.forEach(m => {
+      html += `
+        <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.25rem; margin-bottom: 0.25rem;">
+          <span>${escapeHtml(m)} 應付</span>
+          <span style="font-weight: bold; color: var(--color-purple);">${formatAccounting(share)}</span>
+        </div>
+      `;
+    });
+    
+    previewList.innerHTML = html;
+  }, 250);
+}
+
+window.calculateRealtimeSplitPreview = calculateRealtimeSplitPreview;
+
+
+
+
+// --- Date Wheel Picker Logic ---
+let wheelPickerCallback = null;
+let wheelYear = new Date().getFullYear();
+let wheelMonth = new Date().getMonth() + 1;
+let wheelDay = new Date().getDate();
+
+function openWheelPicker(currentDateStr, callback) {
+  wheelPickerCallback = callback;
+  const overlay = document.getElementById('wheel-date-picker');
+  
+  if (currentDateStr) {
+    const d = new Date(currentDateStr);
+    if (!isNaN(d.getTime())) {
+      wheelYear = d.getFullYear();
+      wheelMonth = d.getMonth() + 1;
+      wheelDay = d.getDate();
+    }
+  } else {
+    const d = new Date();
+    wheelYear = d.getFullYear();
+    wheelMonth = d.getMonth() + 1;
+    wheelDay = d.getDate();
+  }
+  
+  initWheelData();
+  overlay.classList.add('open');
+  
+  // Need to wait for rendering to apply scroll
+  setTimeout(() => {
+    scrollToWheelItem('wheel-col-year', wheelYear);
+    scrollToWheelItem('wheel-col-month', wheelMonth);
+    scrollToWheelItem('wheel-col-day', wheelDay);
+  }, 50);
+}
+
+function closeWheelPicker() {
+  document.getElementById('wheel-date-picker').classList.remove('open');
+}
+
+function confirmWheelPicker() {
+  const y = getSelectedWheelValue('wheel-col-year');
+  const m = getSelectedWheelValue('wheel-col-month');
+  const d = getSelectedWheelValue('wheel-col-day');
+  
+  if (wheelPickerCallback) {
+    const paddedM = String(m).padStart(2, '0');
+    const paddedD = String(d).padStart(2, '0');
+    wheelPickerCallback(`${y}-${paddedM}-${paddedD}`);
+  }
+  closeWheelPicker();
+}
+
+function initWheelData() {
+  // Years (e.g., 2010 to 2040)
+  const colYear = document.getElementById('wheel-col-year');
+  let yHtml = '';
+  for(let i = 2010; i <= 2040; i++) {
+    yHtml += `<div class="wheel-item" data-val="${i}">${i}年</div>`;
+  }
+  colYear.innerHTML = yHtml;
+  
+  // Months
+  const colMonth = document.getElementById('wheel-col-month');
+  let mHtml = '';
+  for(let i = 1; i <= 12; i++) {
+    mHtml += `<div class="wheel-item" data-val="${i}">${String(i).padStart(2, '0')}月</div>`;
+  }
+  colMonth.innerHTML = mHtml;
+  
+  // Days (initial)
+  updateWheelDays();
+  
+  // Add scroll listeners
+  [colYear, colMonth, document.getElementById('wheel-col-day')].forEach(col => {
+    col.addEventListener('scroll', () => {
+      clearTimeout(col.snapTimeout);
+      col.snapTimeout = setTimeout(() => handleWheelScrollDone(col), 150);
+      updateWheelVisuals(col);
+    });
+  });
+}
+
+function updateWheelDays() {
+  const y = getSelectedWheelValue('wheel-col-year') || wheelYear;
+  const m = getSelectedWheelValue('wheel-col-month') || wheelMonth;
+  const daysInMonth = new Date(y, m, 0).getDate();
+  
+  const colDay = document.getElementById('wheel-col-day');
+  let dHtml = '';
+  for(let i = 1; i <= daysInMonth; i++) {
+    dHtml += `<div class="wheel-item" data-val="${i}">${String(i).padStart(2, '0')}日</div>`;
+  }
+  colDay.innerHTML = dHtml;
+  
+  // Re-attach scroll listener if replaced
+  colDay.onscroll = () => {
+    clearTimeout(colDay.snapTimeout);
+    colDay.snapTimeout = setTimeout(() => handleWheelScrollDone(colDay), 150);
+    updateWheelVisuals(colDay);
+  };
+  
+  // Ensure day selection is valid
+  let currentD = getSelectedWheelValue('wheel-col-day') || wheelDay;
+  if (currentD > daysInMonth) currentD = daysInMonth;
+  
+  setTimeout(() => scrollToWheelItem('wheel-col-day', currentD), 10);
+}
+
+function handleWheelScrollDone(col) {
+  updateWheelVisuals(col);
+  if (col.id === 'wheel-col-year' || col.id === 'wheel-col-month') {
+    updateWheelDays();
+  }
+}
+
+function updateWheelVisuals(col) {
+  const items = col.querySelectorAll('.wheel-item');
+  const center = col.scrollTop + col.clientHeight / 2;
+  
+  let closestItem = null;
+  let minDiff = Infinity;
+  
+  items.forEach(item => {
+    item.classList.remove('selected');
+    const itemCenter = item.offsetTop + item.clientHeight / 2 - col.offsetTop; // relative to col
+    const diff = Math.abs(center - itemCenter);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closestItem = item;
+    }
+  });
+  
+  if (closestItem) {
+    closestItem.classList.add('selected');
+  }
+}
+
+function scrollToWheelItem(colId, val) {
+  const col = document.getElementById(colId);
+  if(!col) return;
+  const item = col.querySelector(`.wheel-item[data-val="${val}"]`);
+  if (item) {
+    // 40 is item height. Center item: scrollTop = item.offsetTop - col.clientHeight/2 + item.clientHeight/2
+    const targetScroll = item.offsetTop - col.clientHeight / 2 + 20;
+    col.scrollTo({ top: targetScroll, behavior: 'smooth' });
+    setTimeout(() => updateWheelVisuals(col), 300);
+  }
+}
+
+function getSelectedWheelValue(colId) {
+  const col = document.getElementById(colId);
+  if(!col) return null;
+  const selected = col.querySelector('.wheel-item.selected');
+  if (selected) return Number(selected.getAttribute('data-val'));
+  
+  // Fallback if not updated yet
+  const items = col.querySelectorAll('.wheel-item');
+  const center = col.scrollTop + col.clientHeight / 2;
+  let closestItem = null;
+  let minDiff = Infinity;
+  items.forEach(item => {
+    const itemCenter = item.offsetTop + 20 - col.offsetTop;
+    const diff = Math.abs(center - itemCenter);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closestItem = item;
+    }
+  });
+  if (closestItem) return Number(closestItem.getAttribute('data-val'));
+  return null;
+}
+
+window.openWheelPicker = openWheelPicker;
+window.closeWheelPicker = closeWheelPicker;
+window.confirmWheelPicker = confirmWheelPicker;
