@@ -1,5 +1,5 @@
-﻿/**
- * Core Application Controller for ?祈?撣?& 憭??賢?撣?App.
+/**
+ * Core Application Controller for ?�???& ?�??�???App.
  * Implements states, rendering engines, business logic, and security workflows.
  */
 
@@ -8,8 +8,8 @@ let AppState = {
   accounts: [],
   transactions: [],
   categories: {
-    expense: ['憌脤?', '?ˇ', '雿?', '鈭日?, '?脣?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '??', '靽', '摮貊?', '??', '?亦??, '颲血', '摮扛鞎?, '?嗡?'],
-    income: ['?芣偌', '??', '銝剔?', '??', '?暑鞎?, '?嗡?']
+    expense: ['?�脤?', '??��?, '?�?', '?�日??, '???', '?��?漱憡�?', '?��???, '???', '?��???, '???', '?��?�?, '?��??', '???', '?亦�???, '颲�???, '?��??��??, '???'],
+    income: ['????', '???', '?��??', '???', '?�???, '???']
   },
   recurring: [],
   splitPlans: [],
@@ -18,32 +18,32 @@ let AppState = {
   carrierInvoices: [],
   lastRecurringCheckDate: '',
   inventory: [],
-  inventoryIcons: ['?宏', '?妥', '?宋', '??儭?, '?', '??', '??', '?市', '?', '?'],
-  recurringIcons: ['?', '?', '?塚?', '??儭?, '??', '?', '?', '??', '?', '?'],
+  inventoryIcons: ['?�?, '?�?, '?�?, '????, '???, '??', '??', '?�?, '???, '???],
+  recurringIcons: ['???, '???, '?�?', '????, '?�?', '???, '???, '??', '???, '?�?],
   dreams: [],
   inventoryCategories: {
-    '鈭粹?撠?': {
-      '撅振?典?': ['銵?蝝?, '瞈?蝝?, '摰銴?, '瘣?撌?, '瞈?撌?, '憭暸?鋡?, '?部', '?餅?', '??', '?鋡?],
-      '瘣??典?': ['瘣垣蝎?, '霅琿垣銋?, '瘝絕銋?, '瘣銋?, '?', '????, '??', '瘝絕??],
-      '瘣﹝?典?': ['瘣﹝??, '瘣﹝蝎?, '擐?鞊?, '撠???', '瘣﹝蝬?鋡?, '??蝎?],
-      '皜??典?': ['?孵?', '??撣?, '皜??湧', '瘣﹝璈?瞏?', '擐祆▲皜???, '?潮皜?瘨?, '?斗?憿?', '瘨?湧'],
-      '璈??': ['?詨△??, '?璈鈭?],
-      '撱?典?': ['擗', '蝣', '?', '?臬?', '?芸?', '靽悅??, '靽悅鋡?],
-      '銝甈⊥抒??: ['??', '瘞湔局瞈曄雯', '瘞??蝝?],
-      '?怎??典?': ['?亙?', '鞎澆?', '?湧', '?亥?', '璉璉?, 'ok蝜?, '璉?', '??鞎?],
-      '靽???: ['?靽?', '頨恍?靽?', '?雲靽?', '?剝靽?'],
-      '????: ['蝎?', '?脫', '???', '蝎?'],
-      '憌?': ['蝐?, '暻菜?/瘜⊿熊', '憌脫?/?啣?', '?園?', '?祈?', '?悅??'],
-      '撌乩??典?': ['鋡?', '?剖?']
+    '?�粹??��??': {
+      '?�????': ['?��????, '?��????, '?�銴?, '??????, '?�???, '?�暸???, '??�部', '?�?', '?�?', '??��???],
+      '???????': ['???????, '?�琿????, '?��?絕�??, '???�??, '?�?', '?????, '?�?', '?��?�??],
+      '???�???': ['???�??, '???﹝�??, '?��????, '?�????', '???﹝蝬???, '?????],
+      '?�????': ['?�?', '?�???, '?�??湧', '???﹝�?�??��??', '?��??��?????, '?潮?�???, '????��??', '?��???湧'],
+      '?��?�?�?': ['?詨△??, '??�?��?鈭?],
+      '?�????': ['?��???, '???�?, '??��?', '???', '???', '?��????, '?��??�鋡?],
+      '?�?�⊥??��???: ['???', '?��?局?��???, '??�??��??],
+      '??????': ['?�?', '?��??', '?湧', '?�?', '?�?��??, 'ok??, '?�?', '?�???],
+      '?��????: ['??�靽�?', '?��???��??', '??�雲?��??', '??�靽�?'],
+      '?�???: ['?�?', '??��?', '???', '?�?'],
+      '?��??': ['??, '?��??/?�⊿??, '?�脫?/???', '???', '?�?', '?�????'],
+      '?�乩????': ['?�?', '???']
     },
-    '?秘撠?': {
-      '撖萇?典?': ['憌潭?', '蝵', '?園?', '靽憌?'],
-      '皜??典?': ['銋暹?瞉⊥?憟?, '瘝絕銋?, '鞎?', '?方??, '瘨?湧'],
-      '憡??典?': ['鞎???, '?拙', '鞎版', '鞎?', '鞎?']
+    '?�??��??': {
+      '?��?????': ['?�潭?', '?��?�?, '???', '?��?�?�?'],
+      '?�????': ['?�暹??�⊥???, '?��?絕�??, '?�?', '??�??, '?��???湧'],
+      '?��?????': ['?�???, '??��?', '?�??, '?�?', '?�?']
     }
   },
-  inventoryLocations: ['摰Ｗ輒', '撱', '瘚游恕', '?亙恕', '?脰?摰?, '頠?', '颲血摰?, '?賢'],
-  inventoryUnits: ['??, '??, '??, '??, '鋡?, '蝵?, '璇?, '??, '蝯?, '??, '??, '撘?],
+  inventoryLocations: ['?�Ｗ�?, '?�??, '?�游??, '?亙�?', '?????, '?�?', '颲�??�摰?, '?賢'],
+  inventoryUnits: ['??, '??, '??, '??, '??, '??, '??, '??, '??, '??, '??, '??],
   
   // Customization Preferences
   logoStyle: 'draftA',
@@ -53,7 +53,7 @@ let AppState = {
   buttonTheme: 'ocean',
   devMode: false,
   petTheme: 'none',
-  appName: '??閮?- 閮董??撣?
+  appName: '?�???- ?�??????
 };
 
 // Auth and navigation variables
@@ -220,14 +220,14 @@ function switchAuthTab(mode) {
   if (mode === 'login') {
     loginTab.classList.add('active');
     registerTab.classList.remove('active');
-    submitBtn.innerText = '?餃摰撣單';
-    subtitle.innerText = '隢撓?亙董??撖Ⅳ閫???函???撣單';
+    submitBtn.innerText = '?餃?�?�撣?�';
+    subtitle.innerText = '?��???亙董?�??��???��??????�???���?;
     subtitle.style.color = 'var(--text-secondary)';
   } else {
     loginTab.classList.remove('active');
     registerTab.classList.add('active');
-    submitBtn.innerText = '閮餃??啣董??;
-    subtitle.innerText = '閮餃???蝣澆??湔雿?函??砍???堆?隢?敹??ｇ?';
+    submitBtn.innerText = '?��?????��??;
+    subtitle.innerText = '?��??????????湔�??��?????�?�?????��???�??�?';
     subtitle.style.color = 'var(--text-secondary)';
   }
 }
@@ -260,7 +260,7 @@ async function handleAuthSubmit(event) {
     // Registration Flow
     try {
       if (window.Security.userExists(username)) {
-        alert("閮餃?憭望?嚗府撣唾?撌脰◤閮餃?嚗?);
+        alert("?��???��???�府撣???�脰?�閮�???);
         return;
       }
       
@@ -272,7 +272,7 @@ async function handleAuthSubmit(event) {
       createDefaultDatabase();
       await saveStateToStorage();
       
-      alert(`撣唾? "${username}" 閮餃???嚗歇?箸?芸??餃?);
+      alert(`??��? "${username}" ?��??????��?箸�?????餃?�?;
       
       if (remember) {
         localStorage.setItem('auth_remembered_user', username);
@@ -283,7 +283,7 @@ async function handleAuthSubmit(event) {
       loginFailCount = 0;
       unlockApp();
     } catch (e) {
-      alert("閮餃??粹嚗? + e.message);
+      alert("?��???粹�??? + e.message);
     }
   } else {
     // Login Flow
@@ -308,7 +308,7 @@ async function handleAuthSubmit(event) {
         
         unlockApp();
       } catch (err) {
-        const reset = confirm("鞈?閫??憭望?嚗?翰??賢歇???隤方?瘥?n\n隢??臬閬??斗?瘥?翰??銝血遣蝡?啁?蝛箏董?穿?\n嚗迨??撠?蝛箄府撣唾????啗???");
+        const reset = confirm("?�?????��???��??�翰??賢�??�???��??�方????�?n\n?��????��??�?????�??�翰?�??��???��?�????��???�?\n?��?�????�??��?府撣??????�????�?");
         if (reset) {
           localStorage.removeItem(window.Security.getUserDataKey(currentUser));
           createDefaultDatabase();
@@ -323,7 +323,7 @@ async function handleAuthSubmit(event) {
       // Login failed
       loginFailCount++;
       lockBox.classList.add('shake');
-      document.getElementById('lock-subtitle').innerText = '撣唾???蝣潮隤歹?隢??啗撓??;
+      document.getElementById('lock-subtitle').innerText = '??��??�???��?�隤�??�???��???;
       document.getElementById('lock-subtitle').style.color = 'var(--color-red)';
       setTimeout(() => {
         lockBox.classList.remove('shake');
@@ -343,16 +343,16 @@ async function handleAuthSubmit(event) {
 async function handleAccountRecovery() {
   const username = document.getElementById('auth-username').value.trim().toLowerCase();
   if (!username) {
-    alert('隢??其??孵‵撖急?董??蝔梧??銵??啁?摰?);
+    alert('?��??????孵‵�??��???�董?�??����???��??�?????�??);
     return;
   }
   
   const confirmed = confirm(
-    `?? ?蝬??餃?? (靽?????\n\n撣唾?嚗?{username}\n\n` +
-    `憒??函Ⅱ摰?蝣潭迤蝣綽?雿頂蝯曹??湧＊蝷粹隤歹??航?舐汗?典翰?撣詻n` +
-    `甇文??賢?皜?啣虜??唳?霅?雿??撣唾???摰靽??n\n` +
-    `?瑁?敺?隢蝙?具?甇?Ⅱ??蝣潦???酉?撣唾???蝐日??啣???摰??喳?Ｗ儔??????n\n` +
-    `蝣箏?閬匱蝥?嚗
+    `?�? ??��??�??餃??? (?��???????\n\n??��???{username}\n\n` +
+    `?��????�Ⅱ?�???��迤蝣�??��??�蝯???湧�??�粹?�隤�???��???�?��???�翰???��?n` +
+    `?��???�??��??????�????�??��?�?????��??�??�?�靽�??n\n` +
+    `????��???��????�?��??????????��????�???��???��???��?????�日????????�???�?Ｗ�???????�??n\n` +
+    `?????�?�蝥???��?
   );
   
   if (!confirmed) return;
@@ -366,12 +366,12 @@ async function handleAccountRecovery() {
     document.getElementById('auth-password').value = '';
     document.getElementById('auth-password').focus();
     
-    document.getElementById('lock-subtitle').innerText = '??撌脰圾蝬?隢撓?交??憪?蝣潮??啣??酉?蒂蝬??誑?Ｗ儔鞈?';
+    document.getElementById('lock-subtitle').innerText = '????�脰?�蝬�??��???交�?????��????��??????�?��???��??�???��??Ｗ�??�?';
     document.getElementById('lock-subtitle').style.color = 'var(--color-primary, #00F2FE)';
     
     // Rename register button temporarily
     const submitBtn = document.getElementById('auth-submit-btn');
-    submitBtn.innerText = '摰??蝬?';
+    submitBtn.innerText = '?�???��??�?';
     
     // Hide recovery hint
     const hint = document.getElementById('auth-recovery-hint');
@@ -379,7 +379,7 @@ async function handleAccountRecovery() {
     loginFailCount = 0;
     
   } catch (e) {
-    alert('?蔭??銝剔?隤歹?' + e.message);
+    alert('??�蔭????��?�?�??�歹?' + e.message);
   }
 }
 
@@ -573,10 +573,10 @@ async function changeButtonTheme(themeId) {
 // --- Dynamic App Name Customizer ---
 function applyAppName() {
   const sidebarBrand = document.querySelector('.brand-name');
-  if (sidebarBrand) sidebarBrand.innerText = '??閮?;
+  if (sidebarBrand) sidebarBrand.innerText = '?�???;
   const lockTitle = document.querySelector('.lock-title');
-  if (lockTitle) lockTitle.innerText = '??閮?- 閮董??撣?;
-  document.title = '??閮?- 閮董??撣?;
+  if (lockTitle) lockTitle.innerText = '?�???- ?�??????;
+  document.title = '?�???- ?�??????;
 }
 
 async function changeAppName(name) {
@@ -719,10 +719,10 @@ async function changePetTheme(theme) {
 
 function getThemeEmoji(theme) {
   const map = {
-    'cat': '?', 'dog': '?', 'rabbit': '?',
-    'zodiac-rat': '?', 'zodiac-ox': '?', 'zodiac-tiger': '?', 'zodiac-rabbit': '?',
-    'zodiac-dragon': '?', 'zodiac-snake': '??', 'zodiac-horse': '?', 'zodiac-goat': '??',
-    'zodiac-monkey': '?', 'zodiac-rooster': '??', 'zodiac-dog': '?', 'zodiac-pig': '?',
+    'cat': '???, 'dog': '???, 'rabbit': '???,
+    'zodiac-rat': '???, 'zodiac-ox': '???, 'zodiac-tiger': '???, 'zodiac-rabbit': '???,
+    'zodiac-dragon': '???, 'zodiac-snake': '??', 'zodiac-horse': '???, 'zodiac-goat': '??',
+    'zodiac-monkey': '???, 'zodiac-rooster': '??', 'zodiac-dog': '???, 'zodiac-pig': '???,
     'const-aries': '??, 'const-taurus': '??, 'const-gemini': '??, 'const-cancer': '??,
     'const-leo': '??, 'const-virgo': '??, 'const-libra': '??, 'const-scorpio': '??,
     'const-sagittarius': '??, 'const-capricorn': '??, 'const-aquarius': '??, 'const-pisces': '??
@@ -731,13 +731,13 @@ function getThemeEmoji(theme) {
 }
 
 function getThemeWatermark(theme) {
-  if (theme === 'cat') return '? ? ?';
-  if (theme === 'dog') return '? ? ?';
-  if (theme === 'rabbit') return '? ? ?';
+  if (theme === 'cat') return '?????????;
+  if (theme === 'dog') return '?????????;
+  if (theme === 'rabbit') return '?????????;
   
   const emoji = getThemeEmoji(theme);
   if (emoji) {
-    return `??${emoji} ?灼;
+    return `??${emoji} ???
   }
   return '';
 }
@@ -947,8 +947,8 @@ function updatePetThemeUI() {
     // Set CSS properties on body
     const emoji = getThemeEmoji(theme);
     const watermark = getThemeWatermark(theme);
-    document.body.style.setProperty('--pet-emoji', "");
-    document.body.style.setProperty('--pet-watermark', "");
+    document.body.style.setProperty('--pet-emoji', `"${emoji}"`);
+    document.body.style.setProperty('--pet-watermark', `"${watermark}"`);
   } else {
     document.body.style.setProperty('--pet-emoji', '""');
     document.body.style.setProperty('--pet-watermark', '""');
@@ -971,8 +971,8 @@ function createDefaultDatabase() {
     accounts: [],
     transactions: [],
     categories: {
-      expense: ['憌脤?', '?ˇ', '撅?', '鈭日?, '?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '靽', '摮貊?', '??', '靽∠?狡', '颲血', '摮扛鞎?, '?嗡?'],
-      income: ['?芣偌', '??', '銝剔?', '??', '?舀平?嗅', '?嗡?']
+      expense: ['?�脤?', '??��?, '?�?', '?�日??, '?', '?��?漱憡�?', '?��???, '???', '?��???, '?��?�?, '?��??', '???', '?��????�狡', '颲�???, '?��??��??, '???'],
+      income: ['????', '???', '?��??', '???', '??��??�', '???']
     },
     recurring: [],
     splitPlans: [],
@@ -987,7 +987,7 @@ function createDefaultDatabase() {
     fontStyle: 'modern',
     chartType: 'pie',
     themeMode: 'auto',
-    appName: '?征閮董',
+    appName: '?�??�??,
     globalMonthlyBudget: 20000
   };
 }
@@ -1061,8 +1061,8 @@ async function loadStateFromStorage() {
       // Repair logic for backward compatibility/missing properties
       if (!AppState.categories) {
         AppState.categories = {
-          expense: ['憌脤?', '?ˇ', '雿?', '鈭日?, '?脣?', '蝷曆漱憡?', '鞈潛', '?怎?', '撖萇', '??', '靽', '摮貊?', '??', '?亦??, '颲血', '摮扛鞎?, '?嗡?'],
-          income: ['?芣偌', '??', '銝剔?', '??', '?暑鞎?, '?嗡?']
+          expense: ['?�脤?', '??��?, '?�?', '?�日??, '???', '?��?漱憡�?', '?��???, '???', '?��???, '???', '?��?�?, '?��??', '???', '?亦�???, '颲�???, '?��??��??, '???'],
+          income: ['????', '???', '?��??', '???', '?�???, '???']
         };
       }
       if (!AppState.recurring) AppState.recurring = [];
@@ -1070,29 +1070,29 @@ async function loadStateFromStorage() {
       if (!AppState.carrierInvoices) AppState.carrierInvoices = [];
       if (!AppState.logoStyle) AppState.logoStyle = 'draftA';
       if (!AppState.inventory) AppState.inventory = [];
-      if (!AppState.inventoryIcons) AppState.inventoryIcons = ['?宏', '?妥', '?宋', '??儭?, '?', '??', '??', '?市', '?', '?'];
-      if (!AppState.recurringIcons) AppState.recurringIcons = ['?', '?', '?塚?', '??儭?, '??', '?', '?', '??', '?', '?'];
+      if (!AppState.inventoryIcons) AppState.inventoryIcons = ['?�?, '?�?, '?�?, '????, '???, '??', '??', '?�?, '???, '???];
+      if (!AppState.recurringIcons) AppState.recurringIcons = ['???, '???, '?�?', '????, '?�?', '???, '???, '??', '???, '?�?];
       if (!AppState.dreams) AppState.dreams = [];
       if (!AppState.inventoryCategories) {
         AppState.inventoryCategories = {
-          '鈭粹?撠?': {
-            '撅振?典?': ['銵?蝝?, '瞈?蝝?, '摰銴?, '瘣?撌?, '瞈?撌?, '憭暸?鋡?, '?部', '?餅?', '??', '?鋡?],
-            '瘣??典?': ['瘣垣蝎?, '霅琿垣銋?, '瘝絕銋?, '瘣銋?, '?', '????, '??', '瘝絕??],
-            '瘣﹝?典?': ['瘣﹝??, '瘣﹝蝎?, '擐?鞊?, '撠???', '瘣﹝蝬?鋡?, '??蝎?],
-            '皜??典?': ['?孵?', '??撣?, '皜??湧', '瘣﹝璈?瞏?', '擐祆▲皜???, '?潮皜?瘨?, '?斗?憿?', '瘨?湧'],
-            '璈??': ['?詨△??, '?璈鈭?],
-            '撱?典?': ['擗', '蝣', '?', '?臬?', '?芸?', '靽悅??, '靽悅鋡?],
-            '銝甈⊥抒??: ['??', '瘞湔局瞈曄雯', '瘞??蝝?],
-            '?怎??典?': ['?亙?', '鞎澆?', '?湧', '?亥?', '璉璉?, 'ok蝜?, '璉?', '??鞎?],
-            '靽???: ['?靽?', '頨恍?靽?', '?雲靽?', '?剝靽?'],
-            '????: ['蝎?', '?脫', '???', '蝎?'],
-            '憌?': ['蝐?, '暻菜?/瘜⊿熊', '憌脫?/?啣?', '?園?', '?祈?', '?悅??'],
-            '撌乩??典?': ['鋡?', '?剖?']
+          '?�粹??��??': {
+            '?�????': ['?��????, '?��????, '?�銴?, '??????, '?�???, '?�暸???, '??�部', '?�?', '?�?', '??��???],
+            '???????': ['???????, '?�琿????, '?��?絕�??, '???�??, '?�?', '?????, '?�?', '?��?�??],
+            '???�???': ['???�??, '???﹝�??, '?��????, '?�????', '???﹝蝬???, '?????],
+            '?�????': ['?�?', '?�???, '?�??湧', '???﹝�?�??��??', '?��??��?????, '?潮?�???, '????��??', '?��???湧'],
+            '?��?�?�?': ['?詨△??, '??�?��?鈭?],
+            '?�????': ['?��???, '???�?, '??��?', '???', '???', '?��????, '?��??�鋡?],
+            '?�?�⊥??��???: ['???', '?��?局?��???, '??�??��??],
+            '??????': ['?�?', '?��??', '?湧', '?�?', '?�?��??, 'ok??, '?�?', '?�???],
+            '?��????: ['??�靽�?', '?��???��??', '??�雲?��??', '??�靽�?'],
+            '?�???: ['?�?', '??��?', '???', '?�?'],
+            '?��??': ['??, '?��??/?�⊿??, '?�脫?/???', '???', '?�?', '?�????'],
+            '?�乩????': ['?�?', '???']
           },
-          '?秘撠?': {
-            '撖萇?典?': ['憌潭?', '蝵', '?園?', '靽憌?'],
-            '皜??典?': ['銋暹?瞉⊥?憟?, '瘝絕銋?, '鞎?', '?方??, '瘨?湧'],
-            '憡??典?': ['鞎???, '?拙', '鞎版', '鞎?', '鞎?']
+          '?�??��??': {
+            '?��?????': ['?�潭?', '?��?�?, '???', '?��?�?�?'],
+            '?�????': ['?�暹??�⊥???, '?��?絕�??, '?�?', '??�??, '?��???湧'],
+            '?��?????': ['?�???, '??��?', '?�??, '?�?', '?�?']
           }
         };
       }
@@ -1111,7 +1111,7 @@ async function loadStateFromStorage() {
           }
         });
       }
-      AppState.appName = '??閮?- 閮董??撣?;
+      AppState.appName = '?��?�?App';
       
       // Sync styles immediately
       syncVisualPreferencesUI();
@@ -1567,16 +1567,16 @@ function calculateCcInstallmentPreview() {
   if (firstTotal !== regularTotal) {
     previewDiv.innerHTML = `
       <div style="line-height: 1.4;">
-        ??閰衣?嚗???甈?<strong>${formatAccounting(firstTotal)}</strong> (?怠偏撌?嚗?
-        敺?瘥? <strong>${formatAccounting(regularTotal)}</strong>嚗 <strong>${periods}</strong> ??
-        ${type === 'interest-bearing' ? `<br>(?急????${formatAccounting(interestPerPeriod)}嚗僑?拍? ${rate}%)` : ''}
+        ????�衣??�?????<strong>${formatAccounting(firstTotal)}</strong> (??��?????
+        ?�??�? <strong>${formatAccounting(regularTotal)}</strong>?�??<strong>${periods}</strong> ??
+        ${type === 'interest-bearing' ? `<br>(????�???${formatAccounting(interestPerPeriod)}?�???? ${rate}%)` : ''}
       </div>
     `;
   } else {
     previewDiv.innerHTML = `
       <div style="line-height: 1.4;">
-        ??閰衣?嚗???甈?<strong>${formatAccounting(regularTotal)}</strong>嚗 <strong>${periods}</strong> ??
-        ${type === 'interest-bearing' ? `<br>(?急????${formatAccounting(interestPerPeriod)}嚗僑?拍? ${rate}%)` : ''}
+        ????�衣??�?????<strong>${formatAccounting(regularTotal)}</strong>?�??<strong>${periods}</strong> ??
+        ${type === 'interest-bearing' ? `<br>(????�???${formatAccounting(interestPerPeriod)}?�???? ${rate}%)` : ''}
       </div>
     `;
   }
@@ -1607,13 +1607,13 @@ function renderCalendar() {
   const monthYearLabel = document.getElementById('calendar-current-month-year');
   
   // Set month label
-  const localeMonths = ['銝??, '鈭?', '銝?', '??', '鈭?', '?剜?', '銝?', '?急?', '銋?', '??', '????, '????];
-  monthYearLabel.innerText = `${currentCalendarDate.getFullYear()}撟?${localeMonths[currentCalendarDate.getMonth()]}`;
+  const localeMonths = ['?�??, '?�?', '?�?', '?�?', '?��??', '???', '?�?', '???', '?��??', '?�?', '?�???, '?�???];
+  monthYearLabel.innerText = `${currentCalendarDate.getFullYear()}??${localeMonths[currentCalendarDate.getMonth()]}`;
 
   container.innerHTML = '';
   
   // Render Day Labels (Sun - Sat)
-  const daysLabels = ['??, '銝', '鈭?, '銝?, '??, '鈭?, '??];
+  const daysLabels = ['??, '?�', '??, '??, '??, '??, '??];
   daysLabels.forEach(lbl => {
     const dayLabelEl = document.createElement('div');
     dayLabelEl.className = 'calendar-day-label';
@@ -1700,10 +1700,10 @@ function createDayCell(container, dayNum, dateStr, isOtherMonth) {
       dotsContainer.appendChild(dot);
     }
     if (upcomingTx.length > 0) {
-      const uniqueIcons = [...new Set(upcomingTx.map(t => t.icon || '?'))];
+      const uniqueIcons = [...new Set(upcomingTx.map(t => t.icon || '?�?))];
       uniqueIcons.slice(0, 3).forEach(ic => {
         const dot = document.createElement('div');
-        if (ic === '?') {
+        if (ic === '?�?) {
           dot.className = 'dot';
           dot.style.background = 'var(--color-purple)';
         } else {
@@ -1730,8 +1730,8 @@ function renderDailyLedger() {
   
   // Format selected date description
   const d = new Date(selectedDate);
-  const weekDay = ['??, '銝', '鈭?, '銝?, '??, '鈭?, '??][d.getDay()];
-  dateLabel.innerText = `${d.getFullYear()}撟?{d.getMonth()+1}??{d.getDate()}????${weekDay})`;
+  const weekDay = ['??, '?�', '??, '??, '??, '??, '??][d.getDay()];
+  dateLabel.innerText = `${d.getFullYear()}??{d.getMonth()+1}??{d.getDate()}???�?${weekDay})`;
 
   container.innerHTML = '';
   container.style.position = 'relative';
@@ -1795,7 +1795,7 @@ function renderDailyLedger() {
             <rect x="44" y="24" width="12" height="4" rx="1" fill="#be185d" />
           </svg>
         </div>
-        <p style="color: var(--text-secondary); font-size: 0.875rem;">?祆?芣?隞颱?鈭斗?蝝??暺???銝蝑?憪?撣喳嚗?/p>
+        <p style="color: var(--text-secondary); font-size: 0.875rem;">?祆�?????�颱??��???�????�?????�?��?????��????��?��??/p>
       `;
     }
     
@@ -1816,11 +1816,11 @@ function renderDailyLedger() {
     
     // Find account name
     const acc = AppState.accounts.find(a => a.id === rule.sourceAccountId);
-    const accName = acc ? acc.name : '?芰撣單';
+    const accName = acc ? acc.name : '??��???��??;
     
-      const iconToUse = rule.icon || '?';
+      const iconToUse = rule.icon || '?�?;
       let iconHtml = '';
-      if (iconToUse === '?') {
+      if (iconToUse === '?�?) {
         iconHtml = `<div class="ledger-icon" style="background: rgba(168, 85, 247, 0.2); color: var(--color-purple);"><svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg></div>`;
       } else {
         iconHtml = `<div class="ledger-icon" style="background: rgba(168, 85, 247, 0.1); font-size: 1.25rem;">${iconToUse}</div>`;
@@ -1830,13 +1830,13 @@ function renderDailyLedger() {
         <div class="ledger-left">
           ${iconHtml}
           <div class="ledger-info">
-          <div class="ledger-title" style="color: var(--color-purple);">????狡 - ${escapeHtml(rule.name)}</div>
-          <div class="ledger-account-tag">撠 ${escapeHtml(accName)} ?臭?</div>
+          <div class="ledger-title" style="color: var(--color-purple);">???????- ${escapeHtml(rule.name)}</div>
+          <div class="ledger-account-tag">?�??${escapeHtml(accName)} ???</div>
         </div>
       </div>
       <div class="ledger-right">
         ${getAccountingSpan(rule.amount, rule.type)}
-        <div class="ledger-account-tag">蝟餌絞撠?甈?/div>
+        <div class="ledger-account-tag">?��?絞�??�??�??/div>
       </div>
     `;
     container.appendChild(item);
@@ -1854,12 +1854,12 @@ function renderDailyLedger() {
     let categoryIcon = '??';
     
     if (t.type === 'transfer') {
-      const srcName = acc ? acc.name : (t.accountId.endsWith('_invested') ? '?∠巨鞈?' : '?芰');
-      const destName = destAcc ? destAcc.name : (t.destAccountId.endsWith('_invested') ? '?∠巨鞈?' : '?芰');
+      const srcName = acc ? acc.name : (t.accountId.endsWith('_invested') ? '??�巨?�?' : '??��?');
+      const destName = destAcc ? destAcc.name : (t.destAccountId.endsWith('_invested') ? '??�巨?�?' : '??��?');
       accountInfo = `${srcName} ??${destName}`;
-      categoryIcon = '?';
+      categoryIcon = '???;
     } else {
-      accountInfo = acc ? acc.name : '?芰撣單';
+      accountInfo = acc ? acc.name : '??��???��??;
       // Icon selection based on category
       categoryIcon = getCategoryEmoji(t.category);
     }
@@ -1879,10 +1879,10 @@ function renderDailyLedger() {
       <div class="ledger-right">
         ${getAccountingSpan(t.type === 'expense' ? -Number(t.amount) : Number(t.amount), t.type)}
         <div class="ledger-actions" style="display: flex; gap: 0.25rem;">
-          <button class="btn-icon-action" onclick="editTransaction('${t.id}')" title="蝺刻摩">
+          <button class="btn-icon-action" onclick="editTransaction('${t.id}')" title="?�刻??>
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
           </button>
-          <button class="btn-icon-action" onclick="deleteTransaction('${t.id}')" title="?芷">
+          <button class="btn-icon-action" onclick="deleteTransaction('${t.id}')" title="??��?">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
           </button>
         </div>
@@ -1914,13 +1914,13 @@ function renderDailyLedger() {
 
 function openHashtagModal(tag) {
   const container = document.getElementById('hashtag-search-results');
-  document.getElementById('hashtag-search-title').innerText = `#${tag} 璅惜蝝?;
+  document.getElementById('hashtag-search-title').innerText = `#${tag} ?��??��?????
   
   // Find all transactions with this tag
   const matchingTx = AppState.transactions.filter(t => t.notes && t.notes.includes(`#${tag}`));
   
   if (matchingTx.length === 0) {
-    container.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">?∠????/div>`;
+    container.innerHTML = `<div style="text-align: center; padding: 2rem; color: var(--text-muted);">??��??�???/div>`;
   } else {
     let totalIncome = 0;
     let totalExpense = 0;
@@ -1931,12 +1931,12 @@ function openHashtagModal(tag) {
       if (t.type === 'expense') totalExpense += Number(t.amount);
       
       const acc = AppState.accounts.find(a => a.id === t.accountId);
-      const accName = acc ? acc.name : '?芰';
+      const accName = acc ? acc.name : '??��?';
       html += `
         <li style="display: flex; justify-content: space-between; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
           <div style="display: flex; flex-direction: column; gap: 0.25rem;">
             <span style="font-weight: 600; color: var(--text-primary);">${escapeHtml(t.notes || t.category)}</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted);">${t.date} 繚 ${accName}</span>
+            <span style="font-size: 0.75rem; color: var(--text-muted);">${t.date} �?${accName}</span>
           </div>
           <div style="font-family: var(--font-title); font-weight: 700; color: ${t.type === 'income' ? 'var(--color-green)' : t.type === 'expense' ? 'var(--color-red)' : 'var(--text-secondary)'};">
             ${getAccountingSpan(t.amount, t.type)}
@@ -1947,7 +1947,7 @@ function openHashtagModal(tag) {
     
     html += `</ul>
       <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600;">
-        <span>璅惜蝮質?蝯?嚗?/span>
+        <span>?��??�蝮�??��????/span>
         <span style="color: ${(totalIncome - totalExpense) >= 0 ? 'var(--color-green)' : 'var(--color-red)'};">${formatAccounting(totalIncome - totalExpense)}</span>
       </div>
     `;
@@ -1960,12 +1960,12 @@ function openHashtagModal(tag) {
 function getCategoryEmoji(cat) {
   const emojis = {
     // Expense
-    '憌脤?': '??', '?ˇ': '??', '雿?': '??', '鈭日?: '??', '?脣?': '?', 
-    '蝷曆漱憡?': '??', '鞈潛': '??儭?, '?怎?': '?', '撖萇': '?', '??': '??', 
-    '靽': '?儭?, '摮貊?': '??', '??': '??', '?亦??: '?妥', '颲血': '?', 
-    '摮扛鞎?: '?', '?嗡?': '?',
+    '?�脤?': '??', '??��?: '??', '?�?': '??', '?�日??: '??', '???': '???, 
+    '?��?漱憡�?': '??', '?��???: '????, '???': '???, '?��???: '???, '???': '??', 
+    '?��?�?: '?儭?, '?��??': '??', '???': '??', '?亦�???: '?�?, '颲�???: '???, 
+    '?��??��??: '???, '???': '???,
     // Income
-    '?芣偌': '?', '銝剔?': '?', '??': '??', '?暑鞎?: '?'
+    '????': '???, '?��??': '???, '???': '??', '?�???: '???
   };
   return emojis[cat] || '??';
 }
@@ -2007,14 +2007,14 @@ function renderAccounts() {
   
   netWorthCard.innerHTML = `
     <div>
-      <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">鞈瘛典潛蜇閮?/div>
+      <div style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 0.25rem;">?�?��??�潛�???/div>
       <div style="font-family: var(--font-title); font-size: 2.25rem; font-weight: 900; background: linear-gradient(90deg, #00F2FE, #4FACFE); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
         ${formatAccounting(netWorth)}
       </div>
     </div>
     <div style="text-align: right; font-size: 0.875rem; color: var(--text-secondary);">
-      <div>蝮質??ｇ?${formatAccounting(totalAssets)}</div>
-      <div>蝮質??蛛?${formatAccounting(-totalLiabilities)}</div>
+      <div>?�質??�?${formatAccounting(totalAssets)}</div>
+      <div>?�質????${formatAccounting(-totalLiabilities)}</div>
     </div>
   `;
   container.appendChild(netWorthCard);
@@ -2027,11 +2027,11 @@ function renderAccounts() {
   actionCard.innerHTML = `
     <button class="btn-primary" onclick="openAddAccountModal('cash')" style="flex: 1; padding: 0.8rem; justify-content: center;">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      ?啣?撣單
+      ?????��??
     </button>
     <button class="btn-primary" onclick="openAddAccountModal('credit')" style="flex: 1; padding: 0.8rem; justify-content: center;">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-      ?啣?靽∠??
+      ????��????
     </button>
   `;
   container.appendChild(actionCard);
@@ -2053,13 +2053,13 @@ function renderAccounts() {
       const availableLimit = cycleStatus.availableLimit;
       const limit = Number(acc.creditLimit) || 100000;
       
-      balanceValHtml = `<span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">?舐憿漲</span>` + getAccountingSpan(availableLimit, 'income');
+      balanceValHtml = `<span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.25rem;">??��??��?�?/span>` + getAccountingSpan(availableLimit, 'income');
       
       let warningHtml = '';
       if (cycleStatus.isBelowThreshold) {
         warningHtml = `
           <div class="credit-card-warning">
-            <span>?? 憿漲霅衣內嚗擗?摨虫??潮?瑼?${formatAccounting(acc.warningThreshold || 0)}</span>
+            <span>?�? ?��?漲�?�?��?�?��?�??�虫??�???${formatAccounting(acc.warningThreshold || 0)}</span>
           </div>
         `;
       }
@@ -2067,25 +2067,25 @@ function renderAccounts() {
       extraDetailsHtml = `
         <div class="credit-details-grid">
           <div>
-            <div class="sub-balance-label">?祆?蝝航?瘨祥</div>
+            <div class="sub-balance-label">?�??�航??��?�?/div>
             <div class="sub-balance-val" style="color: var(--color-red);">${formatAccounting(spent)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">?祆?撌脤?甈?/div>
+            <div class="sub-balance-label">?�??�脤???/div>
             <div class="sub-balance-val" style="color: var(--color-green);">${formatAccounting(repaid)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">瘥?靽∠憿漲</div>
+            <div class="sub-balance-label">?�??��??�憿?�漲</div>
             <div class="sub-balance-val">${formatAccounting(limit)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">?芰?撣喳擗?</div>
+            <div class="sub-balance-label">?????���?�?</div>
             <div class="sub-balance-val">${formatAccounting(creditSpent[acc.id])}</div>
           </div>
         </div>
         <div class="card-billing-details" style="margin-top: 0.75rem;">
-          <span>蝯董?? 瘥? ${acc.billingDay} ??/span>
-          <span>?芣迫?? 瘥? ${acc.dueDay} ??/span>
+          <span>?��???? ?�? ${acc.billingDay} ??/span>
+          <span>???��?? ?�? ${acc.dueDay} ??/span>
         </div>
         ${warningHtml}
       `;
@@ -2097,16 +2097,16 @@ function renderAccounts() {
       extraDetailsHtml = `
         <div class="securities-sub-balances">
           <div>
-            <div class="sub-balance-label">撣單?折?憿?/div>
+            <div class="sub-balance-label">??��??????/div>
             <div class="sub-balance-val">${formatAccounting(accState.balance)}</div>
           </div>
           <div>
-            <div class="sub-balance-label">撌脫??亥蟡刻???/div>
+            <div class="sub-balance-label">?�脫??亥�??�刻???/div>
             <div class="sub-balance-val">${formatAccounting(accState.securitiesInvested)}</div>
           </div>
         </div>
         <button class="btn-select-option" style="width: 100%; margin-top: 1rem; border-color: var(--color-gold); color: var(--color-gold);" onclick="openSecuritiesTransferModal('${acc.id}')">
-          鞈?鈭? (鞎瑕/鞈?)
+          ?�??��?? (?��???????
         </button>
       `;
     } else {
@@ -2135,8 +2135,8 @@ function renderAccounts() {
         extraDetailsHtml = `
           <div class="budget-progress-container">
             <div class="budget-progress-header">
-              <span>?祆?撌脰 (${cycleRangeStr}): ${formatAccounting(currentMonthCashExpenses)}</span>
-              <span>??銝?: ${formatAccounting(acc.budget)}</span>
+              <span>?�??�脰??(${cycleRangeStr}): ${formatAccounting(currentMonthCashExpenses)}</span>
+              <span>????��??: ${formatAccounting(acc.budget)}</span>
             </div>
             <div class="budget-progress-bar">
               <div class="budget-progress-fill ${overBudget ? 'overbudget' : ''}" style="width: ${budgetPercent}%"></div>
@@ -2149,7 +2149,7 @@ function renderAccounts() {
     card.innerHTML = `
       <div class="account-card-header">
         <span class="account-card-name">${escapeHtml(acc.name)}</span>
-        <span class="account-card-type">${acc.type === 'credit' ? '靽∠?? : acc.type === 'securities' ? '霅?? : acc.type === 'bank' ? '?銵? : '?暸?'}</span>
+        <span class="account-card-type">${acc.type === 'credit' ? '?��???? : acc.type === 'securities' ? '?�??? : acc.type === 'bank' ? '???? : '???'}</span>
       </div>
       <div class="account-card-balance">
         ${balanceValHtml}
@@ -2157,10 +2157,10 @@ function renderAccounts() {
       ${extraDetailsHtml}
       
       <div style="margin-top: 1rem; display: flex; justify-content: flex-end; gap: 0.5rem;">
-        <button class="btn-icon-action" onclick="openEditAccountModal('${acc.id}')" title="蝺刻摩撣單?迂??蝞?>
+        <button class="btn-icon-action" onclick="openEditAccountModal('${acc.id}')" title="?�刻?�撣?��???��??????>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
         </button>
-        <button class="btn-icon-action" onclick="deleteAccount('${acc.id}')" title="?芷撣單">
+        <button class="btn-icon-action" onclick="deleteAccount('${acc.id}')" title="??��???��??>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         </button>
       </div>
@@ -2227,8 +2227,8 @@ function renderAccountsStatistics() {
   
   // Update Title
   const panelTitle = document.querySelector('#right-panel-accounts .panel-title');
-  if (panelTitle && panelTitle.innerText.includes('本月收支概況')) {
-    panelTitle.innerHTML = `本月收支概況 <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal; margin-left:0.5rem;">(${startStr} ~ ${endStr})</span>`;
+  if (panelTitle && panelTitle.innerText.includes('?��??�支概�?')) {
+    panelTitle.innerHTML = `?��??�支概�? <span style="font-size:0.75rem; color:var(--text-muted); font-weight:normal; margin-left:0.5rem;">(${startStr} ~ ${endStr})</span>`;
   }
   
   // Filter transactions for this cycle
@@ -2257,13 +2257,13 @@ function renderAccountsStatistics() {
   cashflowContainer.innerHTML = `
     <!-- Net Balance -->
     <div style="margin-bottom: 0.5rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
-      <div style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.25rem;">本期結餘</div>
+      <div style="font-size: 0.8125rem; color: var(--text-muted); margin-bottom: 0.25rem;">?��?結�?</div>
       <div style="font-family: var(--font-title); font-size: 1.75rem; font-weight: bold; color: ${balance >= 0 ? 'var(--color-green)' : 'var(--color-red)'};">${formatAccounting(balance)}</div>
     </div>
     <!-- Income Bar -->
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
-        <span style="font-weight: 600;">📥 本期總收入</span>
+        <span style="font-weight: 600;">?�� ?��?總收??/span>
         <span style="font-family: var(--font-title); font-weight: 700; color: var(--color-green);">${formatAccounting(incomeTotal)}</span>
       </div>
       <div style="height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden;">
@@ -2273,7 +2273,7 @@ function renderAccountsStatistics() {
     <!-- Expense Bar -->
     <div style="display: flex; flex-direction: column; gap: 0.5rem;">
       <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
-        <span style="font-weight: 600;">📤 本期總支出</span>
+        <span style="font-weight: 600;">?�� ?��?總支??/span>
         <span style="font-family: var(--font-title); font-weight: 700; color: var(--color-red);">${formatAccounting(expenseTotal)}</span>
       </div>
       <div style="height: 12px; background: rgba(255,255,255,0.05); border-radius: 6px; overflow: hidden;">
@@ -2295,7 +2295,7 @@ function renderAccountsStatistics() {
   if (sortedCategories.length === 0) {
     categoryContainer.innerHTML = `
       <div style="text-align: center; color: var(--text-muted); font-size: 0.875rem; padding: 3rem 0;">
-        ?祆??∩遙雿?箸??
+        ?�???��??��???箸??
       </div>
     `;
     return;
@@ -2383,7 +2383,7 @@ function renderAccountsStatistics() {
         <div style="display: flex; align-items: center; justify-content: space-between; font-size: 0.8125rem;">
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <span style="width: 8px; height: 8px; border-radius: 50%; background-color: #6B7280; display: inline-block;"></span>
-            <span>? ?嗡?</span>
+            <span>??????</span>
           </div>
           <span style="color: var(--text-secondary); font-weight: 600;">${otherPercent}% (${formatAccounting(otherSum)})</span>
         </div>
@@ -2402,7 +2402,7 @@ function renderAccountsStatistics() {
           ${circlesHtml}
         </svg>
         <div style="position: absolute; text-align: center; pointer-events: none;">
-          <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">蝮賣??/div>
+          <div style="font-size: 0.65rem; color: var(--text-muted); text-transform: uppercase;">?�賣???/div>
           <div style="font-family: var(--font-title); font-size: 0.95rem; font-weight: 800;">${formatAccounting(totalExpense)}</div>
         </div>
       </div>
@@ -2520,7 +2520,7 @@ function renderFinancialHealth(income, expense) {
   if (!container) return;
   
   if (income === 0 && expense === 0) {
-    container.innerHTML = `<div style="width: 100%; text-align: center; color: var(--text-muted); padding: 1rem;">?怎?祆??豢?隞亥?隡啁?鞎∪摨瑕漲</div>`;
+    container.innerHTML = `<div style="width: 100%; text-align: center; color: var(--text-muted); padding: 1rem;">??��??�??�??�亥??��???�∪摨?�漲</div>`;
     return;
   }
   
@@ -2541,13 +2541,13 @@ function renderFinancialHealth(income, expense) {
   score = Math.max(0, Math.min(100, Math.round(score)));
   
   let gradeColor = 'var(--color-green)';
-  let gradeText = '鞎∪??瘜扔雿喉?蝜潛?靽?';
+  let gradeText = '?�∪????�?�雿???��???��??';
   if (score < 40) {
     gradeColor = 'var(--color-red)';
-    gradeText = '?乩??瑕嚗?瘜冽??嚗?;
+    gradeText = '?�???�?�??�冽???��???;
   } else if (score < 70) {
     gradeColor = 'var(--color-gold)';
-    gradeText = '銵函撟喟帘嚗?????';
+    gradeText = '?�函?��??��??�??????��????';
   }
 
   container.innerHTML = `
@@ -2558,11 +2558,11 @@ function renderFinancialHealth(income, expense) {
       </div>
     </div>
     <div style="flex: 1;">
-      <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin: 0 0 0.25rem 0;">?祆??瓷?亙熒摨?/h3>
+      <h3 style="font-family: var(--font-title); font-size: 1.125rem; font-weight: 700; margin: 0 0 0.25rem 0;">?�???�瓷?亙�???/h3>
       <p style="font-size: 0.85rem; color: ${gradeColor}; font-weight: 600; margin: 0 0 0.5rem 0;">${gradeText}</p>
       <div style="display: flex; gap: 1rem; font-size: 0.8125rem; color: var(--text-secondary);">
-        <div>?祆??脰?嚗?span style="color: ${savings >= 0 ? 'var(--color-green)' : 'var(--color-red)'}; font-weight: bold;">${formatAccounting(savings)}</span></div>
-        <div>?脰???<span style="color: var(--text-primary); font-weight: bold;">${income > 0 ? savingsRate.toFixed(1) : 0}%</span></div>
+        <div>?�??????span style="color: ${savings >= 0 ? 'var(--color-green)' : 'var(--color-red)'}; font-weight: bold;">${formatAccounting(savings)}</span></div>
+        <div>??????<span style="color: var(--text-primary); font-weight: bold;">${income > 0 ? savingsRate.toFixed(1) : 0}%</span></div>
       </div>
     </div>
   `;
@@ -2584,16 +2584,16 @@ function renderGlobalBudgetTracker(expenseTotal) {
   }
   
   const remaining = budget - expenseTotal;
-  const remainingText = remaining >= 0 ? `?拚? ${formatAccounting(remaining)}` : `頞 ${formatAccounting(Math.abs(remaining))}`;
+  const remainingText = remaining >= 0 ? `??? ${formatAccounting(remaining)}` : `?�??${formatAccounting(Math.abs(remaining))}`;
 
   container.innerHTML = `
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
-      <h3 style="font-family: var(--font-title); font-size: 1rem; font-weight: 700; color: var(--text-secondary); margin: 0;">?祆?蝮賡?蝞?/h3>
+      <h3 style="font-family: var(--font-title); font-size: 1rem; font-weight: 700; color: var(--text-secondary); margin: 0;">?�??�賡???/h3>
       <span style="font-size: 0.85rem; color: ${color}; font-weight: 600;">${remainingText}</span>
     </div>
     <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted);">
-      <span>撌脩 ${formatAccounting(expenseTotal)}</span>
-      <span>蝮賡? ${formatAccounting(budget)}</span>
+      <span>?�脩??${formatAccounting(expenseTotal)}</span>
+      <span>?�賡? ${formatAccounting(budget)}</span>
     </div>
     <div style="height: 10px; background: rgba(255,255,255,0.05); border-radius: 5px; overflow: hidden; margin-top: 0.25rem;">
       <div style="height: 100%; width: ${percent}%; background: ${color}; border-radius: 5px; transition: width var(--transition-normal); box-shadow: 0 0 10px ${color}80;"></div>
@@ -2632,7 +2632,7 @@ function renderRecurring() {
     tbody.innerHTML = `
       <tr>
         <td colspan="7" style="padding: 3rem; text-align: center; color: var(--text-muted);">
-          撠閮剖?隞颱??箏??嗆閬?
+          ?�閮???�颱??�???��??�?
         </td>
       </tr>
     `;
@@ -2648,15 +2648,15 @@ function renderRecurring() {
     const destAcc = AppState.accounts.find(a => a.id === r.destAccountId);
     
     let typeLabel = '';
-    if (r.type === 'income') typeLabel = '<span style="color: var(--color-green)">?箏??嗅</span>';
-    if (r.type === 'expense') typeLabel = '<span style="color: var(--color-red)">?箏??臬</span>';
-    if (r.type === 'transfer') typeLabel = '<span style="color: var(--color-blue)">?箏?頧董</span>';
+    if (r.type === 'income') typeLabel = '<span style="color: var(--color-green)">?�???�</span>';
+    if (r.type === 'expense') typeLabel = '<span style="color: var(--color-red)">?�???�</span>';
+    if (r.type === 'transfer') typeLabel = '<span style="color: var(--color-blue)">?�??�??/span>';
 
     let freqText = '';
-    if (r.frequency === 'daily') freqText = '瘥予';
-    if (r.frequency === 'weekly') freqText = `瘥?(??${r.dayAnchor})`;
-    if (r.frequency === 'monthly') freqText = `瘥? ${r.dayAnchor} ?匝;
-    if (r.frequency === 'yearly') freqText = `瘥僑 ${r.monthAnchor} ??${r.dayAnchor} ?匝;
+    if (r.frequency === 'daily') freqText = '?��?;
+    if (r.frequency === 'weekly') freqText = `?�??(??${r.dayAnchor})`;
+    if (r.frequency === 'monthly') freqText = `?�? ${r.dayAnchor} ???
+    if (r.frequency === 'yearly') freqText = `?�??${r.monthAnchor} ??${r.dayAnchor} ???
 
     tr.innerHTML = `
       <td style="padding: 1.25rem; font-weight: 600;">${escapeHtml(r.name)}</td>
@@ -2666,7 +2666,7 @@ function renderRecurring() {
       <td style="padding: 1.25rem; color: var(--text-secondary);">${destAcc ? escapeHtml(destAcc.name) : '-'}</td>
       <td style="padding: 1.25rem; color: var(--text-secondary);">${freqText}</td>
       <td style="padding: 1.25rem; text-align: right;">
-        <button class="btn-icon-action" onclick="deleteRecurringRule('${r.id}')" title="?芷">
+        <button class="btn-icon-action" onclick="deleteRecurringRule('${r.id}')" title="??��?">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         </button>
       </td>
@@ -2686,7 +2686,7 @@ function renderInventory() {
   container.innerHTML = '';
   
   if (!AppState.inventory || AppState.inventory.length === 0) {
-    container.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">?桀?瘝?隞颱??抵?蝝???憓鞈?憪恣??</div>`;
+    container.innerHTML = `<div style="grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">?桀??��???�颱?????�??��???�?��??�?��??�???��?????</div>`;
     return;
   }
   
@@ -2701,20 +2701,20 @@ function renderInventory() {
     }
     
     card.innerHTML = `
-      ${isLowStock ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-red); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">摨怠???</div>' : ''}
+      ${isLowStock ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-red); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">?��????</div>' : ''}
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-        <h3 style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin: 0;">${item.icon || '?'} ${escapeHtml(item.name)}</h3>
+        <h3 style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin: 0;">${item.icon || '???} ${escapeHtml(item.name)}</h3>
         <div style="display: flex; gap: 0.5rem;">
-          <button class="btn-icon-action" onclick="openEditInventoryModal('${item.id}')" title="蝺刻摩">
+          <button class="btn-icon-action" onclick="openEditInventoryModal('${item.id}')" title="?�刻??>
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
           </button>
-          <button class="btn-icon-action" style="color: var(--color-red);" onclick="deleteInventoryItem('${item.id}')" title="?芷">
+          <button class="btn-icon-action" style="color: var(--color-red);" onclick="deleteInventoryItem('${item.id}')" title="??��?">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
           </button>
         </div>
       </div>
       <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">?拚??賊?</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">????�?</span>
         <span style="font-family: var(--font-title); font-size: 1.5rem; font-weight: 700; color: ${isLowStock ? 'var(--color-red)' : 'var(--text-primary)'};">
           ${item.quantity} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">${escapeHtml(item.unit)}</span>
         </span>
@@ -2729,7 +2729,7 @@ function renderInventory() {
       </div>
       ${isLowStock ? `
       <div style="margin-top: 0.5rem;">
-        <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem; background: var(--color-green); border-color: var(--color-green);" onclick="openRestockModal('${item.id}')">? 撌脰?鞎?/button>
+        <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem; background: var(--color-green); border-color: var(--color-green);" onclick="openRestockModal('${item.id}')">????�脰???/button>
       </div>` : ''}
     `;
     container.appendChild(card);
@@ -2779,7 +2779,7 @@ function renderInventoryIconsDropdown() {
 function populateInventoryCategories() {
   const areaSelect = document.getElementById('inventory-user-area');
   if (!areaSelect) return;
-  areaSelect.innerHTML = '<option value="">隢?蝙?刻?</option>';
+  areaSelect.innerHTML = '<option value="">?��??��???�??</option>';
   Object.keys(AppState.inventoryCategories).forEach(area => {
     const opt = document.createElement('option');
     opt.value = area;
@@ -2793,8 +2793,8 @@ function handleUserAreaChange() {
   const mainSelect = document.getElementById('inventory-main-category');
   const subSelect = document.getElementById('inventory-sub-category');
   
-  mainSelect.innerHTML = '<option value="">隢?之憿?/option>';
-  subSelect.innerHTML = '<option value="">隢??豢?憭折?</option>';
+  mainSelect.innerHTML = '<option value="">?��??��???/option>';
+  subSelect.innerHTML = '<option value="">?��???�??��??</option>';
   
   if (area && AppState.inventoryCategories[area]) {
     Object.keys(AppState.inventoryCategories[area]).forEach(main => {
@@ -2811,7 +2811,7 @@ function handleMainCategoryChange() {
   const main = document.getElementById('inventory-main-category').value;
   const subSelect = document.getElementById('inventory-sub-category');
   
-  subSelect.innerHTML = '<option value="">隢?敦??/option>';
+  subSelect.innerHTML = '<option value="">?��??�敦??/option>';
   
   if (area && main && AppState.inventoryCategories[area][main]) {
     AppState.inventoryCategories[area][main].forEach(sub => {
@@ -2838,7 +2838,7 @@ function handleNotifyTypeChange() {
     if (type === 'days') document.getElementById('inventory-notify-value').placeholder = '1-6';
     else if (type === 'weeks') document.getElementById('inventory-notify-value').placeholder = '1-4';
     else if (type === 'months') document.getElementById('inventory-notify-value').placeholder = '1-12';
-    else document.getElementById('inventory-notify-value').placeholder = '?芾?頛詨';
+    else document.getElementById('inventory-notify-value').placeholder = '????�詨??;
   } else {
     group.style.display = 'none';
   }
@@ -2895,10 +2895,10 @@ function handleInventorySearch(event) {
 function openAddInventoryModal() {
   document.getElementById('form-inventory').reset();
   document.getElementById('inventory-edit-id').value = '';
-  document.getElementById('modal-inventory-title').innerText = '?啣??抵?';
+  document.getElementById('modal-inventory-title').innerText = '??????';
   
   renderInventoryIconsDropdown();
-  selectInventoryIcon(AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '?');
+  selectInventoryIcon(AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '???);
   
   populateInventoryCategories();
   populateInventoryLocationsAndUnits();
@@ -2954,9 +2954,9 @@ function openEditInventoryModal(id) {
   handleNotifyTypeChange();
   document.getElementById('inventory-notify-value').value = item.notifyValue || '';
 
-  document.getElementById('modal-inventory-title').innerText = '蝺刻摩?抵?';
+  document.getElementById('modal-inventory-title').innerText = '?�刻????';
   renderInventoryIconsDropdown();
-  selectInventoryIcon(item.icon || (AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '?'));
+  selectInventoryIcon(item.icon || (AppState.inventoryIcons.length > 0 ? AppState.inventoryIcons[0] : '???));
   openModal('modal-inventory');
   
   const menus = document.querySelectorAll('.dropdown-menu');
@@ -2985,7 +2985,7 @@ async function handleInventorySubmit(event) {
   const expiryDate = document.getElementById('inventory-expiry-date').value;
   const notifyType = document.getElementById('inventory-notify-type').value;
   const notifyValue = Number(document.getElementById('inventory-notify-value').value) || 0;
-  const icon = document.getElementById('inventory-icon').value || '?';
+  const icon = document.getElementById('inventory-icon').value || '???;
   
   const payload = {
     userArea, mainCategory, subCategory, store, name, inDate, location, quantity, unit, threshold, expiryDate, notifyType, notifyValue, icon
@@ -3009,7 +3009,7 @@ async function handleInventorySubmit(event) {
 }
 
 async function deleteInventoryItem(id) {
-  if (confirm('蝣箏?閬?斗迨?抵?蝝??嚗?)) {
+  if (confirm('?????�???�迨????�?????)) {
     AppState.inventory = AppState.inventory.filter(i => i.id !== id);
     await saveStateToStorage();
     renderInventory();
@@ -3030,7 +3030,7 @@ function generateShoppingList() {
   const lowStockItems = AppState.inventory.filter(i => i.threshold && i.quantity <= i.threshold);
   
   if (lowStockItems.length === 0) {
-    alert('?桀?摮疏?雲嚗敺???嚗?);
+    alert('?桀??�???�雲?�?�敺???�???);
     return;
   } else {
     let html = `<ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.5rem;">`;
@@ -3040,9 +3040,9 @@ function generateShoppingList() {
         <li style="display: flex; justify-content: space-between; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 8px;">
           <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
             <input type="checkbox" checked class="shopping-item-check" data-id="${item.id}">
-            <span>${item.icon || '?'} ${escapeHtml(item.name)}</span>
+            <span>${item.icon || '???} ${escapeHtml(item.name)}</span>
           </label>
-          <span style="color: var(--text-secondary); font-size: 0.85rem;">撱箄降鞈潸眺?喳? ${needed} ${escapeHtml(item.unit)}</span>
+          <span style="color: var(--text-secondary); font-size: 0.85rem;">?��??��?潸眺??? ${needed} ${escapeHtml(item.unit)}</span>
         </li>
       `;
     });
@@ -3051,7 +3051,7 @@ function generateShoppingList() {
   }
   
   const splitSelect = document.getElementById('shopping-split-plan');
-  splitSelect.innerHTML = `<option value="">-- ?豢??董閮 (?舫) --</option>`;
+  splitSelect.innerHTML = `<option value="">-- ?�???�董?��???(??��?) --</option>`;
   AppState.splitPlans.forEach(plan => {
     splitSelect.innerHTML += `<option value="${plan.id}">${escapeHtml(plan.name)}</option>`;
   });
@@ -3071,13 +3071,13 @@ function openRestockModal(id) {
 async function executeShoppingSplit() {
   const checks = document.querySelectorAll('.shopping-item-check:checked');
   if (checks.length === 0) {
-    alert("隢撠?訾??鞎瑞??");
+    alert("?��??��??�?�???��??��???�?");
     return;
   }
   
   const amount = Number(document.getElementById('shopping-total-amount').value);
   if (!amount || amount <= 0) {
-    alert("隢撓?交????∟眺蝮賡?憿?");
+    alert("?��???�??????�眺?�賡??�?");
     return;
   }
   
@@ -3103,15 +3103,15 @@ async function executeShoppingSplit() {
       
       plan.transactions.push({
         id: `sptx_${Date.now()}`,
-        name: `?∟眺: ${itemNames}`,
+        name: `??�眺: ${itemNames}`,
         amount: amount,
         paidBy: currentUser,
         date: new Date().toISOString().split('T')[0]
       });
-      alert(`撌脫????澈摮?銝血? ${formatAccounting(amount)} 頧?董閮??{plan.name}??`);
+      alert(`?�脫??�???��??��???��?? ${formatAccounting(amount)} ?�???�董?��????{plan.name}???`);
     }
   } else {
-    alert(`撌脫????澈摮?(??嚗?芷??撣唾???`);
+    alert(`?�脫??�???��??��??(????��??��??????��???`);
   }
   
   await saveStateToStorage();
@@ -3129,7 +3129,7 @@ function renderSplitPlans() {
     container.innerHTML = `
       <div class="empty-state" style="grid-column: 1 / -1;">
         <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 1.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V20h14v-3.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
-        <p>?桀?瘝?隞颱??董閮</p>
+        <p>?桀??��???�颱???�董?��???/p>
       </div>
     `;
     return;
@@ -3140,7 +3140,7 @@ function renderSplitPlans() {
     card.className = 'split-plan-card';
     
     // Status text
-    const statusLabel = plan.status === 'settled' ? '撌脩?蝞? : '?董銝?;
+    const statusLabel = plan.status === 'settled' ? '?�脩??? : '??�董??;
     const statusClass = plan.status === 'settled' ? 'settled' : 'active';
 
     // Summary of total spend
@@ -3153,7 +3153,7 @@ function renderSplitPlans() {
     if (plan.status === 'settled' && plan.settlement) {
       const instructions = plan.settlement.map(inst => `
         <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; border-bottom: 1px dashed rgba(255,255,255,0.05); padding: 0.25rem 0;">
-          <span>?? <strong>${escapeHtml(inst.from)}</strong> ??蝯?<strong>${escapeHtml(inst.to)}</strong></span>
+          <span>?? <strong>${escapeHtml(inst.from)}</strong> ?????<strong>${escapeHtml(inst.to)}</strong></span>
           <span style="color: var(--color-purple); font-weight: bold;">${formatAccounting(inst.amount)}</span>
         </div>
       `).join('');
@@ -3235,11 +3235,11 @@ function renderSplitPlans() {
 
       settlementHtml = `
         <div class="split-settlement-results">
-          <div class="settlement-title">? 蝯??敦???芸?</div>
+          <div class="settlement-title">????��????�敦??????</div>
           ${diagramSvg}
-          ${instructions || '<div style="font-size: 0.75rem; color: var(--text-muted);">??撌脣?刻?撟喉??⊿??嗡?甈?/div>'}
+          ${instructions || '<div style="font-size: 0.75rem; color: var(--text-muted);">????�脣?????��??????????/div>'}
           <button class="btn-select-option" style="margin-top: 0.5rem; width: 100%; border-color: var(--color-purple); color: var(--color-purple);" onclick="copyToClipboard(\`${rawReport}\`)">
-            銴ˊ蝯??勗? (?澈Line)
+            ?�??��????? (??��?Line)
           </button>
         </div>
       `;
@@ -3248,14 +3248,14 @@ function renderSplitPlans() {
       settlementHtml = `
         <div style="display: flex; gap: 0.5rem; margin-top: auto; align-items: flex-end;">
           <button class="btn-primary" style="flex: 1; padding: 0.75rem 0.5rem; justify-content: center; font-size: 0.875rem; border-radius: 14px;" onclick="openAddSplitTransModal('${plan.id}')">
-            閮?撣單狡
+            ?�???��??
           </button>
           <div class="settle-btn-wrapper" style="position: relative; display: inline-flex; flex: 1;">
             <div class="peeking-cat" style="display: flex; align-items: flex-end; justify-content: center; width: 40px; height: 32px; overflow: hidden; position: absolute; top: -20px; left: 10px;">
               ${getMascotSvg(AppState.petTheme, 40)}
             </div>
             <button class="btn-settle-celebrate" onclick="settleSplitPlan('${plan.id}')" style="border: 2px solid var(--theme-color) !important; color: var(--text-primary) !important; box-shadow: none !important;">
-              蝯?甇方???
+              ?��???�方???
             </button>
           </div>
         </div>
@@ -3267,12 +3267,12 @@ function renderSplitPlans() {
     if (plan.transactions.length > 0) {
       txLogList = plan.transactions.map(t => `
         <div style="display: flex; justify-content: space-between; font-size: 0.8125rem; color: var(--text-secondary); margin-bottom: 0.25rem;">
-          <span>${t.date ? `<span style="font-size:0.75rem; color:var(--text-muted); margin-right:0.4rem;">[${t.date}]</span>` : ''}${escapeHtml(t.name)} (??${escapeHtml(t.payer)} 憓?)</span>
+          <span>${t.date ? `<span style="font-size:0.75rem; color:var(--text-muted); margin-right:0.4rem;">[${t.date}]</span>` : ''}${escapeHtml(t.name)} (??${escapeHtml(t.payer)} ?�?)</span>
           <span>${formatAccounting(t.amount)}</span>
         </div>
-      `).slice(0, 3).join('') + (plan.transactions.length > 3 ? '<div style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">... ?隞狡??/div>' : '');
+      `).slice(0, 3).join('') + (plan.transactions.length > 3 ? '<div style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">... ??�?�?�???/div>' : '');
     } else {
-      txLogList = '<div style="font-size: 0.75rem; color: var(--text-muted);">?∩遙雿狡????/div>';
+      txLogList = '<div style="font-size: 0.75rem; color: var(--text-muted);">??��??��???????/div>';
     }
 
     // Build member chips (Single line with icons)
@@ -3288,8 +3288,8 @@ function renderSplitPlans() {
         <span class="split-plan-status ${statusClass}">${statusLabel}</span>
       </div>
       <div class="split-plan-meta">
-        <div>?交???? ${plan.startDate} ~ ${plan.endDate}</div>
-        <div style="font-weight: 700; margin-top: 0.25rem;">閮蝮質鞎? <span style="color: var(--color-purple); font-size: 1.1rem;">${formatAccounting(totalSpend)}</span></div>
+        <div>?�????? ${plan.startDate} ~ ${plan.endDate}</div>
+        <div style="font-weight: 700; margin-top: 0.25rem;">?��??�蝮質�??? <span style="color: var(--color-purple); font-size: 1.1rem;">${formatAccounting(totalSpend)}</span></div>
       </div>
       
       <div class="split-plan-members" style="display: flex; gap: 0.5rem; overflow-x: auto; padding-bottom: 0.5rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch;">
@@ -3297,14 +3297,14 @@ function renderSplitPlans() {
       </div>
 
       <div style="background: rgba(255,255,255,0.01); border: 1px solid rgba(255,255,255,0.02); padding: 0.75rem; border-radius: 10px; display: flex; flex-direction: column; gap: 0.35rem;">
-        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 0.25rem;">甈暸?蝝??/div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: bold; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 0.25rem;">?�暸??�??/div>
         ${txLogList}
       </div>
 
       ${settlementHtml}
 
       <div style="display: flex; justify-content: flex-end; margin-top: 0.25rem;">
-        <button class="btn-icon-action" onclick="deleteSplitPlan('${plan.id}')" title="?芷甇方???>
+        <button class="btn-icon-action" onclick="deleteSplitPlan('${plan.id}')" title="??��??�方???>
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
         </button>
       </div>
@@ -3320,21 +3320,21 @@ function renderSplitPlans() {
 
 function generateSplitPlanReportText(plan) {
   const totalSpend = plan.transactions.reduce((sum, tx) => sum + Number(tx.amount), 0);
-  let rText = `?? ${plan.name} 蝯??勗? ??\n`;
-  rText += `瘣餃???嚗?{plan.startDate} ??${plan.endDate}\n`;
-  rText += `蝮質??梯祥嚗?{formatAccounting(totalSpend)}\n`;
+  let rText = `?? ${plan.name} ?��????? ??\n`;
+  rText += `?????�???{plan.startDate} ??${plan.endDate}\n`;
+  rText += `?�質??梯祥??{formatAccounting(totalSpend)}\n`;
   rText += `--------------------\n`;
-  rText += `?狡皜??孵?憒?嚗n`;
+  rText += `??�狡?�??�??��???��?n`;
   
   if (plan.settlement && plan.settlement.length > 0) {
     plan.settlement.forEach(inst => {
-      rText += `?? ??{inst.from}????撣喟策 ??{inst.to}??${formatAccounting(inst.amount)}\n`;
+      rText += `?? ??{inst.from}????????�???{inst.to}??${formatAccounting(inst.amount)}\n`;
     });
   } else {
-    rText += `?∪??靽??⊿?頧董嚗n`;
+    rText += `??�?�??�?????�???n`;
   }
   rText += `--------------------\n`;
-  rText += `??憭批振????`;
+  rText += `?�??�批???????`;
   return rText;
 }
 
@@ -3345,10 +3345,10 @@ function renderCarrierInvoices() {
   
   if (AppState.carrierBarcode) {
     displayBarcode.innerText = AppState.carrierBarcode;
-    setupBtn.innerText = '靽格頛';
+    setupBtn.innerText = '?�格?��????';
   } else {
-    displayBarcode.innerText = '撠閮剖?頛';
-    setupBtn.innerText = '閮剖?頛';
+    displayBarcode.innerText = '?�閮???�??;
+    setupBtn.innerText = '?��???�??;
   }
 
   const container = document.getElementById('carrier-invoices-review-list');
@@ -3360,7 +3360,7 @@ function renderCarrierInvoices() {
     container.innerHTML = `
       <div class="empty-state" style="padding: 2rem;">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
-        <p>?桀?瘝?敺祟?貊?頛?潛巨</p>
+        <p>?桀??��???��?�??�??潛巨</p>
       </div>
     `;
     return;
@@ -3381,8 +3381,8 @@ function renderCarrierInvoices() {
     card.innerHTML = `
       <div class="invoice-details">
         <div class="invoice-store">${escapeHtml(inv.store)}</div>
-        <div class="invoice-date">${inv.date} ???潛巨?Ⅳ嚗?{inv.invoiceNo || '??} ????頛?臬</div>
-        <div class="invoice-items-summary">?敦嚗?{escapeHtml(itemsText)}</div>
+        <div class="invoice-date">${inv.date} ???潛巨?Ⅳ??{inv.invoiceNo || '??} ??????�???�</div>
+        <div class="invoice-items-summary">??�敦??{escapeHtml(itemsText)}</div>
       </div>
       <div class="invoice-action-panel">
         <div class="invoice-amount">${formatAccounting(inv.amount)}</div>
@@ -3391,7 +3391,7 @@ function renderCarrierInvoices() {
             ${selectOptions}
           </select>
           <button class="btn-primary" style="padding: 0.25rem 0.75rem; font-size: 0.8125rem; box-shadow: none;" onclick="confirmCarrierInvoice('${inv.id}')">
-            蝣箄?閮董
+            ?????�??
           </button>
         </div>
       </div>
@@ -3452,7 +3452,7 @@ function renderCategories() {
       chip.className = 'category-editable-chip';
       chip.innerHTML = `
         <span>${escapeHtml(icon)}</span>
-        <button class="btn-del-cat" onclick="deleteIcon('inventory', '${icon}')">×</button>
+        <button class="btn-del-cat" onclick="deleteIcon('inventory', '${icon}')">?</button>
       `;
       invIconsContainer.appendChild(chip);
     });
@@ -3467,7 +3467,7 @@ function renderCategories() {
       chip.className = 'category-editable-chip';
       chip.innerHTML = `
         <span>${escapeHtml(icon)}</span>
-        <button class="btn-del-cat" onclick="deleteIcon('recurring', '${icon}')">×</button>
+        <button class="btn-del-cat" onclick="deleteIcon('recurring', '${icon}')">?</button>
       `;
       recIconsContainer.appendChild(chip);
     });
@@ -3477,13 +3477,13 @@ function renderCategories() {
   const wishlistIconsContainer = document.getElementById('wishlist-icons-chips');
   if (wishlistIconsContainer) {
     wishlistIconsContainer.innerHTML = '';
-    if (!AppState.wishlistIcons) AppState.wishlistIcons = ['🎁', '✈️', '🚗', '🏠', '📱']; // default fallback
+    if (!AppState.wishlistIcons) AppState.wishlistIcons = ['??', '?��?', '??', '??', '?��']; // default fallback
     AppState.wishlistIcons.forEach(icon => {
       const chip = document.createElement('div');
       chip.className = 'category-editable-chip';
       chip.innerHTML = `
         <span>${escapeHtml(icon)}</span>
-        <button class="btn-del-cat" onclick="deleteIcon('wishlist', '${icon}')">×</button>
+        <button class="btn-del-cat" onclick="deleteIcon('wishlist', '${icon}')">?</button>
       `;
       wishlistIconsContainer.appendChild(chip);
     });
@@ -3493,13 +3493,13 @@ function renderCategories() {
   const locationChipsContainer = document.getElementById('location-chips');
   if (locationChipsContainer) {
     locationChipsContainer.innerHTML = '';
-    if (!AppState.inventoryLocations) AppState.inventoryLocations = ['客廳', '廚房', '浴室', '臥室', '儲藏室', '車上', '辦公室', '陽台'];
+    if (!AppState.inventoryLocations) AppState.inventoryLocations = ['客廳', '廚房', '浴室', '?�室', '?��?�?, '車�?', '辦公�?, '?�台'];
     AppState.inventoryLocations.forEach(loc => {
       const chip = document.createElement('div');
       chip.className = 'category-editable-chip';
       chip.innerHTML = `
         <span>${escapeHtml(loc)}</span>
-        <button class="btn-del-cat" onclick="deleteInventoryLocation('${loc}')">×</button>
+        <button class="btn-del-cat" onclick="deleteInventoryLocation('${loc}')">?</button>
       `;
       locationChipsContainer.appendChild(chip);
     });
@@ -3509,13 +3509,13 @@ function renderCategories() {
   const unitChipsContainer = document.getElementById('unit-chips');
   if (unitChipsContainer) {
     unitChipsContainer.innerHTML = '';
-    if (!AppState.inventoryUnits) AppState.inventoryUnits = ['包', '瓶', '個', '盒', '袋', '罐', '條', '片', '組', '支', '卷', '張'];
+    if (!AppState.inventoryUnits) AppState.inventoryUnits = ['??, '??, '??, '??, '�?, '�?, '�?, '??, '�?, '??, '??, '�?];
     AppState.inventoryUnits.forEach(u => {
       const chip = document.createElement('div');
       chip.className = 'category-editable-chip';
       chip.innerHTML = `
         <span>${escapeHtml(u)}</span>
-        <button class="btn-del-cat" onclick="deleteInventoryUnit('${u}')">×</button>
+        <button class="btn-del-cat" onclick="deleteInventoryUnit('${u}')">?</button>
       `;
       unitChipsContainer.appendChild(chip);
     });
@@ -3546,7 +3546,7 @@ function addIcon(type) {
       AppState.inventoryIcons.push(newIcon);
     }
   } else if (type === 'wishlist') {
-    if (!AppState.wishlistIcons) AppState.wishlistIcons = ['🎁', '✈️', '🚗', '🏠', '📱'];
+    if (!AppState.wishlistIcons) AppState.wishlistIcons = ['??', '?��?', '??', '??', '?��'];
     if (!AppState.wishlistIcons.includes(newIcon)) {
       AppState.wishlistIcons.push(newIcon);
     }
@@ -3562,7 +3562,7 @@ function addIcon(type) {
 }
 
 function deleteIcon(type, icon) {
-  if (!confirm(`確定要刪除圖標 [${icon}] 嗎？`)) return;
+  if (!confirm(`確�?要刪?��?�?[${icon}] ?��?`)) return;
   if (type === 'inventory') {
     AppState.inventoryIcons = AppState.inventoryIcons.filter(i => i !== icon);
   } else if (type === 'wishlist') {
@@ -3580,7 +3580,7 @@ function addInventoryLocation() {
   const val = inputEl.value.trim();
   if (!val) return;
   
-  if (!AppState.inventoryLocations) AppState.inventoryLocations = ['客廳', '廚房', '浴室', '臥室', '儲藏室', '車上', '辦公室', '陽台'];
+  if (!AppState.inventoryLocations) AppState.inventoryLocations = ['客廳', '廚房', '浴室', '?�室', '?��?�?, '車�?', '辦公�?, '?�台'];
   if (!AppState.inventoryLocations.includes(val)) {
     AppState.inventoryLocations.push(val);
   }
@@ -3591,7 +3591,7 @@ function addInventoryLocation() {
 }
 
 function deleteInventoryLocation(loc) {
-  if (!confirm(`確定要刪除入倉位置 [${loc}] 嗎？`)) return;
+  if (!confirm(`確�?要刪?�入?��?�?[${loc}] ?��?`)) return;
   AppState.inventoryLocations = AppState.inventoryLocations.filter(i => i !== loc);
   saveStateToStorage();
   renderCategories();
@@ -3604,7 +3604,7 @@ function addInventoryUnit() {
   const val = inputEl.value.trim();
   if (!val) return;
   
-  if (!AppState.inventoryUnits) AppState.inventoryUnits = ['包', '瓶', '個', '盒', '袋', '罐', '條', '片', '組', '支', '卷', '張'];
+  if (!AppState.inventoryUnits) AppState.inventoryUnits = ['??, '??, '??, '??, '�?, '�?, '�?, '??, '�?, '??, '??, '�?];
   if (!AppState.inventoryUnits.includes(val)) {
     AppState.inventoryUnits.push(val);
   }
@@ -3615,7 +3615,7 @@ function addInventoryUnit() {
 }
 
 function deleteInventoryUnit(unit) {
-  if (!confirm(`確定要刪除單位 [${unit}] 嗎？`)) return;
+  if (!confirm(`確�?要刪?�單�?[${unit}] ?��?`)) return;
   AppState.inventoryUnits = AppState.inventoryUnits.filter(i => i !== unit);
   saveStateToStorage();
   renderCategories();
@@ -3635,7 +3635,7 @@ function updateRightPanel() {
   const titleEl = document.getElementById('right-panel-title');
   const todayStr = new Date().toISOString().split('T')[0];
   if (titleEl) {
-    titleEl.innerText = selectedDate === todayStr ? '隞?嗆蝮質?' : `${selectedDate.replace(/-/g, '/')} ?嗆蝮質?`;
+    titleEl.innerText = selectedDate === todayStr ? '?��?�??��??�質?' : `${selectedDate.replace(/-/g, '/')} ??��??�質?`;
   }
 
   let incSum = 0;
@@ -3666,7 +3666,7 @@ function updateRightPanel() {
     let valText = '';
     if (acc.type === 'credit') {
       const cycleStatus = getCreditCardCycleStatus(acc, new Date());
-      valText = `?舐: ${formatAccounting(cycleStatus.availableLimit)}`;
+      valText = `??��?: ${formatAccounting(cycleStatus.availableLimit)}`;
     } else if (acc.type === 'securities') {
       const total = balances[acc.id].balance + balances[acc.id].securitiesInvested;
       valText = formatAccounting(total);
@@ -3715,19 +3715,19 @@ function updateRightPanel() {
       alertCard.className = 'cc-alert-card';
       
       let alertTitle = escapeHtml(card.name);
-      let alertContent = `?桀??芰?撣喳??嚗?{formatAccounting(spent)}<br>?舐憿漲嚗?{formatAccounting(cycleStatus.availableLimit)} / ${formatAccounting(Number(card.creditLimit) || 100000)}<br>瘥???${card.billingDay} ?蝯董?伐?瘥???${card.dueDay} ?蝜唾祥?芣迫?乓;
+      let alertContent = `?桀??????���?????{formatAccounting(spent)}<br>??��??��?漲�??{formatAccounting(cycleStatus.availableLimit)} / ${formatAccounting(Number(card.creditLimit) || 100000)}<br>?�???${card.billingDay} ??��???�??�???${card.dueDay} ??�唾�???��?乓�?
       
       if (isTomorrowBilling) {
-        alertTitle = `?? ?蝯董??- ${card.name}`;
-        alertContent = `???剁??予?喳?蝯董嚗敞閮蝯?????${formatAccounting(spent)}?;
+        alertTitle = `?�? ??��??��????- ${card.name}`;
+        alertContent = `????????��?????��?????��??��?蝯???????${formatAccounting(spent)}?�?
       } else if (isTomorrowDue) {
-        alertTitle = `? ?蝜唾祥?芣迫??- ${card.name}`;
-        alertContent = `蝺伐??予?喳??芣迫蝜唾祥嚗?蝣箔?撌脰?撣喃?閮?${formatAccounting(spent)} ??`;
+        alertTitle = `?�???��??�唾�???��??- ${card.name}`;
+        alertContent = `?��??�???��???????��?�唾祥�????????�脰???????${formatAccounting(spent)} ???`;
       } else if (isLowLimit) {
-        alertTitle = `?? 憿漲?喳?? - ${card.name}`;
+        alertTitle = `?�? ?��?�????�? - ${card.name}`;
         alertCard.style.borderColor = 'rgba(239, 68, 68, 0.4)';
         alertCard.style.background = 'rgba(239, 68, 68, 0.08)';
-        alertContent = `霅衣內嚗?券?摨血擗?<strong>${formatAccounting(cycleStatus.availableLimit)}</strong>嚗??潸郎蝷粹?瑼?${formatAccounting(card.warningThreshold || 0)}嚗;
+        alertContent = `?�衣?��?????��??��??<strong>${formatAccounting(cycleStatus.availableLimit)}</strong>?�??潸�??�粹???${formatAccounting(card.warningThreshold || 0)}?��?;
       }
 
       alertCard.innerHTML = `
@@ -3745,7 +3745,7 @@ function updateRightPanel() {
   if (!hasAlerts) {
     ccAlerts.innerHTML = `
       <div style="font-size: 0.8125rem; color: var(--text-muted); text-align: center; padding: 1rem;">
-        ?∠??亦像鞎餅?蝯董????
+        ????亦�??��???��???????
       </div>
     `;
   }
@@ -3767,7 +3767,7 @@ function setTransType(type) {
   // Toggle Active style on selector buttons
   const buttons = document.querySelectorAll('#trans-type-selector button');
   buttons.forEach(btn => {
-    if (btn.innerText === (type === 'expense' ? '?臬' : type === 'income' ? '?嗅' : '頧董')) {
+    if (btn.innerText === (type === 'expense' ? '??�' : type === 'income' ? '??�' : '?�??)) {
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
@@ -3784,12 +3784,12 @@ function setTransType(type) {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'block';
     catGrp.style.display = 'none';
-    labelSrc.innerText = '頧撣單';
+    labelSrc.innerText = '?�?�撣?��?';
   } else {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'none';
     catGrp.style.display = 'block';
-    labelSrc.innerText = type === 'expense' ? '??狡撣單' : '?嗆狡撣單';
+    labelSrc.innerText = type === 'expense' ? '???�撣?��?' : '??�狡??��??;
   }
 
   // Update amount input color based on transaction type
@@ -3858,7 +3858,7 @@ function handleAccountTypeSelectBtn(direction, type) {
   closeAllAccountPopovers();
   
   if (filtered.length === 0) {
-    alert(`?典??芣憓遙雿?{getAccountTypeChineseName(type)}?董?塚?隢????董?嗉???蝞∠????憓?`);
+    alert(`????????�?�雿?�?{getAccountTypeChineseName(type)}??�董?�??��???????�董???????��??????�??�?`);
     return;
   }
   
@@ -3873,7 +3873,7 @@ function handleAccountTypeSelectBtn(direction, type) {
     // Add header to popover
     const header = document.createElement('div');
     header.className = 'account-popover-header';
-    header.innerText = `?豢?${getAccountTypeChineseName(type)}`;
+    header.innerText = `?�?${getAccountTypeChineseName(type)}`;
     popover.appendChild(header);
 
     filtered.forEach(acc => {
@@ -3930,20 +3930,20 @@ function closeAllAccountPopovers() {
 }
 
 function getAccountTypeChineseName(type) {
-  const mapping = { cash: '?暸?', bank: '?銵?, credit: '靽∠??, securities: '霅?? };
-  return mapping[type] || '撣單';
+  const mapping = { cash: '???', bank: '????, credit: '?��????, securities: '?�??? };
+  return mapping[type] || '??��??;
 }
 
 function resetAccountButtons() {
-  document.getElementById('btn-src-cash').innerText = "???Ｗ?";
-  document.getElementById('btn-src-bank').innerText = "?銵董??;
-  document.getElementById('btn-src-credit').innerText = "靽∠??;
-  document.getElementById('btn-src-securities').innerText = "霅??;
+  document.getElementById('btn-src-cash').innerText = "????�?";
+  document.getElementById('btn-src-bank').innerText = "???�???;
+  document.getElementById('btn-src-credit').innerText = "?��????;
+  document.getElementById('btn-src-securities').innerText = "?�???;
 
-  document.getElementById('btn-dst-cash').innerText = "???Ｗ?";
-  document.getElementById('btn-dst-bank').innerText = "?銵董??;
-  document.getElementById('btn-dst-credit').innerText = "靽∠??;
-  document.getElementById('btn-dst-securities').innerText = "霅??;
+  document.getElementById('btn-dst-cash').innerText = "????�?";
+  document.getElementById('btn-dst-bank').innerText = "???�???;
+  document.getElementById('btn-dst-credit').innerText = "?��????;
+  document.getElementById('btn-dst-securities').innerText = "?�???;
 
   const btns = document.querySelectorAll('.btn-account-select');
   btns.forEach(btn => btn.classList.remove('active'));
@@ -3961,10 +3961,10 @@ function updateAccountButtonsFromInputs() {
   const srcId = document.getElementById('trans-account').value;
   const srcAcc = AppState.accounts.find(a => a.id === srcId);
   
-  document.getElementById('btn-src-cash').innerText = "???Ｗ?";
-  document.getElementById('btn-src-bank').innerText = "?銵董??;
-  document.getElementById('btn-src-credit').innerText = "靽∠??;
-  document.getElementById('btn-src-securities').innerText = "霅??;
+  document.getElementById('btn-src-cash').innerText = "????�?";
+  document.getElementById('btn-src-bank').innerText = "???�???;
+  document.getElementById('btn-src-credit').innerText = "?��????;
+  document.getElementById('btn-src-securities').innerText = "?�???;
   
   const srcBtns = document.querySelectorAll('#trans-account-type-buttons-src button');
   srcBtns.forEach(btn => btn.classList.remove('active'));
@@ -3981,10 +3981,10 @@ function updateAccountButtonsFromInputs() {
   const dstId = document.getElementById('trans-dest-account').value;
   const dstAcc = AppState.accounts.find(a => a.id === dstId);
 
-  document.getElementById('btn-dst-cash').innerText = "???Ｗ?";
-  document.getElementById('btn-dst-bank').innerText = "?銵董??;
-  document.getElementById('btn-dst-credit').innerText = "靽∠??;
-  document.getElementById('btn-dst-securities').innerText = "霅??;
+  document.getElementById('btn-dst-cash').innerText = "????�?";
+  document.getElementById('btn-dst-bank').innerText = "???�???;
+  document.getElementById('btn-dst-credit').innerText = "?��????;
+  document.getElementById('btn-dst-securities').innerText = "?�???;
 
   const dstBtns = document.querySelectorAll('#trans-account-type-buttons-dst button');
   dstBtns.forEach(btn => btn.classList.remove('active'));
@@ -4034,7 +4034,7 @@ function editTransaction(id) {
   }
   checkShowCcInstallmentOptions();
   
-  document.getElementById('modal-transaction-title').innerText = "蝺刻摩閮董";
+  document.getElementById('modal-transaction-title').innerText = "?�刻?�閮董";
   openModal('modal-transaction');
 }
 
@@ -4042,7 +4042,7 @@ function openAddTransactionModal() {
   document.getElementById('form-transaction').reset();
   document.getElementById('trans-id').value = '';
   document.getElementById('trans-date').value = selectedDate;
-  document.getElementById('modal-transaction-title').innerText = "?啣?閮董";
+  document.getElementById('modal-transaction-title').innerText = "????�??;
 
   resetAccountButtons();
   resetCcInstallmentFields();
@@ -4065,22 +4065,22 @@ async function handleTransactionSubmit(event) {
   const amount = Number(document.getElementById('trans-amount').value);
   const accountId = document.getElementById('trans-account').value;
   const destAccountId = type === 'transfer' ? document.getElementById('trans-dest-account').value : null;
-  const category = type === 'transfer' ? '頧董' : document.getElementById('trans-category').value;
+  const category = type === 'transfer' ? '?�?? : document.getElementById('trans-category').value;
   const date = document.getElementById('trans-date').value;
   const notes = document.getElementById('trans-notes').value;
 
   if (amount <= 0) {
-    alert("閮董??敹?憭扳 0 ??");
+    alert("?�?????�??�扳�?0 ???");
     return;
   }
 
   if (!accountId) {
-    alert("隢?甈??嗆狡撣單嚗?);
+    alert("?��??�????�狡??��?��??);
     return;
   }
 
   if (type === 'transfer' && accountId === destAccountId) {
-    alert("頧???亙董?嗡??舐??");
+    alert("?�?????亙董?????��????");
     return;
   }
 
@@ -4114,7 +4114,7 @@ async function handleTransactionSubmit(event) {
 }
 
 async function deleteTransaction(id) {
-  if (confirm("?函Ⅱ摰??芷甇斤?閮董蝝??嚗?)) {
+  if (confirm("??�Ⅱ?�???��??�斤??�?????????)) {
     AppState.transactions = AppState.transactions.filter(t => t.id !== id);
     await saveStateToStorage();
     switchTab(activeTab);
@@ -4127,7 +4127,7 @@ function setAccountType(type) {
   
   const buttons = document.querySelectorAll('#account-type-selector button');
   buttons.forEach(btn => {
-    const mapping = { cash: '?暸?', bank: '?銵?, credit: '靽∠??, securities: '霅?? };
+    const mapping = { cash: '???', bank: '????, credit: '?��????, securities: '?�??? };
     if (btn.innerText === mapping[type]) {
       btn.classList.add('active');
     } else {
@@ -4160,7 +4160,7 @@ async function handleAccountSubmit(event) {
   }
 
   if (initialBalance < 0) {
-    alert("??擗?銝?箄??賂?");
+    alert("?�??�??��???�??�?");
     return;
   }
 
@@ -4172,7 +4172,7 @@ async function handleAccountSubmit(event) {
     const budgetVal = document.getElementById('account-budget').value;
     newAcc.budget = budgetVal ? Number(budgetVal) : null;
     if (newAcc.budget !== null && newAcc.budget <= 0) {
-      alert("?臬??敹?憭扳 0 ??");
+      alert("??�????�??�扳�?0 ???");
       return;
     }
     newAcc.budgetResetDay = Number(document.getElementById('account-budget-reset-day').value) || 1;
@@ -4235,7 +4235,7 @@ async function handleAccountEditSubmit(event) {
     const budgetVal = document.getElementById('account-edit-budget').value;
     const budget = budgetVal ? Number(budgetVal) : null;
     if (budget !== null && budget <= 0) {
-      alert("?臬??敹?憭扳 0 ??");
+      alert("??�????�??�扳�?0 ???");
       return;
     }
     acc.budget = budget;
@@ -4253,7 +4253,7 @@ async function handleAccountEditSubmit(event) {
 }
 
 async function deleteAccount(id) {
-  if (confirm("?芷撣單撠??????舐?鈭斗?蝝??雿萄?歹?蝣箏?閬匱蝥?嚗?)) {
+  if (confirm("??��???��?��??�???????????��???�????��???�??????�?�蝥????)) {
     AppState.accounts = AppState.accounts.filter(a => a.id !== id);
     AppState.transactions = AppState.transactions.filter(t => t.accountId !== id && t.destAccountId !== id);
     await saveStateToStorage();
@@ -4301,7 +4301,7 @@ async function handleSecuritiesTransferSubmit(event) {
   const userNotes = document.getElementById('sec-trans-notes').value.trim();
   
   if (amount <= 0) {
-    alert("頧宏??敹?憭扳 0");
+    alert("?��????�??�扳�?0");
     return;
   }
 
@@ -4310,11 +4310,11 @@ async function handleSecuritiesTransferSubmit(event) {
   
   // Validate if they have enough balance to transfer
   if (dir === 'buy' && accState.balance < amount) {
-    alert("擗?銝雲嚗董?嗅?暸?銝雲隞亥眺?亥蟡具?);
+    alert("?�??��??��?董??�????��??��?亥眺?亥�??�具??);
     return;
   }
   if (dir === 'sell' && accState.securitiesInvested < amount) {
-    alert("撌脫??亥蟡券?憿?頞喃誑頧??);
+    alert("?�脫??亥�??�券??��???��?誑頧??��??);
     return;
   }
 
@@ -4323,7 +4323,7 @@ async function handleSecuritiesTransferSubmit(event) {
   // Sell: accountId = secId + "_invested", destAccountId = secId
   const source = dir === 'buy' ? secId : `${secId}_invested`;
   const dest = dir === 'buy' ? `${secId}_invested` : secId;
-  const noteStr = dir === 'buy' ? '??鞎瑕?∠巨鞈?' : '鞈??∠巨鞈?餈?';
+  const noteStr = dir === 'buy' ? '????��????�巨?�?' : '?????�巨?�?餈�??';
   const customNotes = userNotes ? `${noteStr} - ${userNotes}` : noteStr;
 
   const newTx = {
@@ -4332,7 +4332,7 @@ async function handleSecuritiesTransferSubmit(event) {
     amount,
     accountId: source,
     destAccountId: dest,
-    category: '霅鈭?',
+    category: '?�?�鈭??',
     date: new Date().toISOString().split('T')[0],
     notes: customNotes
   };
@@ -4353,17 +4353,17 @@ function toggleRecurTypeFields() {
   if (type === 'transfer') {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'block';
-    srcLbl.innerText = '頧撣單';
+    srcLbl.innerText = '?�?�撣?��?';
   } else {
     srcGrp.style.display = 'block';
     dstGrp.style.display = 'none';
-    srcLbl.innerText = type === 'expense' ? '??狡撣單' : '?嗆狡撣單';
+    srcLbl.innerText = type === 'expense' ? '???�撣?��?' : '??�狡??��??;
   }
 }
 
 function openAddRecurringModal() {
   document.getElementById('form-recurring').reset();
-  selectRecurIcon('?');
+  selectRecurIcon('?�?);
 
   
   // Build fast button list of accounts for source & destination
@@ -4415,18 +4415,18 @@ async function handleRecurringSubmit(event) {
   const destAccountId = type === 'transfer' ? document.getElementById('recur-dest-account').value : null;
   const frequency = document.getElementById('recur-frequency').value;
   const dayAnchor = Number(document.getElementById('recur-day-anchor').value) || 1;
-  const icon = document.getElementById('recur-icon').value || '?';
+  const icon = document.getElementById('recur-icon').value || '?�?;
 
   if (!sourceAccountId) {
-    alert("隢??賊?甈曉董?塚?");
+    alert("?�??賊�???�?��???�?");
     return;
   }
   if (type === 'transfer' && !destAccountId) {
-    alert("隢??賊???亙董?塚?");
+    alert("?�??賊�?????亙董?�?");
     return;
   }
   if (type === 'transfer' && sourceAccountId === destAccountId) {
-    alert("頧???亙董?嗡??舐??");
+    alert("?�?????亙董?????��????");
     return;
   }
 
@@ -4442,7 +4442,7 @@ async function handleRecurringSubmit(event) {
 }
 
 async function deleteRecurringRule(id) {
-  if (confirm("蝣箏?閬?斗迨?箏??嗆閬???")) {
+  if (confirm("?????�???�迨?�???��??�????")) {
     AppState.recurring = AppState.recurring.filter(r => r.id !== id);
     await saveStateToStorage();
     switchTab(activeTab);
@@ -4526,9 +4526,9 @@ async function processRecurringTransactions() {
           amount: rule.amount,
           accountId: rule.sourceAccountId,
           destAccountId: rule.destAccountId,
-          category: rule.type === 'transfer' ? '頧董' : '?箏??嗆',
+          category: rule.type === 'transfer' ? '?�?? : '?�???��?',
           date: evalDateStr,
-          notes: `[?箏??嗆?芸??瑁?] ${rule.name}`
+          notes: `[?�???��???????] ${rule.name}`
         };
 
         // Avoid duplication
@@ -4545,7 +4545,7 @@ async function processRecurringTransactions() {
   
   if (runCount > 0) {
     setTimeout(() => {
-      alert(`撌脩?刻?銵? ${runCount} 蝑摰?航?撣喉?`);
+      alert(`?�脩�??�??��??�? ${runCount} ?��?摰�????????`);
     }, 1000);
   }
 }
@@ -4557,13 +4557,13 @@ function populateUserLinkDropdown() {
   const dropdown = document.getElementById('split-member-input-user-link');
   if (!dropdown) return;
   
-  dropdown.innerHTML = '<option value="">(銝??蝟餌絞雿輻??</option>';
+  dropdown.innerHTML = '<option value="">(?��?????��?絞雿輻�???</option>';
   
   const users = window.Security.getUserRegistry();
   users.forEach(username => {
     const opt = document.createElement('option');
     opt.value = username;
-    opt.innerText = `???撣唾?嚗?{username}`;
+    opt.innerText = `?????��???{username}`;
     dropdown.appendChild(opt);
   });
 }
@@ -4597,12 +4597,12 @@ function addMemberToBuilder() {
   const userLink = linkInput.value;
   
   if (!name) {
-    alert("隢撓?交??∪?摮?");
+    alert("?��???�?????�?");
     return;
   }
   
   if (tempSplitMembers.some(m => m.name === name)) {
-    alert("???銝??嚗?);
+    alert("??�????��???????);
     return;
   }
   
@@ -4690,7 +4690,7 @@ async function handleSplitPlanSubmit(event) {
   }
 
   if (memberList.length < 2) {
-    alert("?董閮敹???喳??拙??嚗?);
+    alert("??�董?��??�敹????��?????????�??);
     return;
   }
 
@@ -4758,8 +4758,8 @@ function openAddSplitTransModal(planId) {
         <span>${escapeHtml(m)}</span>
       </label>
       <div style="display: flex; align-items: center; gap: 0.25rem;">
-        <input type="number" class="split-member-weight" value="1" min="0" style="width: 60px; padding: 0.25rem; font-size: 0.8125rem;" title="?甈?">
-        <span style="font-size: 0.75rem; color: var(--text-muted);">隞?/span>
+        <input type="number" class="split-member-weight" value="1" min="0" style="width: 60px; padding: 0.25rem; font-size: 0.8125rem;" title="??��??��??">
+        <span style="font-size: 0.75rem; color: var(--text-muted);">??/span>
       </div>
     `;
     container.appendChild(row);
@@ -4780,7 +4780,7 @@ async function handleSplitTransSubmit(event) {
   const payer = document.getElementById('split-trans-payer').value;
 
   if (amount <= 0) {
-    alert("?董??敹?憭扳 0");
+    alert("??�董????�??�扳�?0");
     return;
   }
 
@@ -4803,7 +4803,7 @@ async function handleSplitTransSubmit(event) {
   });
 
   if (participants.length === 0) {
-    alert("隢撠?????斗??∩蒂憛怠憭扳0????");
+    alert("?��??��??��????????????��??�怠?�扳�???????");
     return;
   }
 
@@ -4847,11 +4847,11 @@ async function settleSplitPlan(planId) {
   if (!plan) return;
 
   if (plan.transactions.length === 0) {
-    alert("?砍?撣唾??怎隞颱??梯祥蝝???⊥??脰?蝯???);
+    alert("?????��???��??�颱??梯祥?�??????????��????);
     return;
   }
 
-  if (!confirm("蝣箏?閬脰??蝯?蝞?嚗?蝞?撠瘜??啣??董?敦嚗?)) {
+  if (!confirm("?????�??????��???��???��???��???�?��????????�董??�敦??)) {
     return;
   }
 
@@ -4920,18 +4920,18 @@ async function settleSplitPlan(planId) {
 
   await saveStateToStorage();
   switchTab(activeTab);
-  alert("蝯???嚗?);
+  alert("?��???????);
 }
 
 async function deleteSplitPlan(id) {
-  if (confirm("蝣箏?閬?斗迨?董閮?????撣單?蝝啣???憭梧?")) {
+  if (confirm("?????�???�迨??�董?��????????????��??�啣?????����?")) {
     AppState.splitPlans = AppState.splitPlans.filter(p => p.id !== id);
     await saveStateToStorage();
     switchTab(activeTab);
   }
 }
 
-// --- E-Invoice (??頛) Controllers ---
+// --- E-Invoice (????�?? Controllers ---
 function openSetupCarrierModal() {
   document.getElementById('carrier-barcode-input').value = AppState.carrierBarcode || '';
   document.getElementById('carrier-pin-input').value = AppState.carrierPin || '';
@@ -4950,7 +4950,7 @@ async function handleCarrierSetupSubmit(event) {
   await saveStateToStorage();
   closeModal('modal-carrier-setup');
   switchTab(activeTab);
-  alert("頛閮剖???嚗?);
+  alert("?�?�閮???????);
 }
 
 function generateMockInvoiceNo() {
@@ -4964,33 +4964,33 @@ function generateMockInvoiceNo() {
 // Trigger simulated API download of carrier invoices
 async function triggerMockInvoiceDownload() {
   if (!AppState.carrierBarcode) {
-    alert("隢?閮剖??函???頛璇Ⅳ?銝??潛巨嚗?);
+    alert("?��???��?????????�?��?Ⅳ??��??��???潛巨??);
     switchTab('tab-carrier');
     openSetupCarrierModal();
     return;
   }
 
   // Pre-generate standard mock invoice records
-  const stores = ['蝯曹?頞? (7-11)', '?典振靘踹??', '?毀????, '摰嗆?蝳?, 'Uber Eats', 'UNIQLO'];
+  const stores = ['?�曹??�? (7-11)', '??�振?�踹????', '?�??????, '?��????, 'Uber Eats', 'UNIQLO'];
   const itemsPreset = {
-    '蝯曹?頞? (7-11)': [
-      [{ name: '敺⊿ㄞ蝟?, price: 35 }, { name: '?∠?鞊撚', price: 25 }],
-      [{ name: '靘輻', price: 89 }, { name: '蝝??, price: 25 }]
+    '?�曹??�? (7-11)': [
+      [{ name: '?�⊿?��??, price: 35 }, { name: '????��???, price: 25 }],
+      [{ name: '?�輻??, price: 89 }, { name: '?��?�??, price: 25 }]
     ],
-    '?典振靘踹??': [
-      [{ name: '??瘛?, price: 49 }, { name: '蝢??', price: 35 }]
+    '??�振?�踹????': [
+      [{ name: '?�???, price: 49 }, { name: '?��???�?', price: 35 }]
     ],
-    '?毀????: [
-      [{ name: '?孵之??', price: 150 }, { name: '韏瑕??', price: 100 }]
+    '?�??????: [
+      [{ name: '?孵�?????, price: 150 }, { name: '?��?????', price: 100 }]
     ],
-    '摰嗆?蝳?: [
-      [{ name: '銵?蝝?銝?, price: 249 }, { name: '瘣銋?, price: 120 }, { name: '?扒', price: 150 }]
+    '?��????: [
+      [{ name: '?��???��????, price: 249 }, { name: '???�??, price: 120 }, { name: '?�?', price: 150 }]
     ],
     'Uber Eats': [
-      [{ name: '??暻?, price: 180 }, { name: '憭祥', price: 30 }]
+      [{ name: '?�???, price: 180 }, { name: '?��??祥', price: 30 }]
     ],
     'UNIQLO': [
-      [{ name: '?瑁?隡??瑁仆', price: 790 }]
+      [{ name: '????�???��?', price: 790 }]
     ]
   };
 
@@ -5004,7 +5004,7 @@ async function triggerMockInvoiceDownload() {
   const hasCards = AppState.accounts.some(a => a.type === 'credit');
   const hasBank = AppState.accounts.some(a => a.type === 'bank');
 
-  if (['?毀????, 'Uber Eats', 'UNIQLO'].includes(store) && hasCards) {
+  if (['?�??????, 'Uber Eats', 'UNIQLO'].includes(store) && hasCards) {
     const card = AppState.accounts.find(a => a.type === 'credit');
     suggested = card.id;
   } else if (hasBank) {
@@ -5027,7 +5027,7 @@ async function triggerMockInvoiceDownload() {
   await saveStateToStorage();
   switchTab(activeTab);
   
-  alert(`?? 銝??潛巨??嚗憓?蝑???${store} ???瑟?鞎?$${amount}嚗??冽??桐葉?詨?銝衣Ⅱ隤?亥?撣喋);
+  alert(`?? ?��???潛巨????��?�??��????${store} ????????$${amount}?�?????桐�??�??�衣?�隤?��??�?????�?;
 }
 
 let html5Qrcode = null;
@@ -5068,7 +5068,7 @@ function parseTaiwanInvoiceQr(text) {
   }
   
   if (items.length === 0) {
-    items.push({ name: '?潛巨瘨祥??', price: amount });
+    items.push({ name: '?潛巨?��?�?�?', price: amount });
   }
   
   return {
@@ -5076,7 +5076,7 @@ function parseTaiwanInvoiceQr(text) {
     date: dateStr,
     amount,
     items,
-    store: '?餃??潛巨 (??閫?Ⅳ)'
+    store: '?�??潛巨 (???????'
   };
 }
 
@@ -5114,7 +5114,7 @@ function initRealQrScanner() {
       AppState.carrierInvoices.unshift(newInvoice);
       await saveStateToStorage();
       switchTab('tab-carrier');
-      alert(`?? ????嚗蟡刻?蝣潘?${parsed.invoiceNo}嚗?憿?$${parsed.amount}嚗歇?臬敺Ⅱ隤??瑟?蝝堆?`);
+      alert(`?? ???????�蟡??????${parsed.invoiceNo}?�??�?$${parsed.amount}?��??�?�?�隤??????��??`);
     }
   };
   
@@ -5151,10 +5151,10 @@ async function simulateQrScanSuccess(preset) {
     newInvoice = {
       id: `inv_${Date.now()}`,
       invoiceNo: generateMockInvoiceNo(),
-      store: '?毀????(???臬)',
+      store: '?�??????(?????�)',
       amount: 245,
       date: todayStr,
-      items: [{ name: '蝬??', price: 150 }, { name: '?惜??', price: 95 }],
+      items: [{ name: '?�?????, price: 150 }, { name: '??��????', price: 95 }],
       suggestedAccount: cardId,
       paymentConfirmed: false
     };
@@ -5162,10 +5162,10 @@ async function simulateQrScanSuccess(preset) {
     newInvoice = {
       id: `inv_${Date.now()}`,
       invoiceNo: generateMockInvoiceNo(),
-      store: '摰嗆?蝳?(???臬)',
+      store: '?��????(?????�)',
       amount: 1280,
       date: todayStr,
-      items: [{ name: '???漸憟?, price: 280 }, { name: '撟喳???, price: 1000 }],
+      items: [{ name: '??????��??, price: 280 }, { name: '?�喳???, price: 1000 }],
       suggestedAccount: cardId,
       paymentConfirmed: false
     };
@@ -5173,10 +5173,10 @@ async function simulateQrScanSuccess(preset) {
     newInvoice = {
       id: `inv_${Date.now()}`,
       invoiceNo: generateMockInvoiceNo(),
-      store: 'UNIQLO (???臬)',
+      store: 'UNIQLO (?????�)',
       amount: 990,
       date: todayStr,
-      items: [{ name: '蝝', price: 390 }, { name: '??剛仆', price: 600 }],
+      items: [{ name: '?�', price: 390 }, { name: '??�??��?', price: 600 }],
       suggestedAccount: cardId,
       paymentConfirmed: false
     };
@@ -5186,7 +5186,7 @@ async function simulateQrScanSuccess(preset) {
     AppState.carrierInvoices.unshift(newInvoice);
     await saveStateToStorage();
     switchTab(activeTab);
-    alert(`???潛巨??嚗歇?敺Ⅱ隤??瑟?蝝堆?`);
+    alert(`????潛巨????��??�?�隤??????��??`);
   }
 }
 
@@ -5205,9 +5205,9 @@ async function confirmCarrierInvoice(id) {
     amount: inv.amount,
     accountId: chosenAccount,
     destAccountId: null,
-    category: '憌脤?', // Default categorization, user can edit on ledger if needed
+    category: '?�脤?', // Default categorization, user can edit on ledger if needed
     date: inv.date,
-    notes: `[?潛巨頛][?潛巨?Ⅳ:${inv.invoiceNo || '??}] ${inv.store} - ${itemsText}`
+    notes: `[?潛巨?�?�][?潛巨?Ⅳ:${inv.invoiceNo || '??}] ${inv.store} - ${itemsText}`
   };
 
   // Add to main transactions
@@ -5218,7 +5218,7 @@ async function confirmCarrierInvoice(id) {
 
   await saveStateToStorage();
   switchTab(activeTab);
-  alert("撌脫???乩蜓閬?撣喳董?砌葉嚗?);
+  alert("?�脫??�??乩�??�???��???��???);
 }
 
 function parseCsvLine(text) {
@@ -5252,7 +5252,7 @@ function parseSimpleCsv(lines) {
       const date = parts[0].trim();
       const store = parts[1].trim();
       const amount = Number(parts[2].trim()) || 0;
-      const itemDesc = parts[3] ? parts[3].trim() : '?潛巨???敦';
+      const itemDesc = parts[3] ? parts[3].trim() : '?潛巨?????�敦';
 
       if (amount > 0 && /^\d{4}-\d{2}-\d{2}$/.test(date)) {
         const newInvoice = {
@@ -5274,7 +5274,7 @@ function parseSimpleCsv(lines) {
   if (importedCount > 0) {
     saveStateToStorage().then(() => {
       switchTab(activeTab);
-      alert(`??閫??銝血?乩? ${importedCount} 蝑蟡冽?蝝啗敺撠??瑟??殷?`);
+      alert(`???????��???�? ${importedCount} ?��?蟡???��??�敺?�?��??????�?`);
     });
   }
 }
@@ -5289,21 +5289,21 @@ async function handleInvoiceCsvUpload(event) {
     const text = e.target.result;
     const lines = text.split('\n');
     if (lines.length <= 1) {
-      alert("CSV 瑼??箇征?撘?甇?Ⅱ嚗?);
+      alert("CSV ?��???箇�???�????��??);
       return;
     }
 
     const headerLine = lines[0].replace(/"/g, '').trim();
     const headers = headerLine.split(',');
 
-    const dateIdx = headers.findIndex(h => h.includes('?交?') || h.includes('Date'));
+    const dateIdx = headers.findIndex(h => h.includes('?�?') || h.includes('Date'));
     const noIdx = headers.findIndex(h => h.includes('?Ⅳ') || h.includes('No'));
-    const itemIdx = headers.findIndex(h => h.includes('??') || h.includes('?敦') || h.includes('Item'));
-    const amtIdx = headers.findIndex(h => h.includes('??') || h.includes('撠?') || h.includes('Amount') || h.includes('蝮賡?'));
-    const storeIdx = headers.findIndex(h => h.includes('?迂') || h.includes('?振') || h.includes('??') || h.includes('Store'));
+    const itemIdx = headers.findIndex(h => h.includes('?�?') || h.includes('??�敦') || h.includes('Item'));
+    const amtIdx = headers.findIndex(h => h.includes('???') || h.includes('?�?') || h.includes('Amount') || h.includes('?�賡?'));
+    const storeIdx = headers.findIndex(h => h.includes('??��?') || h.includes('??�振') || h.includes('???') || h.includes('Store'));
 
     if (dateIdx === -1 || amtIdx === -1) {
-      alert("?⊥??芸?撠?鞎⊥??CSV 甈?嚗?雿輻?身?澆?閫?? (甈?????綽??交?,?振,??,??)");
+      alert("???????��???�⊥???CSV ?��???�??�輻???�身?�???? (?��????????�??�?,??�振,???,?�?)");
       parseSimpleCsv(lines);
       return;
     }
@@ -5320,9 +5320,9 @@ async function handleInvoiceCsvUpload(event) {
 
       const dateRaw = parts[dateIdx].trim();
       const amount = Number(parts[amtIdx].trim()) || 0;
-      const store = storeIdx !== -1 ? parts[storeIdx].trim() : '?芰?振';
+      const store = storeIdx !== -1 ? parts[storeIdx].trim() : '??��???�振';
       const invoiceNo = noIdx !== -1 ? parts[noIdx].trim() : `M-${Date.now()}-${i}`;
-      const itemName = itemIdx !== -1 ? parts[itemIdx].trim() : '?潛巨?敦??';
+      const itemName = itemIdx !== -1 ? parts[itemIdx].trim() : '?潛巨??�敦?�?';
 
       let formattedDate = dateRaw.replace(/\//g, '-').replace(/"/g, '');
       if (/^\d{3}-\d{2}-\d{2}$/.test(formattedDate)) {
@@ -5372,9 +5372,9 @@ async function handleInvoiceCsvUpload(event) {
     if (importedCount > 0) {
       await saveStateToStorage();
       switchTab(activeTab);
-      alert(`??閫??銝血?乩? ${importedCount} 蝑蟡冽?蝝啗敺撠??瑟??殷?`);
+      alert(`???????��???�? ${importedCount} ?��?蟡???��??�敺?�?��??????�?`);
     } else {
-      alert("CSV 瑼?銝剜?潛???潛巨鞈?嚗?);
+      alert("CSV ?��???��?�?潛�?????潛巨?�???);
     }
   };
   reader.readAsText(file);
@@ -5388,7 +5388,7 @@ async function addCategory(type, name = null) {
   if (!val) return;
   
   if (AppState.categories[type].includes(val)) {
-    alert("閰脤??亙歇摮嚗?);
+    alert("?�脤??亙�??��??);
     return;
   }
 
@@ -5404,16 +5404,16 @@ async function addCategory(type, name = null) {
 
 async function deleteCategory(type, cat) {
   const defaultCats = {
-    expense: ['憌脤?', '?嗡?'],
-    income: ['?芣偌', '?嗡?']
+    expense: ['?�脤?', '???'],
+    income: ['????', '???']
   };
   
   if (defaultCats[type].includes(cat)) {
-    alert("?詨??身憿?⊥??芷嚗?);
+    alert("?�???�身?�??????��???);
     return;
   }
 
-  if (confirm(`?芷憿??{cat}???蔣?踹歇??撣單?蝝堆?蝣箏??芷??`)) {
+  if (confirm(`??��??�???{cat}?????�蔣?踹�??????��??��????????��????`)) {
     AppState.categories[type] = AppState.categories[type].filter(c => c !== cat);
     await saveStateToStorage();
     renderCategories();
@@ -5423,22 +5423,22 @@ async function deleteCategory(type, cat) {
 // --- Systems Setting Utilities ---
 async function changePinCode() {
   if (!currentUser) return;
-  const oldPassword = prompt("隢撓?亦?董????蝣潘?");
+  const oldPassword = prompt("?��???亦�???�董?�???�?????");
   const verified = await window.Security.verifyUserLogin(currentUser, oldPassword);
   if (!verified) {
-    alert("??蝣潮?霅隤歹??⊥?靽格嚗?);
+    alert("??�???��??�?�隤�?????�格?��??);
     return;
   }
   
-  const newPassword = prompt("隢撓?交撖Ⅳ嚗?);
+  const newPassword = prompt("?��???交�??��?????);
   if (!newPassword || newPassword.length < 4) {
-    alert("撖Ⅳ?嚗?頛詨?喳? 4 蝣潘?");
+    alert("?��????��??�??�詨???? 4 ????");
     return;
   }
 
-  const confirmPassword = prompt("隢?甈∟撓?交撖Ⅳ隞亦Ⅱ隤?");
+  const confirmPassword = prompt("?��???��???交�??��????亦Ⅱ?�?");
   if (newPassword !== confirmPassword) {
-    alert("?拇活撖Ⅳ頛詨銝??湛?靽格憭望?嚗?);
+    alert("??�活?��????詨?��???�??�格?�憭????);
     return;
   }
 
@@ -5450,14 +5450,14 @@ async function changePinCode() {
     
     inMemoryDecryptionKey = newPassword;
     await saveStateToStorage();
-    alert("撖Ⅳ靽格??嚗?甈∠?亥?雿輻?啣?蝣潦?);
+    alert("?��???��?��?????�??��?�?�??�輻??????��??);
   } catch (err) {
-    alert("靽格憭望?嚗? + err.message);
+    alert("?�格?�憭???? + err.message);
   }
 }
 
 function resetAllApp() {
-  if (confirm("?? 瘜冽?嚗??斗?????瘞訾??芷?典摮?祆????董?桐??⊥???嚗n蝣箏?閬??券?閮?App ??")) {
+  if (confirm("?�? ?�冽??�????????�??�訾???��???��??��?�???????��?�????????��?n?????�??????App ???")) {
     localStorage.clear();
     location.reload();
   }
@@ -5479,7 +5479,7 @@ async function exportEncryptedBackup() {
     downloadAnchor.click();
     downloadAnchor.remove();
   } catch (err) {
-    alert("?臬?遢憭望?嚗? + err.message);
+    alert("??�?遢?��???? + err.message);
   }
 }
 
@@ -5488,7 +5488,7 @@ async function importEncryptedBackup(event) {
   const file = event.target.files[0];
   if (!file) return;
   
-  const password = prompt("隢撓?亥府?遢瑼?撠???蝣潘?");
+  const password = prompt("?��???亥�??遢?��???��?????????");
   if (!password) return;
 
   const reader = new FileReader();
@@ -5508,13 +5508,13 @@ async function importEncryptedBackup(event) {
         
         await saveStateToStorage();
         
-        alert("鞈?摨恍?????");
+        alert("?�??��???�??�?");
         location.reload();
       } else {
-        alert("?遢瑼??澆?銝迤蝣綽?");
+        alert("?遢?��???�??��?迤蝣�?");
       }
     } catch (error) {
-      alert("??憭望?嚗?蝣潔?甇?Ⅱ??隞賣?獢歇????);
+      alert("????��???�?????????�??�賣??��?�?????);
     }
   };
   reader.readAsText(file);
@@ -5523,7 +5523,7 @@ async function importEncryptedBackup(event) {
 // Export raw ledger to Excel (CSV)
 function exportLedgerToCsv() {
   let csvContent = "\ufeff"; // BOM for Excel UTF-8 display
-  csvContent += "?交?,?嗆憿?,??,撣單,頧撣單,憿,?酉\n";
+  csvContent += "?�?,??��??�?,???,??��???�?�撣?��?,?�???�?\n";
   
   AppState.transactions.forEach(t => {
     const acc = AppState.accounts.find(a => a.id === t.accountId);
@@ -5533,7 +5533,7 @@ function exportLedgerToCsv() {
     const destAccName = destAcc ? destAcc.name : '';
     const notes = t.notes ? t.notes.replace(/"/g, '""') : '';
 
-    csvContent += `"${t.date}","${t.type === 'income' ? '?嗅' : t.type === 'expense' ? '?臬' : '頧董'}",${t.amount},"${accName}","${destAccName}","${t.category}","${notes}"\n`;
+    csvContent += `"${t.date}","${t.type === 'income' ? '??�' : t.type === 'expense' ? '??�' : '?�??}",${t.amount},"${accName}","${destAccName}","${t.category}","${notes}"\n`;
   });
 
   const encodedUri = encodeURI("data:text/csv;charset=utf-8," + csvContent);
@@ -5548,18 +5548,18 @@ function exportLedgerToCsv() {
 // --- Browser Notifications Center ---
 function triggerNotificationTest() {
   if (!("Notification" in window)) {
-    alert("?函??汗?其??舀獢??");
+    alert("?????��??????�?�?��?�??�?");
     return;
   }
 
   Notification.requestPermission().then(permission => {
     if (permission === "granted") {
-      new Notification("??閮??", {
-        body: "皜祈岫??嚗?憭拍?靽∠?∪董?桀撠??",
+      new Notification("?�??�?�????", {
+        body: "?��?�????�??��???��????�董?桀?��??��??�?",
         icon: "./icon.svg"
       });
     } else {
-      alert("???鋡急?蝯?隢?汗?刻身摰葉???甈???);
+      alert("?�?????��??�??��?�??��???�身?�?????�??��????);
     }
   });
 }
@@ -5576,7 +5576,7 @@ function escapeHtml(str) {
 
 function copyToClipboard(text) {
   navigator.clipboard.writeText(text).then(() => {
-    alert("撌脰?鋆賜?蝞??芾票蝪選??舐?亥票銝 Line 蝢斤??澈??);
+    alert("?�脰??��???��?�??�??�票?�選???��??亥票?��???Line ?�斤???��???);
   }).catch(err => {
     console.error('Could not copy text: ', err);
   });
@@ -5737,21 +5737,21 @@ function handleRecurFrequencyChange() {
   } else if (freq === 'weekly') {
     group.style.display = 'block';
     group.innerHTML = `
-      <label>??狡??/label>
+      <label>?????/label>
       <select id="recur-day-anchor" required class="form-control">
-        <option value="1">??銝</option>
-        <option value="2">??鈭?/option>
-        <option value="3">??銝?/option>
-        <option value="4">????/option>
-        <option value="5">??鈭?/option>
-        <option value="6">????/option>
-        <option value="0">????/option>
+        <option value="1">?�??�</option>
+        <option value="2">?�???/option>
+        <option value="3">?�???/option>
+        <option value="4">?�???/option>
+        <option value="5">?�???/option>
+        <option value="6">?�???/option>
+        <option value="0">?�???/option>
       </select>
     `;
   } else if (freq === 'monthly') {
     group.style.display = 'block';
     group.innerHTML = `
-      <label>??狡??/label>
+      <label>?????/label>
       <select id="recur-day-anchor" required class="form-control">
         ${dayOptions}
       </select>
@@ -5763,7 +5763,7 @@ function handleRecurFrequencyChange() {
     for(let i=1; i<=12; i++) monthOptions += `<option value="${i}">${i}??/option>`;
     
     group.innerHTML = `
-      <label>??狡??/label>
+      <label>?????/label>
       <div style="display: flex; gap: 0.5rem;">
         <select id="recur-month-anchor" required class="form-control" style="flex:1;">
           ${monthOptions}
@@ -5784,7 +5784,7 @@ function renderDreamList() {
   container.innerHTML = '';
   
   if (!AppState.dreams || AppState.dreams.length === 0) {
-    container.innerHTML = `<div style="padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">?桀?瘝?隞颱?憿?閮???憓???憪遣蝡?</div>`;
+    container.innerHTML = `<div style="padding: 3rem; text-align: center; color: var(--text-muted); background: var(--bg-card); border-radius: 16px;">?桀??��???�颱??�??��???�???�?��??�?????��???��??</div>`;
     return;
   }
   
@@ -5801,7 +5801,7 @@ function renderDreamList() {
     }
     
     card.innerHTML = `
-      ${isCompleted ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-green); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">撌脤?????</div>' : ''}
+      ${isCompleted ? '<div style="position: absolute; top: -10px; right: -10px; background: var(--color-green); color: white; font-size: 0.7rem; padding: 2px 8px; border-radius: 10px; font-weight: bold; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">?�脤?????</div>' : ''}
       <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
         <h3 style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; margin: 0;">${escapeHtml(dream.icon)} ${escapeHtml(dream.name)}</h3>
         <div class="dropdown-container">
@@ -5809,14 +5809,14 @@ function renderDreamList() {
             <svg viewBox="0 0 24 24" width="20" height="20" fill="var(--text-secondary)"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>
           </button>
           <div class="dropdown-menu" id="dream-menu-${dream.id}">
-            <button class="dropdown-item" onclick="openEditDreamModal('${dream.id}')">蝺刻摩</button>
-            <button class="dropdown-item text-danger" onclick="deleteDream('${dream.id}')">?芷</button>
+            <button class="dropdown-item" onclick="openEditDreamModal('${dream.id}')">?�刻??/button>
+            <button class="dropdown-item text-danger" onclick="deleteDream('${dream.id}')">??��?</button>
           </div>
         </div>
       </div>
       
       <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
-        <span style="font-size: 0.85rem; color: var(--text-secondary);">?桀??脣漲</span>
+        <span style="font-size: 0.85rem; color: var(--text-secondary);">?桀????��</span>
         <span style="font-family: var(--font-title); font-size: 1.25rem; font-weight: 700; color: ${isCompleted ? 'var(--color-green)' : 'var(--text-primary)'};">
           ${formatAccounting(dream.current)} <span style="font-size: 0.9rem; font-weight: normal; color: var(--text-muted);">/ ${formatAccounting(dream.target)}</span>
         </span>
@@ -5828,7 +5828,7 @@ function renderDreamList() {
       <div style="text-align: right; font-size: 0.8rem; color: var(--text-muted); margin-top: -0.5rem; margin-bottom: 1rem;">${progress}%</div>
       
       ${!isCompleted ? `
-      <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;" onclick="openDreamProgressModal('${dream.id}')">摮鞈?</button>
+      <button class="btn-primary" style="width: 100%; font-size: 0.85rem; padding: 0.5rem;" onclick="openDreamProgressModal('${dream.id}')">?�?��???</button>
       ` : ''}
     `;
     container.appendChild(card);
@@ -5838,7 +5838,7 @@ function renderDreamList() {
 function openAddDreamModal() {
   document.getElementById('form-dream').reset();
   document.getElementById('dream-edit-id').value = '';
-  document.getElementById('modal-dream-title').innerText = '?啣?憿?';
+  document.getElementById('modal-dream-title').innerText = '????�?';
   openModal('modal-dream');
 }
 
@@ -5850,7 +5850,7 @@ function openEditDreamModal(id) {
   document.getElementById('dream-name').value = dream.name;
   document.getElementById('dream-target').value = dream.target;
   document.getElementById('dream-current').value = dream.current;
-  document.getElementById('modal-dream-title').innerText = '蝺刻摩憿?';
+  document.getElementById('modal-dream-title').innerText = '?�刻?�憿�?';
   openModal('modal-dream');
   const menus = document.querySelectorAll('.dropdown-menu');
   menus.forEach(m => m.classList.remove('show'));
@@ -5882,7 +5882,7 @@ async function handleDreamSubmit(event) {
 }
 
 async function deleteDream(id) {
-  if (confirm('確定要刪除此願望清單嗎？')) {
+  if (confirm('確�?要刪?�此願�?清單?��?')) {
     AppState.dreams = AppState.dreams.filter(d => d.id !== id);
     await saveStateToStorage();
     renderDreamList();
@@ -5906,7 +5906,7 @@ async function handleDreamProgressSubmit(event) {
     if (dream.current >= dream.target) {
       dream.current = dream.target;
       setTimeout(() => {
-        alert(`🎉 恭喜您！達成願望：${dream.icon} ${dream.name} 🎉`);
+        alert(`?? ?��??��??��?願�?�?{dream.icon} ${dream.name} ??`);
       }, 300);
     }
     await saveStateToStorage();
@@ -5921,10 +5921,10 @@ function populateInventoryLocationsAndUnits() {
   const unitSelect = document.getElementById('inventory-unit');
   if (!locationSelect || !unitSelect) return;
   
-  locationSelect.innerHTML = '<option value="">請選擇</option>';
-  unitSelect.innerHTML = '<option value="">選擇</option>';
+  locationSelect.innerHTML = '<option value="">請選??/option>';
+  unitSelect.innerHTML = '<option value="">?��?</option>';
   
-  const locations = AppState.inventoryLocations || ['客廳', '廚房', '浴室', '臥室', '儲藏室', '車上', '辦公室', '陽台'];
+  const locations = AppState.inventoryLocations || ['客廳', '廚房', '浴室', '?�室', '?��?�?, '車�?', '辦公�?, '?�台'];
   locations.forEach(loc => {
     const opt = document.createElement('option');
     opt.value = loc;
@@ -5932,7 +5932,7 @@ function populateInventoryLocationsAndUnits() {
     locationSelect.appendChild(opt);
   });
   
-  const units = AppState.inventoryUnits || ['包', '瓶', '個', '盒', '袋', '罐', '條', '片', '組', '支', '卷', '張'];
+  const units = AppState.inventoryUnits || ['??, '??, '??, '??, '�?, '�?, '�?, '??, '�?, '??, '??, '�?];
   units.forEach(u => {
     const opt = document.createElement('option');
     opt.value = u;
@@ -5947,29 +5947,29 @@ function initExpiryDateSelects() {
   const dSelect = document.getElementById('inventory-expiry-day');
   if (!ySelect || !mSelect || !dSelect) return;
   
-  ySelect.innerHTML = '<option value="">年</option>';
-  mSelect.innerHTML = '<option value="">月</option>';
-  dSelect.innerHTML = '<option value="">日</option>';
+  ySelect.innerHTML = '<option value="">�?/option>';
+  mSelect.innerHTML = '<option value="">??/option>';
+  dSelect.innerHTML = '<option value="">??/option>';
   
   const currentYear = new Date().getFullYear();
   for (let i = currentYear; i <= currentYear + 20; i++) {
     const opt = document.createElement('option');
     opt.value = i;
-    opt.innerText = i + '年';
+    opt.innerText = i + '�?;
     ySelect.appendChild(opt);
   }
   
   for (let i = 1; i <= 12; i++) {
     const opt = document.createElement('option');
     opt.value = i;
-    opt.innerText = i + '月';
+    opt.innerText = i + '??;
     mSelect.appendChild(opt);
   }
   
   for (let i = 1; i <= 31; i++) {
     const opt = document.createElement('option');
     opt.value = i;
-    opt.innerText = i + '日';
+    opt.innerText = i + '??;
     dSelect.appendChild(opt);
   }
 }
@@ -6007,17 +6007,17 @@ function renderSplitRightPanel() {
     container.innerHTML = `
       <div class="day-summary-grid">
         <div class="summary-card">
-          <div class="summary-label">進行中計畫</div>
+          <div class="summary-label">?��?中�???/div>
           <div class="summary-val total" style="color: var(--color-green);">${activePlans}</div>
         </div>
         <div class="summary-card">
-          <div class="summary-label">已結算計畫</div>
+          <div class="summary-label">已�?算�???/div>
           <div class="summary-val total">${settledPlans}</div>
         </div>
       </div>
       <div style="margin-top: 1rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
-        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">點擊左側分帳計畫卡片，以查看細項花費</div>
-        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">所有計畫總花費</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem;">點�?左側?�帳計畫?��?，以?��?細�??�費</div>
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">?�?��??�總?�費</div>
         <div style="font-family: var(--font-title); font-size: 1.5rem; font-weight: bold; color: var(--color-purple);">${formatAccounting(totalSpendAll)}</div>
       </div>
     `;
@@ -6037,7 +6037,7 @@ function renderSplitRightPanel() {
   
   let membersDetailHtml = plan.members.map(m => `
     <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.25rem; margin-bottom: 0.25rem;">
-      <span>${escapeHtml(m)} 代墊</span>
+      <span>${escapeHtml(m)} �??</span>
       <span style="font-weight: bold; color: var(--color-green);">${formatAccounting(paidAmounts[m] || 0)}</span>
     </div>
   `).join('');
@@ -6045,16 +6045,16 @@ function renderSplitRightPanel() {
   container.innerHTML = `
     <div style="margin-bottom: 1rem;">
       <div style="font-size: 0.9rem; font-weight: bold; color: var(--theme-color); margin-bottom: 0.25rem;">${escapeHtml(plan.name)}</div>
-      <div style="font-size: 0.75rem; color: var(--text-muted);">總細項花費概況</div>
+      <div style="font-size: 0.75rem; color: var(--text-muted);">總細?�花費�?�?/div>
     </div>
     
     <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 1rem;">
-      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">此計畫總花費</div>
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.25rem;">此�??�總?�費</div>
       <div style="font-family: var(--font-title); font-size: 1.5rem; font-weight: bold; color: var(--color-purple);">${formatAccounting(totalSpend)}</div>
     </div>
     
     <div style="padding: 1rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
-      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; font-weight: bold;">各成員代墊狀況</div>
+      <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; font-weight: bold;">?��??�代墊�?�?/div>
       <div style="display: flex; flex-direction: column; gap: 0.25rem; font-size: 0.8125rem;">
         ${membersDetailHtml}
       </div>
@@ -6085,7 +6085,7 @@ function calculateRealtimeSplitPreview() {
     if (!previewList) return;
     
     if (selectedMembers.length === 0 || amount === 0) {
-      previewList.innerHTML = '<div style="color:var(--text-muted); font-size:0.8rem; text-align:center;">無分攤結果</div>';
+      previewList.innerHTML = '<div style="color:var(--text-muted); font-size:0.8rem; text-align:center;">?��??��???/div>';
       return;
     }
     
@@ -6094,7 +6094,7 @@ function calculateRealtimeSplitPreview() {
     selectedMembers.forEach(m => {
       html += `
         <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 0.25rem; margin-bottom: 0.25rem;">
-          <span>${escapeHtml(m)} 應付</span>
+          <span>${escapeHtml(m)} ?��?</span>
           <span style="font-weight: bold; color: var(--color-purple);">${formatAccounting(share)}</span>
         </div>
       `;
@@ -6166,7 +6166,7 @@ function initWheelData() {
   const colYear = document.getElementById('wheel-col-year');
   let yHtml = '';
   for(let i = 2010; i <= 2040; i++) {
-    yHtml += `<div class="wheel-item" data-val="${i}">${i}年</div>`;
+    yHtml += `<div class="wheel-item" data-val="${i}">${i}�?/div>`;
   }
   colYear.innerHTML = yHtml;
   
@@ -6174,7 +6174,7 @@ function initWheelData() {
   const colMonth = document.getElementById('wheel-col-month');
   let mHtml = '';
   for(let i = 1; i <= 12; i++) {
-    mHtml += `<div class="wheel-item" data-val="${i}">${String(i).padStart(2, '0')}月</div>`;
+    mHtml += `<div class="wheel-item" data-val="${i}">${String(i).padStart(2, '0')}??/div>`;
   }
   colMonth.innerHTML = mHtml;
   
@@ -6199,7 +6199,7 @@ function updateWheelDays() {
   const colDay = document.getElementById('wheel-col-day');
   let dHtml = '';
   for(let i = 1; i <= daysInMonth; i++) {
-    dHtml += `<div class="wheel-item" data-val="${i}">${String(i).padStart(2, '0')}日</div>`;
+    dHtml += `<div class="wheel-item" data-val="${i}">${String(i).padStart(2, '0')}??/div>`;
   }
   colDay.innerHTML = dHtml;
   
